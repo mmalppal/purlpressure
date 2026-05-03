@@ -1,0 +1,410 @@
+/* ──────────────────────────────────────────────────────────────
+   purlpressure.com — design tokens + global styles
+   Mood: textile-studio meets risograph zine.
+   Same warm palette DNA as StitchVision, but loosened up:
+   wonky display, off-grid, grain, sticker decoration.
+   ────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Grounds — warm, candlelit, never pure black ─────────── */
+  --pp-bg:           #1A1410;
+  --pp-bg-elevated:  #221B16;
+  --pp-bg-sunken:    #120E0B;
+  --pp-paper:        #F5F0E8;
+  --pp-bone:         #E8DFD0;
+  --pp-parchment:    #EFE6D5;
+
+  /* ── Anchors — earthy, saturated ─────────────────────────── */
+  --pp-cordovan:     #5A2A27;
+  --pp-merlot:       #7A2E2F;
+  --pp-crimson:      #A63A33;
+  --pp-terracotta:   #BF6B4A;
+  --pp-walnut:       #4A3828;
+  --pp-moss:         #6B6B2D;
+  --pp-forest:       #355438;
+  --pp-clary-sage:   #8C9471;
+
+  /* ── Pinks ───────────────────────────────────────────────── */
+  --pp-rose:         #C57B84;
+  --pp-dusty-pink:   #D9A6AA;
+  --pp-blush:        #E8C4BE;
+  --pp-oxblood-pink: #9E4F56;
+
+  /* ── Cool accents ────────────────────────────────────────── */
+  --pp-periwinkle:   #9BA8D1;
+  --pp-shadow-blue:  #7D8EB0;
+  --pp-cadet:        #6B8BA4;
+  --pp-chartreuse:   #B8AF56;
+  --pp-butter:       #F0D97A;
+  --pp-honey:        #E2A93B;
+
+  /* ── Ink (for use on warm grounds) ───────────────────────── */
+  --pp-ink:          #2A1F1A;
+  --pp-ink-soft:     #4A3D35;
+  --pp-ink-muted:    #6E5F55;
+
+  /* ── Semantic — dark mode is the default ─────────────────── */
+  --pp-text:         #F1E8D9;
+  --pp-text-soft:    #D4C7B2;
+  --pp-text-muted:   #9E8F7C;
+  --pp-text-ghost:   #6E6155;
+
+  --pp-border:       #3A3228;
+  --pp-border-soft:  #2E2821;
+  --pp-border-strong:#4C4136;
+
+  --pp-accent:       var(--pp-terracotta);
+  --pp-accent-2:     var(--pp-clary-sage);
+  --pp-accent-3:     var(--pp-periwinkle);
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --pp-font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --pp-font-body:    'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --pp-font-mono:    'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Spacing */
+  --pp-1:  4px;
+  --pp-2:  8px;
+  --pp-3:  12px;
+  --pp-4:  16px;
+  --pp-5:  20px;
+  --pp-6:  24px;
+  --pp-8:  32px;
+  --pp-10: 40px;
+  --pp-12: 48px;
+  --pp-16: 64px;
+  --pp-20: 80px;
+  --pp-24: 96px;
+
+  /* Radius — restrained */
+  --pp-radius-sm: 3px;
+  --pp-radius:    6px;
+  --pp-radius-md: 12px;
+
+  /* Container */
+  --pp-container: 1280px;
+
+  /* Motion */
+  --pp-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ── Reset-ish ──────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--pp-bg);
+  color: var(--pp-text);
+  font-family: var(--pp-font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Grain overlay — riso feel — fixed to viewport */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 200px 200px;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+::selection {
+  background: var(--pp-terracotta);
+  color: var(--pp-paper);
+}
+
+/* ── Type system ────────────────────────────────────────────── */
+
+.pp-display {
+  font-family: var(--pp-font-display);
+  font-style: italic;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+
+.pp-display--xl {
+  font-size: clamp(64px, 14vw, 220px);
+}
+
+.pp-display--lg {
+  font-size: clamp(48px, 9vw, 140px);
+}
+
+.pp-display--md {
+  font-size: clamp(36px, 6vw, 80px);
+}
+
+.pp-eyebrow {
+  font-family: var(--pp-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--pp-text-muted);
+}
+
+.pp-body {
+  font-family: var(--pp-font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--pp-text-soft);
+}
+
+.pp-body--lg {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ── Layout helpers ─────────────────────────────────────────── */
+
+.pp-container {
+  width: 100%;
+  max-width: var(--pp-container);
+  margin: 0 auto;
+  padding: 0 var(--pp-6);
+}
+
+@media (min-width: 768px) {
+  .pp-container { padding: 0 var(--pp-10); }
+}
+
+.pp-section {
+  padding: var(--pp-16) 0;
+}
+
+@media (min-width: 768px) {
+  .pp-section { padding: var(--pp-24) 0; }
+}
+
+/* ── Sticker label — for rotated little tags ────────────────── */
+
+.pp-sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pp-2);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--pp-paper);
+  color: var(--pp-ink);
+  font-family: var(--pp-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow:
+    0 2px 0 rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* ── Button — nudges on hover ───────────────────────────────── */
+
+.pp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pp-2);
+  padding: 14px 22px;
+  border-radius: var(--pp-radius);
+  background: var(--pp-paper);
+  color: var(--pp-ink);
+  font-family: var(--pp-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform 180ms var(--pp-ease), box-shadow 180ms var(--pp-ease);
+  box-shadow: 0 2px 0 var(--pp-walnut);
+}
+
+.pp-btn:hover {
+  transform: translate(-1px, -2px);
+  box-shadow: 0 4px 0 var(--pp-walnut);
+}
+
+.pp-btn:active {
+  transform: translate(0, 0);
+  box-shadow: 0 1px 0 var(--pp-walnut);
+}
+
+.pp-btn--accent {
+  background: var(--pp-terracotta);
+  color: var(--pp-paper);
+  box-shadow: 0 2px 0 var(--pp-cordovan);
+}
+
+.pp-btn--accent:hover { box-shadow: 0 4px 0 var(--pp-cordovan); }
+.pp-btn--accent:active { box-shadow: 0 1px 0 var(--pp-cordovan); }
+
+.pp-btn--ghost {
+  background: transparent;
+  color: var(--pp-text);
+  box-shadow: inset 0 0 0 1px var(--pp-border-strong);
+}
+
+.pp-btn--ghost:hover {
+  box-shadow: inset 0 0 0 1px var(--pp-text), 0 4px 0 var(--pp-border-soft);
+}
+
+/* ── Off-grid wrapper helpers ───────────────────────────────── */
+
+.pp-tilt-l { transform: rotate(-2.5deg); }
+.pp-tilt-r { transform: rotate(2.5deg); }
+.pp-tilt-l-sm { transform: rotate(-1deg); }
+.pp-tilt-r-sm { transform: rotate(1deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-tilt-l, .pp-tilt-r, .pp-tilt-l-sm, .pp-tilt-r-sm { transform: none; }
+  .pp-btn { transition: none; }
+}
+
+/* ── Long-form prose (Weekly Obsessions post body) ──────────── */
+
+.pp-prose {
+  font-family: var(--pp-font-body);
+  color: var(--pp-text);
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 68ch;
+}
+
+.pp-prose h2 {
+  font-family: var(--pp-font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: var(--pp-12) 0 var(--pp-4);
+  color: var(--pp-text);
+}
+
+.pp-prose h3 {
+  font-family: var(--pp-font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(22px, 3vw, 30px);
+  margin: var(--pp-10) 0 var(--pp-3);
+  color: var(--pp-text);
+}
+
+.pp-prose p {
+  margin: 0 0 1em;
+  color: var(--pp-text-soft);
+}
+
+.pp-prose a {
+  color: var(--pp-text);
+  background-image: linear-gradient(transparent 60%, var(--pp-terracotta) 60%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 0 2px;
+  transition: background-size 200ms var(--pp-ease);
+}
+
+.pp-prose a:hover {
+  background-size: 100% 200%;
+}
+
+.pp-prose blockquote {
+  margin: var(--pp-8) 0;
+  padding: var(--pp-4) var(--pp-6);
+  border-left: 3px solid var(--pp-terracotta);
+  font-family: var(--pp-font-display);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.3;
+  color: var(--pp-text);
+}
+
+.pp-prose ul, .pp-prose ol {
+  padding-left: var(--pp-6);
+  margin: 0 0 1.2em;
+}
+
+.pp-prose li { margin-bottom: 0.4em; color: var(--pp-text-soft); }
+
+.pp-prose code {
+  font-family: var(--pp-font-mono);
+  font-size: 0.9em;
+  padding: 2px 6px;
+  background: var(--pp-bg-elevated);
+  border-radius: 4px;
+}
+
+.pp-prose hr {
+  border: 0;
+  height: 1px;
+  background: var(--pp-border);
+  margin: var(--pp-12) 0;
+}
+
+/* ── Marquee ────────────────────────────────────────────────── */
+
+.pp-marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--pp-border);
+  background: var(--pp-bg-sunken);
+  padding: var(--pp-3) 0;
+}
+
+.pp-marquee__track {
+  display: inline-flex;
+  gap: var(--pp-12);
+  white-space: nowrap;
+  animation: pp-marquee 38s linear infinite;
+}
+
+.pp-marquee:hover .pp-marquee__track { animation-play-state: paused; }
+
+.pp-marquee__item {
+  font-family: var(--pp-font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 48px);
+  letter-spacing: -0.02em;
+  color: var(--pp-text-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pp-6);
+}
+
+.pp-marquee__item::after {
+  content: '✶';
+  font-style: normal;
+  color: var(--pp-terracotta);
+  font-size: 0.6em;
+}
+
+@keyframes pp-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-marquee__track { animation: none; }
+}

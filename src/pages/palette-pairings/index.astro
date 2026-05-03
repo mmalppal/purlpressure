@@ -1,0 +1,120 @@
+---
+import Base from '../../layouts/Base.astro';
+import StickerLabel from '../../components/StickerLabel.astro';
+
+const seasons = [
+  { name: 'Cool Summer',  swatch: ['#9BA8D1','#D9A6AA','#8C9471','#E8C4BE'] },
+  { name: 'True Autumn',  swatch: ['#BF6B4A','#6B6B2D','#7A2E2F','#E2A93B'] },
+  { name: 'Soft Winter',  swatch: ['#7D8EB0','#9E4F56','#355438','#DDE2DC'] },
+  { name: 'Warm Spring',  swatch: ['#F0D97A','#C57B84','#B8AF56','#BF6B4A'] },
+];
+---
+<Base
+  title="Palette Pairings — Purl Pressure"
+  description="A coming series: yarn palettes built around the 12 color seasons. Less rules, more pairings that make a knit sing."
+>
+  <header class="hero">
+    <div class="pp-container">
+      <span class="hero__sticker">
+        <StickerLabel text="COMING SOON" rotate={-6} bg="var(--pp-periwinkle)" color="var(--pp-ink)" />
+      </span>
+      <h1 class="pp-display pp-display--xl hero__title">
+        Palette<br/><em>pairings.</em>
+      </h1>
+      <p class="hero__sub">
+        A series in the works: yarn palettes pulled from the 12 color seasons. Not rules — pairings. The stuff that makes a knit
+        actually sing on the body of the person wearing it.
+      </p>
+      <p class="hero__sub hero__sub--small">
+        Drops are landing in the Seasonal Skeins newsletter first. The web archive opens when there&rsquo;s enough of it to be worth scrolling.
+      </p>
+    </div>
+  </header>
+
+  <section class="pp-section seasons">
+    <div class="pp-container">
+      <p class="pp-eyebrow">A taste / preview swatches</p>
+      <div class="seasons__grid">
+        {seasons.map((s, i) => (
+          <div class="season" style={`--tilt: ${i % 2 === 0 ? -1.5 : 1.5}deg;`}>
+            <div class="season__swatches">
+              {s.swatch.map(c => (
+                <span class="season__swatch" style={`background:${c};`}></span>
+              ))}
+            </div>
+            <h3 class="season__name">{s.name}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--pp-16) 0 var(--pp-12);
+    background:
+      radial-gradient(ellipse at 70% 30%, color-mix(in srgb, var(--pp-periwinkle) 18%, transparent), transparent 60%),
+      var(--pp-bg);
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .hero__sticker { display: inline-block; margin-bottom: var(--pp-6); }
+  .hero__title { margin: 0 0 var(--pp-6); }
+  .hero__title em { color: var(--pp-periwinkle); font-style: italic; }
+  .hero__sub {
+    font-size: clamp(17px, 1.5vw, 21px);
+    color: var(--pp-text-soft);
+    max-width: 56ch;
+    margin: 0 0 var(--pp-4);
+  }
+  .hero__sub--small { font-size: 15px; color: var(--pp-text-muted); }
+
+  .seasons__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-8);
+    margin-top: var(--pp-6);
+  }
+
+  @media (min-width: 640px) {
+    .seasons__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 980px) {
+    .seasons__grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .season {
+    padding: var(--pp-5);
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    transform: rotate(var(--tilt));
+    transition: transform 220ms var(--pp-ease);
+  }
+
+  .season:hover { transform: rotate(0); }
+
+  .season__swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    height: 100px;
+    margin-bottom: var(--pp-4);
+  }
+
+  .season__swatch {
+    border-radius: var(--pp-radius-sm);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+  }
+
+  .season__name {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0;
+    color: var(--pp-text);
+  }
+</style>

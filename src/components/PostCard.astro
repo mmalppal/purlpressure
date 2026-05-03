@@ -1,0 +1,144 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  excerpt: string;
+  date: Date;
+  color: string;
+  accent: string;
+  vibe?: string;
+  index?: number;
+}
+const { href, title, excerpt, date, color, accent, vibe, index = 0 } = Astro.props;
+
+const fmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// Stagger each card a touch in opposite directions for off-grid feel
+const tilt = index % 2 === 0 ? -1 : 1;
+---
+<a
+  href={href}
+  class="card"
+  style={`--card-color: ${color}; --card-accent: ${accent}; --card-tilt: ${tilt}deg;`}
+>
+  <div class="card__swatch">
+    <div class="card__color"></div>
+    <div class="card__accent"></div>
+    {vibe && <span class="card__vibe">{vibe}</span>}
+  </div>
+
+  <div class="card__body">
+    <p class="pp-eyebrow card__date">{fmt.format(date)}</p>
+    <h3 class="card__title">{title}</h3>
+    <p class="card__excerpt">{excerpt}</p>
+    <span class="card__more">Read it →</span>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: grid;
+    grid-template-rows: 220px auto;
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    overflow: hidden;
+    transition: transform 220ms var(--pp-ease), border-color 220ms var(--pp-ease);
+    transform: rotate(var(--card-tilt));
+  }
+
+  .card:hover {
+    transform: rotate(0) translateY(-4px);
+    border-color: var(--card-color);
+  }
+
+  .card__swatch {
+    position: relative;
+    background: var(--card-color);
+    overflow: hidden;
+  }
+
+  .card__color {
+    position: absolute;
+    inset: 0;
+    background: var(--card-color);
+  }
+
+  .card__accent {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    bottom: -20%;
+    right: -15%;
+    background: var(--card-accent);
+    border-radius: 50%;
+    transition: transform 320ms var(--pp-ease);
+  }
+
+  .card:hover .card__accent {
+    transform: scale(1.15) translate(-10%, -10%);
+  }
+
+  .card__vibe {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 4px 10px;
+    background: rgba(245, 240, 232, 0.85);
+    color: var(--pp-ink);
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    z-index: 2;
+    transform: rotate(-3deg);
+  }
+
+  .card__body {
+    padding: var(--pp-6);
+  }
+
+  .card__date {
+    margin: 0 0 var(--pp-3);
+  }
+
+  .card__title {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 800;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--pp-3);
+    color: var(--pp-text);
+  }
+
+  .card__excerpt {
+    margin: 0 0 var(--pp-4);
+    color: var(--pp-text-soft);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .card__more {
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--card-color);
+    transition: letter-spacing 200ms var(--pp-ease);
+  }
+
+  .card:hover .card__more {
+    letter-spacing: 0.14em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card:hover, .card__accent, .card__more { transform: none; transition: none; letter-spacing: 0.08em; }
+  }
+</style>

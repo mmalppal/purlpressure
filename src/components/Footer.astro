@@ -1,0 +1,107 @@
+---
+import SquiggleDivider from './SquiggleDivider.astro';
+const year = new Date().getFullYear();
+---
+<SquiggleDivider />
+<footer class="footer">
+  <div class="pp-container footer__inner">
+    <div class="footer__col">
+      <p class="footer__brand">
+        <span class="footer__mark">✶</span>
+        Purl Pressure
+      </p>
+      <p class="footer__tag">Knitting taste, tools, and weekly obsessions.</p>
+    </div>
+
+    <div class="footer__col">
+      <p class="pp-eyebrow">Elsewhere</p>
+      <ul class="footer__list">
+        <li><a href="https://www.instagram.com/purlpressure/" target="_blank" rel="noreferrer">Instagram →</a></li>
+        <li><a href="https://stitchvision.purlpressure.com" target="_blank" rel="noreferrer">StitchVision →</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <p class="pp-eyebrow">On site</p>
+      <ul class="footer__list">
+        <li><a href="/weekly-obsessions">Weekly Obsessions</a></li>
+        <li><a href="/palette-pairings">Palette Pairings</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer__legal">© {year} Mallory Iversen · made with terracotta &amp; sage</p>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--pp-16) 0 var(--pp-10);
+    background: var(--pp-bg-sunken);
+    border-top: 1px solid var(--pp-border-soft);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-10);
+  }
+
+  @media (min-width: 720px) {
+    .footer__inner {
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--pp-12);
+    }
+  }
+
+  .footer__brand {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 28px;
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+  }
+
+  .footer__mark {
+    color: var(--pp-terracotta);
+    font-style: normal;
+    margin-right: 6px;
+    display: inline-block;
+    transform: rotate(-8deg);
+  }
+
+  .footer__tag {
+    margin: 0;
+    color: var(--pp-text-muted);
+    max-width: 36ch;
+  }
+
+  .footer__list {
+    list-style: none;
+    margin: var(--pp-3) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer__list a {
+    color: var(--pp-text-soft);
+    border-bottom: 1px solid transparent;
+    transition: color 160ms var(--pp-ease), border-color 160ms var(--pp-ease);
+  }
+
+  .footer__list a:hover {
+    color: var(--pp-text);
+    border-color: var(--pp-terracotta);
+  }
+
+  .footer__legal {
+    margin: var(--pp-12) 0 0;
+    text-align: center;
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    color: var(--pp-text-ghost);
+    letter-spacing: 0.06em;
+  }
+</style>

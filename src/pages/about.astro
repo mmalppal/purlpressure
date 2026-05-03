@@ -1,0 +1,210 @@
+---
+import Base from '../layouts/Base.astro';
+import StickerLabel from '../components/StickerLabel.astro';
+import SquiggleDivider from '../components/SquiggleDivider.astro';
+---
+<Base
+  title="About — Purl Pressure"
+  description="Mallory Iversen — knitter, color obsessive, builder of small tools. The story behind Purl Pressure."
+>
+  <header class="hero">
+    <div class="pp-container hero__inner">
+      <div class="hero__copy">
+        <span class="hero__sticker">
+          <StickerLabel text="HI, I'M MALLORY" rotate={-4} bg="var(--pp-rose)" color="var(--pp-paper)" />
+        </span>
+        <h1 class="pp-display pp-display--lg hero__title">
+          A knitter with a <em>point of view.</em>
+        </h1>
+        <p class="hero__lede">
+          I make Weekly Obsessions, build small color tools, and have very loud opinions about which sage goes with which terracotta. Purl Pressure is the home for all of it.
+        </p>
+      </div>
+
+      <aside class="hero__card" aria-label="At a glance">
+        <p class="pp-eyebrow">At a glance</p>
+        <ul class="hero__facts">
+          <li><span>Based in</span><strong>Seattle-ish</strong></li>
+          <li><span>Default needles</span><strong>US 6 / 4mm</strong></li>
+          <li><span>Color season</span><strong>Cool / True Summer</strong></li>
+          <li><span>Currently on the needles</span><strong>Too many things</strong></li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <section class="pp-section story">
+    <div class="pp-container story__grid">
+      <div class="story__col">
+        <p class="pp-eyebrow">The why / 01</p>
+        <h2 class="story__h">Knitting content was beige.</h2>
+        <div class="pp-prose">
+          <p>
+            I started Purl Pressure because the knitting internet was telling everyone the same five patterns in the same five colors and I was bored. There&rsquo;s no shortage of skill out here — there&rsquo;s a shortage of <em>taste.</em> A shortage of someone willing to say <em>this terracotta does not go with that pink, here&rsquo;s the rose-y oxblood that does.</em>
+          </p>
+          <p>
+            So I started writing. Then I started building. Then a Glamour editor followed me on Instagram and I figured I might be onto something.
+          </p>
+        </div>
+      </div>
+
+      <div class="story__col">
+        <p class="pp-eyebrow">The how / 02</p>
+        <h2 class="story__h">Curated maximalism.</h2>
+        <div class="pp-prose">
+          <p>
+            Every Weekly Obsessions post is grouped by <em>vibe</em>, not category. A &ldquo;tees&rdquo; post and a &ldquo;cardigans&rdquo; post are boring. A post about <em>everything I&rsquo;d wear to a winter wedding in a converted barn</em> — that&rsquo;s a post.
+          </p>
+          <p>
+            The same logic applies to color. I don&rsquo;t do safe palettes. I do warm + cool together, pink + green + red without flinching, dusty periwinkle next to terracotta because they actually love each other.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SquiggleDivider />
+
+  <section class="pp-section tools">
+    <div class="pp-container">
+      <p class="pp-eyebrow">The tools / 03</p>
+      <h2 class="pp-display pp-display--md tools__h">
+        I build things when nothing else <em>fits.</em>
+      </h2>
+      <div class="pp-prose tools__copy">
+        <p>
+          <a href="https://stitchvision.purlpressure.com">StitchVision</a> exists because I couldn&rsquo;t find a way to swatch a colorway against a stitch pattern without actually casting the thing on. So I built one — yarn slots, AI suggestions, a Ravelry stash sync, season filtering. It&rsquo;s a paid subscription now and people are using it for real, which is wild.
+        </p>
+        <p>
+          <strong>Plied</strong> is what&rsquo;s next — a quieter companion app for the swatching ritual. Coming soon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pp-section reach">
+    <div class="pp-container reach__inner">
+      <h2 class="pp-display pp-display--md reach__h">
+        Say <em>hi.</em>
+      </h2>
+      <p class="reach__sub">
+        DMs are open on Instagram. Tag me if you knit a thing I obsessed over — that&rsquo;s the whole point.
+      </p>
+      <div class="reach__cta">
+        <a href="https://www.instagram.com/purlpressure/" target="_blank" rel="noreferrer" class="pp-btn pp-btn--accent">
+          @purlpressure on Instagram →
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--pp-16) 0 var(--pp-12);
+    background:
+      radial-gradient(ellipse at 20% 30%, color-mix(in srgb, var(--pp-rose) 14%, transparent), transparent 60%),
+      var(--pp-bg);
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-10);
+  }
+
+  @media (min-width: 980px) {
+    .hero__inner {
+      grid-template-columns: 2fr 1fr;
+      gap: var(--pp-16);
+      align-items: end;
+    }
+  }
+
+  .hero__sticker { display: inline-block; margin-bottom: var(--pp-6); }
+  .hero__title { margin: 0 0 var(--pp-6); }
+  .hero__title em { color: var(--pp-rose); font-style: italic; }
+
+  .hero__lede {
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.5;
+    color: var(--pp-text-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  .hero__card {
+    padding: var(--pp-6);
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    transform: rotate(1.5deg);
+    transition: transform 220ms var(--pp-ease);
+  }
+
+  .hero__card:hover { transform: rotate(0); }
+
+  .hero__facts {
+    list-style: none;
+    margin: var(--pp-3) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-3);
+  }
+
+  .hero__facts li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--pp-3);
+    padding-bottom: var(--pp-3);
+    border-bottom: 1px dashed var(--pp-border-soft);
+    font-size: 14px;
+  }
+
+  .hero__facts li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+  .hero__facts span { color: var(--pp-text-muted); font-family: var(--pp-font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .hero__facts strong { color: var(--pp-text); font-weight: 600; text-align: right; }
+
+  /* Story */
+  .story__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-12);
+  }
+
+  @media (min-width: 880px) {
+    .story__grid { grid-template-columns: 1fr 1fr; gap: var(--pp-16); }
+  }
+
+  .story__h {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 800;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: var(--pp-3) 0 var(--pp-5);
+    color: var(--pp-text);
+  }
+
+  /* Tools */
+  .tools__h { margin: var(--pp-3) 0 var(--pp-6); color: var(--pp-text); }
+  .tools__h em {
+    font-style: italic;
+    color: var(--pp-terracotta);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+  }
+  .tools__copy { max-width: 64ch; }
+
+  /* Reach */
+  .reach__inner { text-align: center; }
+  .reach__h { margin: 0 0 var(--pp-4); color: var(--pp-text); }
+  .reach__h em { color: var(--pp-clary-sage); font-style: italic; }
+  .reach__sub { color: var(--pp-text-soft); max-width: 48ch; margin: 0 auto var(--pp-6); }
+  .reach__cta { display: flex; justify-content: center; }
+</style>

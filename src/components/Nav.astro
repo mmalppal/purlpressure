@@ -1,0 +1,100 @@
+---
+const links = [
+  { href: '/weekly-obsessions', label: 'Weekly Obsessions' },
+  { href: '/palette-pairings',  label: 'Palette Pairings' },
+  { href: '/about',             label: 'About' },
+];
+const path = Astro.url.pathname;
+---
+<header class="nav">
+  <div class="pp-container nav__inner">
+    <a href="/" class="nav__brand" aria-label="Purl Pressure home">
+      <span class="nav__mark">✶</span>
+      <span class="nav__name">Purl Pressure</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {links.map(l => (
+        <a
+          href={l.href}
+          class:list={['nav__link', { 'nav__link--active': path.startsWith(l.href) }]}
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--pp-bg) 88%, transparent);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 14px;
+    gap: var(--pp-6);
+  }
+
+  .nav__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--pp-text);
+  }
+
+  .nav__mark {
+    color: var(--pp-terracotta);
+    font-style: normal;
+    font-size: 18px;
+    transform: rotate(-8deg) translateY(-1px);
+    display: inline-block;
+  }
+
+  .nav__name { transition: transform 200ms var(--pp-ease); }
+  .nav__brand:hover .nav__name { transform: skewX(-6deg); }
+
+  .nav__links {
+    display: none;
+    gap: var(--pp-6);
+  }
+
+  @media (min-width: 720px) {
+    .nav__links { display: flex; }
+  }
+
+  .nav__link {
+    font-family: var(--pp-font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--pp-text-muted);
+    padding: 6px 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 160ms var(--pp-ease), border-color 160ms var(--pp-ease);
+  }
+
+  .nav__link:hover {
+    color: var(--pp-text);
+    border-color: var(--pp-terracotta);
+  }
+
+  .nav__link--active {
+    color: var(--pp-text);
+    border-color: var(--pp-terracotta);
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+interface Props {
+  text: string;
+  rotate?: number;
+  bg?: string;
+  color?: string;
+}
+const {
+  text,
+  rotate = -4,
+  bg = 'var(--pp-paper)',
+  color = 'var(--pp-ink)',
+} = Astro.props;
+---
+<span
+  class="pp-sticker sticker"
+  style={`--rot: ${rotate}deg; background: ${bg}; color: ${color};`}
+>
+  {text}
+</span>
+
+<style>
+  .sticker {
+    transform: rotate(var(--rot));
+    transition: transform 200ms var(--pp-ease);
+  }
+  .sticker:hover {
+    transform: rotate(0deg) scale(1.04);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sticker, .sticker:hover { transform: none; }
+  }
+</style>

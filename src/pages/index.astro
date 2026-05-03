@@ -1,0 +1,338 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import AppCard from '../components/AppCard.astro';
+import StickerLabel from '../components/StickerLabel.astro';
+import SquiggleDivider from '../components/SquiggleDivider.astro';
+import Marquee from '../components/Marquee.astro';
+
+const allPosts = await getCollection('obsessions', ({ data }) => !data.draft);
+const latest = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const marqueeItems = [
+  'Weekly Obsessions',
+  'Palette Pairings',
+  'Curated Maximalism',
+  'Sage + Periwinkle',
+  'Cast On / Cast Off',
+  'Editorial Knits',
+];
+---
+<Base>
+  <!-- ── HERO: three slabs, asymmetric, oversized italic ─────────────── -->
+  <section class="hero">
+    <div class="hero__slab hero__slab--1">
+      <div class="hero__slab-inner">
+        <span class="hero__sticker">
+          <StickerLabel text="EST. 2024" rotate={-6} bg="var(--pp-paper)" />
+        </span>
+        <h1 class="pp-display pp-display--lg hero__title"><span class="hero__title-l1">Purl</span><br/><span class="hero__title-l2">Pressure</span></h1>
+        <p class="hero__tag">
+          A knitting curator with a point of view. Color tools, weekly obsessions, and palettes that don&rsquo;t apologize.
+        </p>
+        <div class="hero__cta">
+          <a href="/weekly-obsessions" class="pp-btn pp-btn--accent">Read this week&rsquo;s →</a>
+          <a href="#apps" class="pp-btn pp-btn--ghost">See the tools</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__slab hero__slab--2" aria-hidden="true">
+      <div class="hero__bigword">
+        <span class="hero__bigword-line">color</span>
+        <span class="hero__bigword-line hero__bigword-line--alt">+ taste</span>
+      </div>
+    </div>
+
+    <div class="hero__slab hero__slab--3" aria-hidden="true">
+      <div class="hero__swatches">
+        <div class="swatch swatch--sage"></div>
+        <div class="swatch swatch--terra"></div>
+        <div class="swatch swatch--peri"></div>
+        <div class="swatch swatch--rose"></div>
+        <div class="swatch swatch--moss"></div>
+        <div class="swatch swatch--butter"></div>
+      </div>
+    </div>
+  </section>
+
+  <Marquee items={marqueeItems} />
+
+  <!-- ── APPS: tools section ─────────────────────────────────────────── -->
+  <section id="apps" class="pp-section apps">
+    <div class="pp-container">
+      <div class="apps__head">
+        <p class="pp-eyebrow">The tools / 01</p>
+        <h2 class="pp-display pp-display--md apps__title">
+          I built these because <em class="apps__em">nothing else fit.</em>
+        </h2>
+      </div>
+
+      <div class="apps__grid">
+        <AppCard
+          name="StitchVision"
+          tagline="Visualize yarn colorways against any stitch pattern. AI suggestions, Ravelry stash sync, season filtering."
+          href="https://stitchvision.purlpressure.com"
+          color="var(--pp-terracotta)"
+          status="Live · $5/mo"
+        />
+        <AppCard
+          name="Plied"
+          tagline="A quieter companion app for the swatching ritual. Coming soon — same warm soul, different problem."
+          href="#"
+          color="var(--pp-clary-sage)"
+          status="In progress"
+          external={false}
+        />
+      </div>
+    </div>
+  </section>
+
+  <SquiggleDivider />
+
+  <!-- ── LATEST WO POSTS ─────────────────────────────────────────────── -->
+  <section class="pp-section posts">
+    <div class="pp-container">
+      <div class="posts__head">
+        <div>
+          <p class="pp-eyebrow">The writing / 02</p>
+          <h2 class="pp-display pp-display--md posts__title">
+            Weekly <em class="posts__em">obsessions.</em>
+          </h2>
+          <p class="posts__sub">Patterns, palettes, and the small details that wrecked me this week.</p>
+        </div>
+        <a href="/weekly-obsessions" class="pp-btn pp-btn--ghost posts__all">See the archive →</a>
+      </div>
+
+      {latest.length > 0 ? (
+        <div class="posts__grid">
+          {latest.map((post, i) => (
+            <PostCard
+              href={`/weekly-obsessions/${post.slug}`}
+              title={post.data.title}
+              excerpt={post.data.excerpt}
+              date={post.data.date}
+              color={post.data.color}
+              accent={post.data.accent}
+              vibe={post.data.vibe}
+              index={i}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="posts__empty">First post drops soon. Sit tight.</p>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ── HERO ──────────────────────────────────────────────────────── */
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  @media (min-width: 980px) {
+    .hero {
+      grid-template-columns: 1.4fr 1fr 0.8fr;
+      min-height: 78vh;
+    }
+  }
+
+  .hero__slab {
+    position: relative;
+    padding: var(--pp-12) var(--pp-6);
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .hero__slab { padding: var(--pp-16) var(--pp-10); }
+  }
+
+  .hero__slab--1 {
+    background:
+      radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--pp-terracotta) 25%, transparent), transparent 60%),
+      var(--pp-bg);
+  }
+
+  .hero__slab--2 {
+    background: var(--pp-clary-sage);
+    color: var(--pp-ink);
+    border-block: 1px solid var(--pp-border-soft);
+  }
+
+  .hero__slab--3 {
+    background: var(--pp-periwinkle);
+  }
+
+  @media (min-width: 980px) {
+    .hero__slab--2,
+    .hero__slab--3 {
+      border-block: 0;
+      border-left: 1px solid var(--pp-border-soft);
+    }
+  }
+
+  .hero__slab-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+  }
+
+  .hero__sticker {
+    display: inline-block;
+    margin-bottom: var(--pp-6);
+  }
+
+  .hero__title {
+    margin: 0 0 var(--pp-6);
+    color: var(--pp-text);
+  }
+
+  /* Per-line offset for that wonky feel — cleanly inside the slab */
+  .hero__title-l1 { display: inline-block; transform: rotate(-1.2deg); }
+  .hero__title-l2 { display: inline-block; transform: rotate(0.8deg) translateX(20px); color: var(--pp-terracotta); }
+
+  .hero__tag {
+    font-size: clamp(17px, 1.6vw, 22px);
+    line-height: 1.45;
+    color: var(--pp-text-soft);
+    margin: 0 0 var(--pp-8);
+    max-width: 44ch;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pp-3);
+  }
+
+  /* Slab 2: oversized rotated word — sits centered, no overflow into next slab */
+  .hero__bigword {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    transform: rotate(-3deg);
+  }
+
+  .hero__bigword-line {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(56px, 9vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--pp-walnut);
+    text-shadow: 3px 3px 0 var(--pp-paper);
+  }
+
+  .hero__bigword-line--alt {
+    color: var(--pp-paper);
+    text-shadow: 3px 3px 0 var(--pp-walnut);
+    transform: translateX(14px);
+  }
+
+  /* Slab 3: swatch grid */
+  .hero__swatches {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: var(--pp-3);
+    height: 100%;
+    min-height: 300px;
+  }
+
+  .swatch {
+    border-radius: var(--pp-radius-sm);
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,0.1),
+      0 4px 0 rgba(0,0,0,0.12);
+    transition: transform 220ms var(--pp-ease);
+  }
+
+  .swatch:hover { transform: translateY(-3px) rotate(2deg); }
+
+  .swatch--sage   { background: var(--pp-clary-sage); }
+  .swatch--terra  { background: var(--pp-terracotta); }
+  .swatch--peri   { background: var(--pp-periwinkle); }
+  .swatch--rose   { background: var(--pp-rose); }
+  .swatch--moss   { background: var(--pp-moss); }
+  .swatch--butter { background: var(--pp-butter); }
+
+  /* ── APPS ──────────────────────────────────────────────────────── */
+
+  .apps__head { margin-bottom: var(--pp-10); max-width: 720px; }
+  .apps__title { margin: var(--pp-3) 0 0; color: var(--pp-text); }
+  .apps__em {
+    font-style: italic;
+    color: var(--pp-terracotta);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+  }
+
+  .apps__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-6);
+  }
+
+  @media (min-width: 720px) {
+    .apps__grid { grid-template-columns: 1fr 1fr; gap: var(--pp-8); }
+  }
+
+  /* ── POSTS ─────────────────────────────────────────────────────── */
+
+  .posts__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-4);
+    margin-bottom: var(--pp-10);
+  }
+
+  @media (min-width: 720px) {
+    .posts__head {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+
+  .posts__title { margin: var(--pp-3) 0 var(--pp-3); color: var(--pp-text); }
+  .posts__em { font-style: italic; color: var(--pp-clary-sage); }
+  .posts__sub { margin: 0; color: var(--pp-text-muted); max-width: 48ch; }
+  .posts__all { align-self: flex-start; }
+
+  .posts__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-8);
+  }
+
+  @media (min-width: 640px) {
+    .posts__grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (min-width: 980px) {
+    .posts__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .posts__empty {
+    padding: var(--pp-12);
+    text-align: center;
+    color: var(--pp-text-muted);
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-size: 24px;
+  }
+</style>

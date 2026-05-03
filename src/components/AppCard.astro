@@ -1,0 +1,149 @@
+---
+interface Props {
+  name: string;
+  tagline: string;
+  href: string;
+  color: string;
+  status?: string;
+  external?: boolean;
+}
+const {
+  name,
+  tagline,
+  href,
+  color,
+  status = 'Live',
+  external = true,
+} = Astro.props;
+---
+<a
+  href={href}
+  class="app"
+  style={`--app-color: ${color};`}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noreferrer' : undefined}
+>
+  <div class="app__pill">
+    <span class="app__dot"></span>
+    <span class="app__status">{status}</span>
+  </div>
+
+  <h3 class="app__name">{name}</h3>
+  <p class="app__tag">{tagline}</p>
+
+  <div class="app__cta">
+    Open {name} <span class="app__arrow">→</span>
+  </div>
+
+  <div class="app__shape" aria-hidden="true"></div>
+</a>
+
+<style>
+  .app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    padding: var(--pp-8);
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    overflow: hidden;
+    transition: transform 220ms var(--pp-ease), border-color 220ms var(--pp-ease);
+  }
+
+  .app:hover {
+    transform: translateY(-4px);
+    border-color: var(--app-color);
+  }
+
+  .app__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(245, 240, 232, 0.06);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: 999px;
+    align-self: flex-start;
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pp-text-muted);
+    z-index: 2;
+  }
+
+  .app__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--app-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--app-color) 20%, transparent);
+  }
+
+  .app__name {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin: var(--pp-6) 0 var(--pp-3);
+    color: var(--pp-text);
+    z-index: 2;
+    position: relative;
+  }
+
+  .app__tag {
+    margin: 0;
+    color: var(--pp-text-soft);
+    font-size: 17px;
+    line-height: 1.4;
+    max-width: 36ch;
+    z-index: 2;
+    position: relative;
+  }
+
+  .app__cta {
+    margin-top: var(--pp-8);
+    font-family: var(--pp-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--app-color);
+    z-index: 2;
+    position: relative;
+  }
+
+  .app__arrow {
+    display: inline-block;
+    transition: transform 200ms var(--pp-ease);
+  }
+
+  .app:hover .app__arrow {
+    transform: translateX(4px);
+  }
+
+  .app__shape {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    bottom: -120px;
+    right: -100px;
+    background: var(--app-color);
+    opacity: 0.18;
+    border-radius: 50%;
+    transition: transform 320ms var(--pp-ease), opacity 320ms var(--pp-ease);
+    z-index: 1;
+  }
+
+  .app:hover .app__shape {
+    transform: scale(1.1) translate(-10px, -10px);
+    opacity: 0.28;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .app, .app:hover, .app__arrow, .app__shape { transform: none; transition: none; }
+  }
+</style>

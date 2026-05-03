@@ -1,0 +1,257 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import StickerLabel from '../../components/StickerLabel.astro';
+import SquiggleDivider from '../../components/SquiggleDivider.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('obsessions', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { data } = post;
+
+const fmt = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+<Base title={`${data.title} — Weekly Obsessions`} description={data.excerpt}>
+  <article class="post">
+    <!-- Color band header -->
+    <header
+      class="post__band"
+      style={`--band: ${data.color}; --band-accent: ${data.accent};`}
+    >
+      <div class="pp-container post__band-inner">
+        <div class="post__meta">
+          <a href="/weekly-obsessions" class="post__back">← Weekly Obsessions</a>
+          <p class="pp-eyebrow post__date">{fmt.format(data.date)}</p>
+        </div>
+
+        {data.vibe && (
+          <div class="post__vibe">
+            <StickerLabel text={data.vibe} rotate={-3} bg="var(--pp-paper)" />
+          </div>
+        )}
+
+        <h1 class="pp-display pp-display--lg post__title">{data.title}</h1>
+        <p class="post__excerpt">{data.excerpt}</p>
+      </div>
+
+      <div class="post__band-shape" aria-hidden="true"></div>
+    </header>
+
+    <!-- Body + sidebar -->
+    <div class="pp-container post__body-wrap">
+      <div class="post__body">
+        <div class="pp-prose">
+          <Content />
+        </div>
+
+        <SquiggleDivider />
+
+        <div class="post__back-foot">
+          <a href="/weekly-obsessions" class="pp-btn pp-btn--ghost">← Back to the archive</a>
+        </div>
+      </div>
+
+      <aside class="post__sidebar">
+        {data.patterns.length > 0 && (
+          <section class="patterns">
+            <p class="pp-eyebrow">Patterns mentioned</p>
+            <ul class="patterns__list">
+              {data.patterns.map(p => (
+                <li class="patterns__item">
+                  <h4 class="patterns__name">{p.name}</h4>
+                  <p class="patterns__designer">by {p.designer}</p>
+                  {p.notes && <p class="patterns__notes">{p.notes}</p>}
+                  {p.ravelry && (
+                    <a href={p.ravelry} target="_blank" rel="noreferrer" class="patterns__link">
+                      On Ravelry →
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {data.instagramPost && (
+          <section class="patterns">
+            <p class="pp-eyebrow">On Instagram</p>
+            <a href={data.instagramPost} target="_blank" rel="noreferrer" class="patterns__link">
+              See the carousel →
+            </a>
+          </section>
+        )}
+      </aside>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .post__band {
+    position: relative;
+    overflow: hidden;
+    background: var(--band);
+    color: var(--pp-ink);
+    padding: var(--pp-12) 0 var(--pp-16);
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .post__band-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .post__band-shape {
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    bottom: -240px;
+    right: -160px;
+    background: var(--band-accent);
+    border-radius: 50%;
+    opacity: 0.55;
+    z-index: 1;
+  }
+
+  .post__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--pp-6);
+  }
+
+  .post__back {
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pp-ink);
+    border-bottom: 1px solid transparent;
+    transition: border-color 160ms var(--pp-ease);
+  }
+
+  .post__back:hover { border-color: var(--pp-ink); }
+
+  .post__date { color: rgba(42, 31, 26, 0.6) !important; }
+
+  .post__vibe { margin-bottom: var(--pp-4); display: inline-block; }
+
+  .post__title {
+    margin: 0 0 var(--pp-5);
+    color: var(--pp-ink);
+    max-width: 14ch;
+  }
+
+  .post__excerpt {
+    font-size: clamp(18px, 1.4vw, 22px);
+    line-height: 1.45;
+    margin: 0;
+    max-width: 50ch;
+    color: var(--pp-ink);
+    opacity: 0.85;
+  }
+
+  .post__body-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-12);
+    padding-block: var(--pp-12);
+  }
+
+  @media (min-width: 980px) {
+    .post__body-wrap {
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: var(--pp-16);
+    }
+  }
+
+  .post__body { min-width: 0; }
+
+  .post__back-foot {
+    margin-top: var(--pp-10);
+  }
+
+  .post__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-8);
+    position: sticky;
+    top: 80px;
+    align-self: start;
+    height: fit-content;
+  }
+
+  .patterns {
+    padding: var(--pp-5);
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+  }
+
+  .patterns__list {
+    list-style: none;
+    margin: var(--pp-3) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-5);
+  }
+
+  .patterns__item {
+    padding-bottom: var(--pp-5);
+    border-bottom: 1px dashed var(--pp-border-soft);
+  }
+
+  .patterns__item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .patterns__name {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.1;
+    margin: 0 0 4px;
+    color: var(--pp-text);
+  }
+
+  .patterns__designer {
+    margin: 0 0 var(--pp-3);
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--pp-text-muted);
+  }
+
+  .patterns__notes {
+    margin: 0 0 var(--pp-3);
+    font-size: 14px;
+    color: var(--pp-text-soft);
+    line-height: 1.5;
+  }
+
+  .patterns__link {
+    display: inline-block;
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pp-terracotta);
+    border-bottom: 1px solid transparent;
+    transition: border-color 160ms var(--pp-ease);
+  }
+
+  .patterns__link:hover { border-color: var(--pp-terracotta); }
+</style>

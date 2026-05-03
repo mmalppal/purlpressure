@@ -1,0 +1,26 @@
+---
+interface Props {
+  color?: string;
+  height?: number;
+}
+const { color = 'var(--pp-border-strong)', height = 18 } = Astro.props;
+---
+<div class="sq" aria-hidden="true">
+  <svg viewBox="0 0 200 18" preserveAspectRatio="none" height={height} width="100%">
+    <path
+      d="M0 9 Q 5 0, 10 9 T 20 9 T 30 9 T 40 9 T 50 9 T 60 9 T 70 9 T 80 9 T 90 9 T 100 9 T 110 9 T 120 9 T 130 9 T 140 9 T 150 9 T 160 9 T 170 9 T 180 9 T 190 9 T 200 9"
+      fill="none"
+      stroke={color}
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+  </svg>
+</div>
+
+<style>
+  .sq {
+    width: 100%;
+    line-height: 0;
+    opacity: 0.6;
+  }
+</style>
