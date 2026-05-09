@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import Base from '../../layouts/Base.astro';
-import StickerLabel from '../../components/StickerLabel.astro';
 import SquiggleDivider from '../../components/SquiggleDivider.astro';
 import { fetchPatternData } from '../../lib/ravelry';
 import type { RavelryPatternData } from '../../lib/ravelry';
@@ -39,12 +38,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
           <a href="/weekly-obsessions" class="post__back">← Weekly Obsessions</a>
           <p class="pp-eyebrow post__date">{fmt.format(data.date)}</p>
         </div>
-        {data.vibe && (
-          <div class="post__vibe">
-            <StickerLabel text={data.vibe} rotate={-3} bg="var(--pp-paper)" />
-          </div>
-        )}
-        <h1 class="pp-display pp-display--lg post__title">{data.title}</h1>
+<h1 class="pp-display pp-display--lg post__title">{data.title}</h1>
         <p class="post__count">{data.patterns.length} patterns this week</p>
       </div>
       <div class="post__band-shape" aria-hidden="true"></div>
@@ -98,10 +92,6 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
                 </div>
               )}
 
-              {p.notes && !rv && (
-                <p class="pattern-row__notes">{p.notes}</p>
-              )}
-
               <div class="pattern-row__actions">
                 {p.ravelry && (
                   <a href={p.ravelry} target="_blank" rel="noreferrer" class="pattern-row__link">
@@ -115,7 +105,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
                     rel="noreferrer"
                     class="pattern-row__link pattern-row__link--ghost"
                   >
-                    People who like this also like →
+                    if you like this →
                   </a>
                 )}
               </div>
@@ -174,8 +164,6 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
   .post__back:hover { border-color: var(--pp-ink); }
 
   .post__date { color: rgba(42, 31, 26, 0.6) !important; }
-  .post__vibe { margin-bottom: var(--pp-4); display: inline-block; }
-
   .post__title {
     margin: 0 0 var(--pp-4);
     color: var(--pp-ink);
@@ -356,13 +344,14 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
     border-radius: 999px;
   }
 
-  /* Notes fallback */
-  .pattern-row__notes {
-    font-size: 15px;
-    color: var(--pp-text-soft);
-    line-height: 1.55;
-    margin: 0;
+  /* Curator's take */
+  .pattern-row__take {
+    font-family: var(--pp-font-display);
     font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--pp-text-soft);
+    margin: 0;
   }
 
   /* Actions row */

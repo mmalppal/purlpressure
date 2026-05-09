@@ -36,8 +36,7 @@ const posts = (await getCollection('obsessions', ({ data }) => !data.draft))
               date={post.data.date}
               color={post.data.color}
               accent={post.data.accent}
-              vibe={post.data.vibe}
-              coverImage={`/obsessions/${post.slug}/1.png`}
+coverImage={`/obsessions/${post.slug}/1.png`}
               patternCount={post.data.patterns.length}
               index={i}
             />
