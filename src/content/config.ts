@@ -16,6 +16,7 @@ const obsessions = defineCollection({
           designer: z.string(),
           ravelry: z.string().url().optional(),
           notes: z.string().optional(),
+          image: z.number().int().optional(),
         })
       )
       .default([]),

@@ -33,11 +33,12 @@ const posts = (await getCollection('obsessions', ({ data }) => !data.draft))
             <PostCard
               href={`/weekly-obsessions/${post.slug}`}
               title={post.data.title}
-              excerpt={post.data.excerpt}
               date={post.data.date}
               color={post.data.color}
               accent={post.data.accent}
               vibe={post.data.vibe}
+              coverImage={`/obsessions/${post.slug}/1.png`}
+              patternCount={post.data.patterns.length}
               index={i}
             />
           ))}
