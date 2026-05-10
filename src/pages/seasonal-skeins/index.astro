@@ -369,11 +369,12 @@ const seasons = [
         ))}
       </div>
 
-      <div class="pp-container ss-season__foot">
-        <SquiggleDivider />
-      </div>
     </section>
   ))}
+
+  <div class="pp-container ss-squiggle-break">
+    <SquiggleDivider />
+  </div>
 
   <!-- ── Footer CTA ─────────────────────────────────────────── -->
   <section class="pp-section ss-cta">
@@ -455,7 +456,7 @@ const seasons = [
   }
 
   .ss-concept__text p {
-    font-size: clamp(15px, 1.2vw, 17px);
+    font-size: clamp(17px, 1.4vw, 18px);
     color: var(--pp-text-soft);
     margin: 0 0 var(--pp-5);
     max-width: 62ch;
@@ -525,7 +526,7 @@ const seasons = [
   .ss-matrix__tag {
     font-family: var(--pp-font-mono);
     font-size: 10px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--pp-text-muted);
   }
@@ -539,7 +540,7 @@ const seasons = [
   .ss-matrix__sub {
     font-family: var(--pp-font-mono);
     font-size: 10px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.10em;
     color: var(--pp-text-ghost);
     padding: 2px 8px;
     border: 1px solid var(--pp-border-soft);
@@ -572,7 +573,7 @@ const seasons = [
     padding: var(--pp-4) var(--pp-6);
     font-family: var(--pp-font-mono);
     font-size: 11px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--pp-text-muted);
     border-bottom: 2px solid transparent;
@@ -658,18 +659,18 @@ const seasons = [
   .ss-season__tagline {
     font-family: var(--pp-font-mono);
     font-size: 13px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--pp-text-muted);
     margin: 0 0 var(--pp-5);
   }
 
   .ss-season__intro {
-    font-size: clamp(15px, 1.2vw, 17px);
+    font-size: clamp(17px, 1.4vw, 18px);
     color: var(--pp-text-soft);
     max-width: 52ch;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   /* Sub-season grid */
@@ -706,7 +707,7 @@ const seasons = [
   .ss-card:hover {
     border-color: var(--card-accent);
     transform: translateY(-3px);
-    box-shadow: 0 6px 24px color-mix(in srgb, var(--card-accent) 20%, transparent);
+    box-shadow: 4px 4px 0 var(--card-accent);
   }
 
   .ss-card__img-wrap {
@@ -824,8 +825,8 @@ const seasons = [
     color: var(--pp-text-soft);
   }
 
-  /* Season divider */
-  .ss-season__foot {
+  /* Single squiggle break before CTA */
+  .ss-squiggle-break {
     padding-top: var(--pp-12);
   }
 
