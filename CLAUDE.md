@@ -6,7 +6,6 @@ The marketing + content home for **Purl Pressure** — Mallory Iversen's knittin
 
 - **Weekly Obsessions** blog (MDX)
 - **Palette Pairings** series (placeholder for now)
-- **StitchVision** product landing (links to `stitchvision.purlpressure.com`)
 - **Plied** placeholder (future product)
 - **About** page
 
@@ -21,7 +20,7 @@ Not a SaaS. Not behind auth. Static marketing + blog.
 
 ## Aesthetic
 
-Same warm textile-studio palette as StitchVision (terracotta, clary sage, periwinkle, walnut, oxblood-pink), pushed weirder:
+Warm textile-studio palette (terracotta, clary sage, periwinkle, walnut, oxblood-pink), pushed weirder:
 
 - Wonky oversized italic Fraunces (clamp up to ~220px)
 - Off-grid layout (rotated cards, overlapping color blocks, asymmetric grids)
@@ -48,7 +47,7 @@ src/
     Nav.astro              — Sticky scroll nav
     Footer.astro           — Three-col footer
     PostCard.astro         — WO post card (color block + body, alt-tilted)
-    AppCard.astro          — Tool/app card (StitchVision, Plied)
+    AppCard.astro          — Tool/app card (future products)
     StickerLabel.astro     — Rotated pill label
     SquiggleDivider.astro  — Garter-stitch-y SVG divider
     Marquee.astro          — Auto-scrolling ticker
@@ -109,4 +108,3 @@ npm run preview      # preview the build
 - Not a CMS — content lives in the repo as MDX
 - Not multi-author — Mallory writes everything
 - Not authenticated — static site, no Supabase, no Stripe
-- Not a duplicate of StitchVision — that app lives at the `stitchvision.` subdomain
