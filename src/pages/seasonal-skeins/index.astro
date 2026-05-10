@@ -8,54 +8,125 @@ const seasons = [
     id: 'spring',
     name: 'Spring',
     tagline: 'Warm, clear, luminous.',
-    intro: 'Spring palettes live in sunlit corals, buttery yellows, and fresh aquas — the colors of a garden in full bloom with the sun directly overhead. Warm undertone is non-negotiable. The key tension: brightness and warmth together, never muted, never icy.',
-    coverImage: '/seasonal-skeins/spring/1.png',
+    intro: 'Spring palettes live in sunlit corals, buttery yellows, and fresh aquas. Warm undertone is non-negotiable. Brightness and warmth together — never muted, never icy.',
     accent: '#BF6B4A',
     accentLight: '#E2A93B',
     subseasons: [
       {
         name: 'True Spring',
-        image: '/seasonal-skeins/spring/2.png',
-        overview: 'Warm is primary, bright is secondary. Colors feel sunlit and clear — coral, peach, warm turquoise, butter yellow, warm chocolate. No true black, no icy pastels, no dusty anything.',
-        yarns: [
-          'Malabrigo Rios — Living Coral',
-          'Sandnes Garn Double Sunday — Cognac (2745)',
-          "Quince & Co. Chickadee — Carrie's Yellow (125)",
+        overview: 'The core Spring. Warm-golden undertone, medium-high chroma — sunlit, clear, fresh. Coral, peach, warm turquoise, butter yellow. No black, no dusty, no icy.',
+        palette: [
+          { name: 'Coral', hex: '#FF6F61' },
+          { name: 'Peach', hex: '#FFB58A' },
+          { name: 'Warm turquoise', hex: '#3FC3B5' },
+          { name: 'Leaf green', hex: '#7BB342' },
+          { name: 'Butter yellow', hex: '#F5D547' },
+          { name: 'Poppy red', hex: '#E2472F' },
+          { name: 'Marina periwinkle', hex: '#4E7AC7' },
+          { name: 'Warm camel', hex: '#C8A165' },
+          { name: 'Chocolate brown', hex: '#6B4423' },
+          { name: 'Ivory', hex: '#F5E9C8' },
+          { name: 'Apricot', hex: '#F4A261' },
+          { name: 'Pansy violet', hex: '#8E4EC6' },
         ],
-        heldTogether: 'Malabrigo Rios "Living Coral" + Rowan Kidsilk Haze "Marmalade" — a saturated, plush coral base with a golden peachy halo. The luminous stone-fruit effect that mirrors True Spring\'s sunlit skin.',
+        dk: [
+          { brand: 'Malabrigo Rios', colorway: 'Living Coral', hex: '#FF7261' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Cognac (2745)', hex: '#C07A4A' },
+          { brand: 'Brooklyn Tweed Arbor', colorway: 'Nasturtium', hex: '#E27B3A' },
+          { brand: 'Quince & Co. Chickadee', colorway: "Carrie's Yellow (125)", hex: '#E8C547' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Blood Orange', hex: '#E04828' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Marmalade (596)', hex: '#E09B4F' },
+          { brand: 'Isager Silk Mohair', colorway: '69 Rose Gold', hex: '#D28C6A' },
+        ],
       },
       {
         name: 'Light Spring',
-        image: '/seasonal-skeins/spring/3.png',
-        overview: 'Light is primary, warm is secondary. The lowest-contrast Spring — soft peach, aqua sky, buttercream yellow, warm ivory. Think sugared almonds in morning light. Never dark, never stark.',
-        yarns: [
-          'Knitting for Olive Heavy Merino — Soft Peach',
-          'Malabrigo Arroyo — Sand Bank',
-          'Quince & Co. Chickadee — Petal',
+        overview: 'The lightest Spring. Low contrast, neutral-warm, gentle chroma. Peach, aqua sky, buttercream, rose pink. Light all the way — no depth, no dark.',
+        palette: [
+          { name: 'Soft peach', hex: '#FFCBA4' },
+          { name: 'Light coral', hex: '#FF9E8A' },
+          { name: 'Buttercream yellow', hex: '#FFE9A6' },
+          { name: 'Aqua sky', hex: '#9FD8D8' },
+          { name: 'Light periwinkle', hex: '#93A8E0' },
+          { name: 'Mint green', hex: '#B8E0B4' },
+          { name: 'Rose pink', hex: '#F2A7B3' },
+          { name: 'Warm ivory', hex: '#F8EFD9' },
+          { name: 'Camel rose', hex: '#D5A68E' },
+          { name: 'Warm light gray', hex: '#BDB2A6' },
+          { name: 'Medium warm brown', hex: '#A88566' },
+          { name: 'Clear light turquoise', hex: '#7FD4D4' },
         ],
-        heldTogether: "KFO Heavy Merino \"Soft Peach\" + KFO Soft Silk Mohair \"Soft Peach\" — KFO's own color-match pair. Seamless tone-on-tone cloud: structure from the merino, translucent watercolor glow from the mohair.",
+        dk: [
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Soft Peach', hex: '#F5C4A7' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Marzipan (2321)', hex: '#EDD9B8' },
+          { brand: 'Malabrigo Arroyo', colorway: 'Sand Bank', hex: '#E5D4B5' },
+          { brand: 'Quince & Co. Chickadee', colorway: 'Petal', hex: '#F3C3C7' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Soft Peach', hex: '#F6C8A8' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Pearl (590)', hex: '#E8DDC9' },
+          { brand: 'Madelinetosh Tosh Silk Cloud', colorway: 'Ivory', hex: '#F2E6CC' },
+        ],
       },
       {
         name: 'Bright (Clear) Spring',
-        image: '/seasonal-skeins/spring/4.png',
-        overview: "Highest chroma of the Spring family. Combines Spring's dewy glow with Winter's ability to wear shine. Tropical, jewel-like, vivid — persimmon, warm fuchsia, tropical turquoise.",
-        yarns: [
-          'Malabrigo Rios — Fucsia',
-          'Knitting for Olive Heavy Merino — Blood Orange',
-          'Malabrigo Rios — Celestina',
+        overview: 'The highest-chroma Spring — where Spring meets Winter. Warm undertone, jewel-level brightness. Persimmon, fuchsia, tropical turquoise, emerald. The only Spring that can actually wear shine.',
+        palette: [
+          { name: 'Persimmon', hex: '#FF6A3D' },
+          { name: 'Warm fuchsia', hex: '#E94B8C' },
+          { name: 'Tropical turquoise', hex: '#00BFBF' },
+          { name: 'Emerald green', hex: '#00A97F' },
+          { name: 'Pansy purple', hex: '#7A3FBF' },
+          { name: 'Bright lemon', hex: '#FFE14F' },
+          { name: 'Warm cobalt', hex: '#2769D6' },
+          { name: 'Poppy red', hex: '#E8332E' },
+          { name: 'Artisan gold', hex: '#D6A530' },
+          { name: 'Warm charcoal', hex: '#3A3A3C' },
+          { name: 'Bright coral', hex: '#FF6F5E' },
+          { name: 'Clear warm white', hex: '#FBF5E8' },
         ],
-        heldTogether: 'Malabrigo Rios "Glazed Carrot" + Rowan Kidsilk Haze "Jelly" — saturated clear orange base glowing with a magenta-pink halo. Vivid and slightly iridescent. The shine only Bright Spring can wear.',
+        dk: [
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Blood Orange', hex: '#E74227' },
+          { brand: 'Malabrigo Rios', colorway: 'Glazed Carrot', hex: '#E97B2E' },
+          { brand: 'Cascade 220 Superwash DK', colorway: 'Yellow (824)', hex: '#F4D11E' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Blackberry Juice (4672)', hex: '#6E2146' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Cherry Blossom', hex: '#F4B7C4' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Jelly (597)', hex: '#E8437A' },
+          { brand: 'Isager Silk Mohair', colorway: '67 Medium Green', hex: '#4BB56E' },
+        ],
       },
       {
         name: 'Warm Spring',
-        image: '/seasonal-skeins/spring/5.png',
-        overview: 'The golden-dominant Spring, tipping toward Autumn. Marigold, mango, golden moss, light terracotta. Undertone is strictly warm — zero cool influence. Peak-spring sliding into early harvest.',
-        yarns: [
-          'Knitting for Olive Heavy Merino — Mustard',
-          'Malabrigo Rios — Reflecting Pool',
-          'Malabrigo Rios — Lettuce',
+        overview: 'The golden Spring, tipping toward Autumn. Pure warm-golden undertone. Marigold, mango, clear mustard, terracotta. Earthy clarity — bright, not dusty.',
+        palette: [
+          { name: 'Marigold', hex: '#F39237' },
+          { name: 'Mango', hex: '#F9A03F' },
+          { name: 'Clear mustard', hex: '#E1B12C' },
+          { name: 'Watermelon coral', hex: '#F06449' },
+          { name: 'Clear warm teal', hex: '#1D8B9B' },
+          { name: 'Golden moss', hex: '#879A3A' },
+          { name: 'Light terracotta', hex: '#CD6F47' },
+          { name: 'Golden tan', hex: '#BB8F55' },
+          { name: 'Cognac brown', hex: '#8B4A2B' },
+          { name: 'Warm beige', hex: '#D9B380' },
+          { name: 'Warm cream', hex: '#F3E5C1' },
+          { name: 'Warm periwinkle', hex: '#6A85C2' },
         ],
-        heldTogether: 'Malabrigo Rios "Frank Ochre" + KFO Soft Silk Mohair "Dark Cognac" — deep kettle-dyed golden warmth with a slightly browner halo that deepens saturation without muddying the glow. Marigolds in golden-hour light.',
+        dk: [
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Mustard', hex: '#C8A12B' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Cognac (2745)', hex: '#B86B3F' },
+          { brand: 'Malabrigo Rios', colorway: 'Frank Ochre', hex: '#CB8A3B' },
+          { brand: 'Brooklyn Tweed Arbor', colorway: 'Hayloft', hex: '#B87333' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Dark Cognac', hex: '#8C5A36' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Liqueur (595)', hex: '#B8742F' },
+          { brand: 'Isager Silk Mohair', colorway: '69 Rose Gold', hex: '#C98B5C' },
+        ],
       },
     ],
   },
@@ -63,58 +134,125 @@ const seasons = [
     id: 'summer',
     name: 'Summer',
     tagline: 'Cool, muted, watercolor.',
-    intro: 'Summer palettes are the opposite of loud — dusky roses, sea glass greens, powder blues, blush mauves. The key: a purely cool undertone with no warmth anywhere, and colors that read like hazy skies and hydrangeas through fog.',
-    coverImage: '/seasonal-skeins/summer/1.png',
+    intro: 'Summer palettes are the opposite of loud — dusky roses, sea glass greens, powder blues. Pure cool undertone. Colors read like hazy skies and hydrangeas through fog.',
     accent: '#7A8CB5',
     accentLight: '#9BA8D1',
     subseasons: [
       {
-        name: 'True (Cool) Summer',
-        image: '/seasonal-skeins/summer/2.png',
-        overview: 'The archetypal cool-and-muted Summer. Purely cool undertone, zero warmth. Value is light-to-medium; chroma is medium-muted. Gentle, watery, never saturated. Hazy skies and hydrangeas.',
-        yarns: [
-          'Hedgehog Fibres — Damsel',
-          'Berroco Vintage Baby DK — Navy',
-          'Cascade Merino DK — 53 Holly',
-          'Lang Merino 120 Dégradé — 57.0013',
+        name: 'True Summer',
+        overview: 'The core Summer. Pure cool undertone, muted chroma, light-to-medium value. Powder blue, dusty rose, sea glass, slate. Everything hazy — nothing saturated.',
+        palette: [
+          { name: 'Soft white', hex: '#EDE8DE' },
+          { name: 'Pewter grey', hex: '#8A8D8F' },
+          { name: 'Powder blue', hex: '#A7BFD3' },
+          { name: 'Slate blue', hex: '#5A7A95' },
+          { name: 'Spruce teal', hex: '#2E5F66' },
+          { name: 'Cool navy', hex: '#2A3A56' },
+          { name: 'Dusty rose', hex: '#C89FA5' },
+          { name: 'Raspberry', hex: '#A64058' },
+          { name: 'Soft plum', hex: '#7C5A7C' },
+          { name: 'Baby lavender', hex: '#C8C2DE' },
+          { name: 'Sea glass', hex: '#9FBFB3' },
+          { name: 'Cool burgundy', hex: '#6B2F3F' },
         ],
-        heldTogether: 'KFO Heavy Merino "Dusty Petroleum Blue" + KFO Soft Silk Mohair "Dusty Aqua" — the quintessential True Summer fabric. Watery sea-glass depth like morning fog on cool water. No warmth, ever.',
+        dk: [
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Dusty Petroleum Blue', hex: '#5E7F85' },
+          { brand: 'Malabrigo Arroyo', colorway: 'Pearl (036)', hex: '#BFB8B0' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Sailor in the Dark (5581)', hex: '#2E3A4E' },
+          { brand: 'Brooklyn Tweed Arbor', colorway: 'Heron', hex: '#6C7C88' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Dusty Aqua', hex: '#7FA19A' },
+          { brand: 'Tosh Silk Cloud', colorway: 'Fjord', hex: '#5E7C8E' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Pearl (590)', hex: '#C6C2BE' },
+        ],
       },
       {
         name: 'Light Summer',
-        image: '/seasonal-skeins/summer/3.png',
-        overview: 'Light is primary, cool is secondary. Brighter than True Summer due to Spring influence; lowest contrast. The palette of early-morning mist — powder blue, wisteria, petal pink.',
-        yarns: [
-          'Lang Merino 120 — 34.0245',
-          'BC Garn Semilla Gots — 037 Strawberry Ice Cream Pink',
-          'Lana Grossa Cool Wool Big — 984 Light Sea Green',
-          'Mode at Rowan Alpaca Cotton — 017 Soft Satin',
+        overview: 'The lightest Summer — neutral-cool, low contrast, slightly brighter than True Summer. Powder blue, wisteria, petal pink. Morning mist, no depth.',
+        palette: [
+          { name: 'Soft white', hex: '#F2ECE4' },
+          { name: 'Light dove grey', hex: '#C7C8CA' },
+          { name: 'Rose beige', hex: '#D8C0B6' },
+          { name: 'Powder blue', hex: '#B0D0DC' },
+          { name: 'Cornflower', hex: '#8FA6CF' },
+          { name: 'Wisteria lavender', hex: '#CEC0DB' },
+          { name: 'Sea glass aqua', hex: '#A8D0CA' },
+          { name: 'Petal pink', hex: '#F0C9D0' },
+          { name: 'Watermelon pink', hex: '#E08EA4' },
+          { name: "Robin's egg", hex: '#7FB8C5' },
+          { name: 'Chambray', hex: '#7F9BB0' },
+          { name: 'Soft mauve', hex: '#B895A3' },
         ],
-        heldTogether: 'Sandnes Double Sunday "Pale Blue" + Rowan Kidsilk Haze "Heavenly" — two shades at identical value and temperature. The mohair halo glows without shifting color. Morning light on water.',
+        dk: [
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Pale Blue (5930)', hex: '#B8CFDE' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Ballet Shoes (3521)', hex: '#E7C8CB' },
+          { brand: 'Rowan Cotton Cashmere', colorway: 'Cloud (210)', hex: '#CBCED0' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Pearl Gray', hex: '#C8C6C4' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Powder', hex: '#F0D9DA' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Heavenly (592)', hex: '#C4D6E4' },
+          { brand: 'Isager Silk Mohair', colorway: '12 Lavender', hex: '#C6BCD4' },
+        ],
       },
       {
         name: 'Soft Summer',
-        image: '/seasonal-skeins/summer/4.png',
-        overview: 'Muted is primary, cool is secondary. The lowest chroma of all Summers. Colors read like sea-glass through fog — dusty rose, mushroom taupe, silvery sage, smoky teal.',
-        yarns: [
-          'Rowan Alpaca Soft DK — 225 Hyacinth',
-          'Malabrigo Verano — 938 Rain',
-          'Lang Yarns Vaya — 0058',
-          'Lana Grossa Cashmere Pure — 03 Taupe',
+        overview: 'The most muted of all Summers — neutral-cool, lowest chroma. Dusty rose, mushroom taupe, silvery sage, smoky teal. Sea glass through fog.',
+        palette: [
+          { name: 'Soft ivory', hex: '#EDE4D8' },
+          { name: 'Mushroom taupe', hex: '#A99C92' },
+          { name: 'Driftwood grey', hex: '#6B6B6E' },
+          { name: 'Dusty rose', hex: '#C9A3A4' },
+          { name: 'Rosewood mauve', hex: '#8E6A73' },
+          { name: 'French blue', hex: '#8CA0B5' },
+          { name: 'Smoky teal', hex: '#4F6E71' },
+          { name: 'Silvery sage', hex: '#9DAB9B' },
+          { name: 'Soft periwinkle', hex: '#8E94B8' },
+          { name: 'Cool cocoa', hex: '#7A6459' },
+          { name: 'Muted plum', hex: '#6E546B' },
+          { name: 'Soft burgundy', hex: '#7A4551' },
         ],
-        heldTogether: 'KFO Heavy Merino "Pearl Gray" + KFO Soft Silk Mohair "Dusty Rose" — neutral grey takes on a misty heathered rose cast as the mohair breathes color without sharpening. Foggy-garden glow.',
+        dk: [
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Pearl Gray', hex: '#C4C2BE' },
+          { brand: 'Rowan Cotton Cashmere', colorway: 'Seedpod (239)', hex: '#A9A798' },
+          { brand: 'Walcot Yarns Opus', colorway: 'Castlerock', hex: '#7E7D80' },
+          { brand: 'Brooklyn Tweed Arbor', colorway: 'Meteorite', hex: '#7C7A7D' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Dusty Rose', hex: '#C59EA1' },
+          { brand: 'Tosh Silk Cloud', colorway: 'Ash', hex: '#8C8B89' },
+          { brand: 'Isager Silk Mohair', colorway: '2 Sable', hex: '#A79C92' },
+        ],
       },
       {
         name: 'Cool Summer',
-        image: '/seasonal-skeins/summer/5.png',
-        overview: 'The bridge between True Summer and True Winter. Coolness is the single dominant trait — pure blue undertone, slightly darker value and more saturation. Clear twilight over water.',
-        yarns: [
-          'Lang Yarns Duett — 1173.0085',
-          'Hedgehog Fibres — Crystal Oh So Fine Soufflé',
-          'Malabrigo Rios — 211 Syrah Grapes',
-          'Malabrigo Rios — 809 Solis',
+        overview: 'The bridge from True Summer to Winter. Pure cool undertone, slightly darker and more saturated. Sapphire blue, cool raspberry, periwinkle, burgundy.',
+        palette: [
+          { name: 'Soft white', hex: '#EDEBE6' },
+          { name: 'Pewter grey', hex: '#8E8E92' },
+          { name: 'Charcoal', hex: '#3F4348' },
+          { name: 'Cool navy', hex: '#263450' },
+          { name: 'Sapphire blue', hex: '#3A5A8A' },
+          { name: 'Periwinkle', hex: '#7A84B8' },
+          { name: 'Cool raspberry', hex: '#B0354F' },
+          { name: 'Burgundy', hex: '#6E2A3D' },
+          { name: 'Cool plum', hex: '#5A3A5C' },
+          { name: 'Berry pink', hex: '#C96A88' },
+          { name: 'Deep blue-green', hex: '#2E7266' },
+          { name: 'Icy pink', hex: '#E7C5CF' },
         ],
-        heldTogether: 'Malabrigo Arroyo "Prussia Blue" + KFO Soft Silk Mohair "Deep Petroleum Blue" — luminous twilight-on-water depth. The mohair fogs the base into rich saturated cool while keeping the temperature Cool Summer needs.',
+        dk: [
+          { brand: 'Malabrigo Arroyo', colorway: 'Prussia Blue (046)', hex: '#23385A' },
+          { brand: 'Cascade 220 Superwash', colorway: 'Silver Grey (1946)', hex: '#A8ABAE' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Deep Petroleum Blue', hex: '#324A55' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Blackberry Juice (4672)', hex: '#4B2F3E' },
+        ],
+        lace: [
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Dewberry (600)', hex: '#6C3952' },
+          { brand: 'Tosh Silk Cloud', colorway: 'Cove', hex: '#4F7088' },
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Deep Petroleum Blue', hex: '#33495B' },
+        ],
       },
     ],
   },
@@ -122,58 +260,125 @@ const seasons = [
     id: 'autumn',
     name: 'Autumn',
     tagline: 'Warm, earthy, golden.',
-    intro: 'Autumn palettes are made of rust, terracotta, mustard, and the deep richness of a forest at dusk. The key: warmth with no blue — everything passes through a golden, softening lens. Clear brights are too harsh; cool tones are actively wrong.',
-    coverImage: '/seasonal-skeins/autumn/1.png',
+    intro: 'Autumn palettes are made of rust, terracotta, mustard, and the deep richness of a forest at dusk. Warmth with no blue — everything passes through a golden, softening lens.',
     accent: '#C4902A',
     accentLight: '#E2A93B',
     subseasons: [
       {
         name: 'True Autumn',
-        image: '/seasonal-skeins/autumn/2.png',
-        overview: 'The original Autumn. Warm is primary, muted is secondary — golden, earthy, rich without being bright. Rust, mustard gold, warm teal, cognac. Undertone is decisively warm-golden.',
-        yarns: [
-          'Malabrigo Rios — 016 Glazed Carrot',
-          'Quince & Co. Chickadee — Wasabi',
-          'Malabrigo Rios — 048 Glitter',
-          'Hedgehog Fibres — Rowan',
+        overview: 'The original Autumn. Warm-golden undertone, medium chroma — earthy, rich, unhurried. Rust, mustard gold, olive, warm teal. The golden autumn forest.',
+        palette: [
+          { name: 'Rust', hex: '#B7410E' },
+          { name: 'Terracotta pumpkin', hex: '#C86B3C' },
+          { name: 'Mustard gold', hex: '#C89932' },
+          { name: 'Camel', hex: '#B08855' },
+          { name: 'Cognac brown', hex: '#8B5A2B' },
+          { name: 'Olive green', hex: '#7A7B36' },
+          { name: 'Moss/fern', hex: '#5E6737' },
+          { name: 'Warm teal', hex: '#2E6B6B' },
+          { name: 'Tomato red', hex: '#B7372E' },
+          { name: 'Ecru cream', hex: '#EFE2C4' },
+          { name: 'Dark chocolate', hex: '#3B2417' },
+          { name: 'Bronze', hex: '#A97142' },
         ],
-        heldTogether: 'KFO Heavy Merino "Rust" + KFO Soft Silk Mohair "Rust" — the brand matches both yarns to this season explicitly. Plush, glowing, soft halo. The golden autumn forest at sunset.',
+        dk: [
+          { brand: 'Malabrigo Rios', colorway: 'Glazed Carrot', hex: '#C96B29' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Rust', hex: '#A0431F' },
+          { brand: 'Rowan Felted Tweed DK', colorway: 'Cinnamon (175)', hex: '#A06A3F' },
+          { brand: 'Brooklyn Tweed Arbor', colorway: 'Tincture', hex: '#B26A2C' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Rust', hex: '#A14925' },
+          { brand: 'Tosh Silk Cloud', colorway: 'Rust', hex: '#B15A30' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Marmalade (596)', hex: '#C46A2A' },
+        ],
       },
       {
         name: 'Soft Autumn',
-        image: '/seasonal-skeins/autumn/3.png',
-        overview: 'Muted is primary, warm is secondary. The gentlest Autumn — camel, sage, marzipan yellow, dusty teal. Low contrast, soft edges. Colors sit between beige and sage without fully being either.',
-        yarns: [
-          'Noro Kakigori — 27',
-          'Juniper Moon Farm Herriot — 177 Jute',
-          'Berroco Ultra Alpaca — 6204 Buckwheat',
-          'Urth Yarns Monokrom Cotton DK — 1203',
+        overview: 'The gentlest Autumn. Neutral-warm, low chroma, low contrast — camel, soft taupe, marzipan yellow, dusty teal. Warm but muted. Hazel and oatmeal.',
+        palette: [
+          { name: 'Camel', hex: '#A28955' },
+          { name: 'Soft taupe', hex: '#8E7C68' },
+          { name: 'Golden apricot', hex: '#D8A57E' },
+          { name: 'Muted salmon', hex: '#C97A60' },
+          { name: 'Soft sage', hex: '#9AA777' },
+          { name: 'Moss green', hex: '#758451' },
+          { name: 'Marzipan yellow', hex: '#E6D2A3' },
+          { name: 'Dusty teal', hex: '#5E8482' },
+          { name: 'Warm dove grey', hex: '#9A8F82' },
+          { name: 'Soft burgundy', hex: '#8A4E4A' },
+          { name: 'Light chocolate', hex: '#7B5544' },
+          { name: 'Oatmeal cream', hex: '#EFE2CC' },
         ],
-        heldTogether: 'Walcot Opus "Goldenrod" + KFO Soft Silk Mohair "Camel" — the merino/alpaca base reads cashmere-soft; the mohair halo recreates hazy, diffuse autumn light. Gentle, blended, heathered.',
+        dk: [
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Dusty Olive', hex: '#8B8A5A' },
+          { brand: 'BC Garn Semilla DK', colorway: 'Sand', hex: '#C1A983' },
+          { brand: 'Walcot Yarns Opus', colorway: 'Goldenrod', hex: '#C7A24A' },
+          { brand: 'Rowan Felted Tweed DK', colorway: 'Camel (157)', hex: '#B4987A' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Dusty Robin', hex: '#A86E5E' },
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Camel', hex: '#B99873' },
+          { brand: 'Isager Silk Mohair', colorway: '2 Mushroom', hex: '#9F8A76' },
+        ],
       },
       {
-        name: 'Dark (Deep) Autumn',
-        image: '/seasonal-skeins/autumn/4.png',
-        overview: 'Dark is primary, warm is secondary. The most pigmented, richest Autumn palette — autumn forest at sunset. Mahogany, oxblood, pine green, dark teal. High contrast, deep saturation.',
-        yarns: [
-          'Hedgehog Fibres — Cousin Gwen',
-          'Cascade 220 Superwash — 1918 Shire',
-          'Rowan Alpaca Soft DK — 230 Dark Burgundy',
-          'Juniper Moon Farm Rambouillet — Daffodil',
+        name: 'Dark Autumn',
+        overview: 'The richest Autumn. Neutral-warm, medium-dark value, high pigment. Mahogany, oxblood, pine green, dark teal. Autumn forest at sunset — dramatic but still warm.',
+        palette: [
+          { name: 'Dark chocolate', hex: '#3B2417' },
+          { name: 'Soft black-brown', hex: '#2A1F18' },
+          { name: 'Mahogany', hex: '#6E2E1F' },
+          { name: 'Dark rust', hex: '#9C3E1C' },
+          { name: 'Mustard gold', hex: '#B8860B' },
+          { name: 'Pumpkin spice', hex: '#B55A1B' },
+          { name: 'Deep teal', hex: '#1F4F4A' },
+          { name: 'Pine green', hex: '#2E4A2C' },
+          { name: 'Aubergine', hex: '#4B2E3A' },
+          { name: 'Oxblood burgundy', hex: '#6E1E24' },
+          { name: 'Dark ocher', hex: '#8A6A2A' },
+          { name: 'Warm navy', hex: '#1E2A3A' },
         ],
-        heldTogether: 'Malabrigo Rios "Ivy" + Tosh Silk Cloud "Brick" — deep forest merino with a warm harvest-lantern halo. Dark but warm, dimensional, almost smoky. High contrast without going icy.',
+        dk: [
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Mustard', hex: '#B8881F' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Dark Ocher', hex: '#8A6A2A' },
+          { brand: 'Malabrigo Rios', colorway: 'Ivy', hex: '#2F4A2A' },
+          { brand: 'Brooklyn Tweed Arbor', colorway: 'Firebrush', hex: '#8A2E1A' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Dark Mustard', hex: '#A47A1E' },
+          { brand: 'Tosh Silk Cloud', colorway: 'Brick', hex: '#8C3A24' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Liqueur (595)', hex: '#6B2A36' },
+        ],
       },
       {
         name: 'Warm Autumn',
-        image: '/seasonal-skeins/autumn/5.png',
-        overview: 'The clearest Autumn, borrowing brightness from Spring. Slightly lighter and more golden — burnt orange, golden amber, fresh olive, warm jade. Earthy clarity, never muted.',
-        yarns: [
-          'Malabrigo Rios — 096 Sunset',
-          'DROPS Brushed Alpaca Silk — 45 Olive Oil',
-          'Knit Picks Wool of the Andes — Rooibos Heather',
-          'Knit Picks Swish DK — Paradise',
+        overview: 'The clearest Autumn — borrows brightness from Spring. Pure warm undertone, medium-high chroma. Burnt orange, golden amber, fresh olive, warm jade. Earthy but bright.',
+        palette: [
+          { name: 'Burnt orange', hex: '#CC5500' },
+          { name: 'Golden amber', hex: '#D9A441' },
+          { name: 'Warm coral', hex: '#D47A4A' },
+          { name: 'Maple tomato', hex: '#C5422B' },
+          { name: 'Warm camel', hex: '#BE8F5A' },
+          { name: 'Honey butterscotch', hex: '#CE9A4E' },
+          { name: 'Buttercream ivory', hex: '#F3E6C6' },
+          { name: 'Fresh olive', hex: '#8F8E3F' },
+          { name: 'Warm jade', hex: '#3A8E86' },
+          { name: 'Dusty warm blue', hex: '#6A86A6' },
+          { name: 'Chestnut', hex: '#6F3C1B' },
+          { name: 'Soft cream', hex: '#F5E6CC' },
         ],
-        heldTogether: 'Malabrigo Rios "Sunset" + Rowan Kidsilk Haze "Cinnamon" — bouncy merino saturation with a lit-from-within golden halo. Clear sunlit autumn leaf rather than a dusty one.',
+        dk: [
+          { brand: 'Malabrigo Rios', colorway: 'Sunset', hex: '#D06A2E' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Camel', hex: '#B89365' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Croissant (2345)', hex: '#C89B68' },
+          { brand: 'Rowan Felted Tweed DK', colorway: 'Ginger (154)', hex: '#B0602A' },
+        ],
+        lace: [
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Burnt Orange', hex: '#C45C22' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Cinnamon (729)', hex: '#B26A2F' },
+          { brand: 'Tosh Silk Cloud', colorway: 'Flaxen', hex: '#D4B378' },
+        ],
       },
     ],
   },
@@ -181,58 +386,125 @@ const seasons = [
     id: 'winter',
     name: 'Winter',
     tagline: 'Cool, saturated, crystalline.',
-    intro: 'Winter palettes are made for clarity and contrast — true black, pure white, icy pastels, and jewel tones that vibrate against cool skin. The key: a blue undertone throughout, with bold unmixed color and no dusty muting anywhere.',
-    coverImage: '/seasonal-skeins/winter/1.png',
+    intro: 'Winter palettes are made for clarity and contrast — true black, pure white, icy pastels, jewel tones. A blue undertone throughout. Bold, unmixed, never dusty.',
     accent: '#4A5678',
     accentLight: '#9BA8D1',
     subseasons: [
       {
-        name: 'True (Cool) Winter',
-        image: '/seasonal-skeins/winter/2.png',
-        overview: 'The heart of the Winter family. Pure cool undertone, full black-to-white range, high chroma. Crisp, icy, jewel-like. True red, fuchsia, palace blue, emerald pine, charcoal grey.',
-        yarns: [
-          'Malabrigo Rios — 282 Leo',
-          'Sirdar Cashmere Merino Silk — Regency Blue',
-          'Juniper Moon Farm Cotton + Merino — 18 Citrine',
-          'Cascade Ultra Pima — 5825 Tomato',
+        name: 'True Winter',
+        overview: 'The core Winter. Pure cool undertone, full value range, high chroma. True red, fuchsia, palace blue, emerald pine. Crisp, icy, high contrast.',
+        palette: [
+          { name: 'True white', hex: '#F6F7F8' },
+          { name: 'True black', hex: '#0A0A0A' },
+          { name: 'Icy pink', hex: '#F3CFDC' },
+          { name: 'Icy blue', hex: '#CFE1EE' },
+          { name: 'Lemon ice', hex: '#F2F2BF' },
+          { name: 'True red', hex: '#CE1126' },
+          { name: 'Fuchsia', hex: '#C71585' },
+          { name: 'Royal purple', hex: '#3A1F7A' },
+          { name: 'Palace blue', hex: '#1E3A8A' },
+          { name: 'Emerald pine', hex: '#046307' },
+          { name: 'Cool burgundy', hex: '#4A0E2C' },
+          { name: 'Charcoal grey', hex: '#36454F' },
         ],
-        heldTogether: 'Cascade 220 Superwash "Black" + Rowan Kidsilk Haze "Blackcurrant" — pure jet from a distance, cool purple shimmer in light. True Winter\'s signature high-drama midnight-at-the-poles effect.',
+        dk: [
+          { brand: 'Malabrigo Rios', colorway: 'Paris Night', hex: '#1C1B2E' },
+          { brand: 'Cascade 220 Superwash', colorway: 'Black (815)', hex: '#0B0B0B' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Night Sky (6051)', hex: '#1F2A4A' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Bordeaux', hex: '#5E1E2A' },
+        ],
+        lace: [
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Blackcurrant (641)', hex: '#2B0F24' },
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Licorice', hex: '#101010' },
+          { brand: 'Isager Silk Mohair', colorway: '60 White', hex: '#F5F5F2' },
+        ],
       },
       {
-        name: 'Dark (Deep) Winter',
-        image: '/seasonal-skeins/winter/3.png',
-        overview: 'Depth is primary, coolness is secondary. Darkest value of the Winter family — evening sky, misty forest, gemstones at midnight. Very dark shades paired with pure white and icy pastels.',
-        yarns: [
-          'Sandnes Garn Double Sunday — 4553 Rustic Rose',
-          'Rowan Felted Tweed — 185 Frozen',
-          'Berroco Vintage DK — 2189 Charcoal',
-          'Lang Yarns Merino 120 — 588 Petrol',
+        name: 'Dark Winter',
+        overview: 'The deepest Winter. Neutral-cool, darkest value of all Winters. Midnight navy, pine green, dark wine, aubergine. Evening sky — gemstones at midnight.',
+        palette: [
+          { name: 'True black', hex: '#0A0A0A' },
+          { name: 'Bright white', hex: '#F6F7F8' },
+          { name: 'Midnight navy', hex: '#0F1E3C' },
+          { name: 'Pine green', hex: '#0B3D2E' },
+          { name: 'Dark wine', hex: '#4A0E1F' },
+          { name: 'Dark aubergine', hex: '#3A1935' },
+          { name: 'Deep teal', hex: '#014A52' },
+          { name: 'Cool charcoal', hex: '#2E343B' },
+          { name: 'Icy pink', hex: '#EFCBD6' },
+          { name: 'Icy lavender', hex: '#D6CFE6' },
+          { name: 'Garnet ruby', hex: '#7B1E3A' },
+          { name: 'Cool espresso', hex: '#2B1A15' },
         ],
-        heldTogether: 'Malabrigo Rios "Paris Night" + KFO Soft Silk Mohair "Bottle Green" — deep navy turned nocturnal forest color with subtle violet shimmer. Midnight mist through pine trees.',
+        dk: [
+          { brand: 'Malabrigo Rios', colorway: 'Paris Night', hex: '#1A1A2E' },
+          { brand: 'Brooklyn Tweed Arbor', colorway: 'Klimt', hex: '#4A1A2A' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Bottle Green', hex: '#0E3B2B' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Black (1099)', hex: '#0B0B0B' },
+        ],
+        lace: [
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Blackcurrant (641)', hex: '#2B0F24' },
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Bottle Green', hex: '#133B2C' },
+          { brand: 'Isager Silk Mohair', colorway: '30 Bordeaux', hex: '#4C1426' },
+        ],
       },
       {
-        name: 'Bright (Clear) Winter',
-        image: '/seasonal-skeins/winter/4.png',
-        overview: 'Maximum chroma of any season. On the cusp of Winter and Spring — the highest-intensity palette. Acid greens, neon fuchsias, clear reds, cobalt. Jewels under a spotlight.',
-        yarns: [
-          'Madelinetosh Tosh DK — Fatal Attraction',
-          'Juniper Moon Farm Patagonia Organic Merino — 159 Emerald',
-          'Malabrigo Arroyo — 684 Camaleón',
-          'Lang Eternity — 1174.0007',
+        name: 'Bright Winter',
+        overview: 'Maximum chroma of any season. Neutral-cool with Winter clarity and Spring brightness. Cobalt, hot fuchsia, clear red, emerald. Jewels under a spotlight.',
+        palette: [
+          { name: 'Pure white', hex: '#FFFFFF' },
+          { name: 'Jet black', hex: '#000000' },
+          { name: 'Hot fuchsia', hex: '#E60073' },
+          { name: 'Bright clear red', hex: '#E0002A' },
+          { name: 'Dazzling cobalt', hex: '#1E4FD9' },
+          { name: 'Bright turquoise', hex: '#00B8C4' },
+          { name: 'Emerald', hex: '#00875A' },
+          { name: 'Bright lemon', hex: '#FFE600' },
+          { name: 'Royal purple', hex: '#5A28A8' },
+          { name: 'Icy pink', hex: '#F5C8D8' },
+          { name: 'Icy aqua', hex: '#C6ECEF' },
+          { name: 'Graphite grey', hex: '#4C5258' },
         ],
-        heldTogether: 'Malabrigo Rios "Ravelry Red" + KFO Soft Silk Mohair "Pomegranate" — the ultimate stoplight red. Electrically vivid in any light. The high-chroma jewel effect only Bright Winter demands.',
+        dk: [
+          { brand: 'Malabrigo Rios', colorway: 'Ravelry Red', hex: '#D41424' },
+          { brand: 'Cascade 220 Superwash', colorway: 'Green Apple (802)', hex: '#7FC243' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Poppy (4008)', hex: '#E31B23' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Blue Tit', hex: '#2A7AB8' },
+        ],
+        lace: [
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Candy Girl (606)', hex: '#E84C8A' },
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Peacock (671)', hex: '#005E7A' },
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Pomegranate', hex: '#D11A2E' },
+        ],
       },
       {
         name: 'Cool Winter',
-        image: '/seasonal-skeins/winter/5.png',
-        overview: 'The most uncompromisingly cool palette of all — the bridge between True Summer and True Winter. Zero warmth, ever. Sapphire-cool elegance: cobalt, indigo navy, cool emerald, cool fuchsia.',
-        yarns: [
-          'Universal Yarn Bamboo Pop — 116 Royal',
-          'Malabrigo Caprino — 415 Matisse Blue',
-          'Lang Linello — 1066.0265',
-          'Rauma Petunia — 215 Green',
+        overview: 'The most uncompromisingly cool of all. Pure blue undertone — no warmth, ever. Sapphire, indigo navy, cool fuchsia, cool emerald. Pure cool, crystalline elegance.',
+        palette: [
+          { name: 'Optical white', hex: '#F3F5F8' },
+          { name: 'Icy pink', hex: '#EBCBD5' },
+          { name: 'Pearl grey', hex: '#C9CED4' },
+          { name: 'Blue-red', hex: '#BE1E3C' },
+          { name: 'Raspberry', hex: '#AB2351' },
+          { name: 'Cool fuchsia', hex: '#B5006E' },
+          { name: 'Cool cobalt', hex: '#2442A1' },
+          { name: 'Indigo navy', hex: '#1C2456' },
+          { name: 'Blue-violet amethyst', hex: '#6A3BA6' },
+          { name: 'Cool emerald', hex: '#005A44' },
+          { name: 'Cool berry burgundy', hex: '#5D0F2C' },
+          { name: 'Pewter charcoal', hex: '#3A4048' },
         ],
-        heldTogether: 'Malabrigo Arroyo "Purple Mystery" + Rowan Kidsilk Haze "Majestic" — sapphire-violet fabric with a violet-blue halo. Pure cool, dreamy, distinctly Cool Winter.',
+        dk: [
+          { brand: 'Malabrigo Arroyo', colorway: 'Purple Mystery', hex: '#2E1E5A' },
+          { brand: 'Cascade 220 Superwash', colorway: 'Navy (854)', hex: '#0E2140' },
+          { brand: 'Knitting for Olive Heavy Merino', colorway: 'Deep Petroleum Blue', hex: '#1F3E55' },
+          { brand: 'Sandnes Garn Double Sunday', colorway: 'Cranberry (4418)', hex: '#8B1A3A' },
+        ],
+        lace: [
+          { brand: 'Rowan Kidsilk Haze', colorway: 'Majestic (589)', hex: '#2D2E6B' },
+          { brand: 'KFO Soft Silk Mohair', colorway: 'Blueberry Ice Cream', hex: '#9FAFD6' },
+          { brand: 'Isager Silk Mohair', colorway: '41 Light Blue', hex: '#A7C5DA' },
+        ],
       },
     ],
   },
@@ -240,61 +512,51 @@ const seasons = [
 ---
 <Base
   title="Seasonal Skeins — Purl Pressure"
-  description="A complete guide to the 16 color seasons, decoded for yarn lovers. DK and silk-mohair pairings designed to flatter the face wearing them."
+  description="The 16 color seasons decoded for yarn lovers — palette hex codes, DK picks, and lace picks for every sub-season."
 >
   <!-- ── Hero ────────────────────────────────────────────────── -->
   <header class="ss-hero">
     <div class="pp-container ss-hero__inner">
       <span class="ss-hero__sticker">
-        <StickerLabel text="COLOR ANALYSIS" rotate={-4} bg="var(--pp-periwinkle)" color="var(--pp-ink)" />
+        <StickerLabel text="COLOR ANALYSIS" rotate={-4} bg="var(--pp-periwinkle)" color="var(--pp-paper)" />
       </span>
       <h1 class="pp-display pp-display--xl ss-hero__title">
         Seasonal<br /><em>skeins.</em>
       </h1>
       <p class="ss-hero__sub">
-        What if your yarn already knew your season?
+        The 16 color seasons, decoded for yarn lovers.
       </p>
     </div>
   </header>
 
-  <!-- ── Concept article ───────────────────────────────────── -->
+  <!-- ── Premise ───────────────────────────────────────────── -->
   <section class="pp-section ss-concept">
     <div class="pp-container ss-concept__inner">
       <div class="ss-concept__text">
         <p class="pp-eyebrow">The premise</p>
-        <h2 class="ss-concept__h2">Yarn that flatters<br /><em>the face wearing it.</em></h2>
+        <h2 class="ss-concept__h2">A framework.<br /><em>Not a rule.</em></h2>
         <p>
-          Color analysis isn't about which colors you happen to like — it's about the specific relationship between your skin's undertone, your hair's value, and the temperature of the colors that make light bounce correctly at your face. Get it right, and you look awake. Get it wrong, and even the most beautiful skein can make you look tired.
+          The 16-season system maps skin and hair coloring to colors that tend to work. Warm or cool undertone. Light or dark value. Bright or muted chroma. Colors close to your natural coloring usually hold up better near your face — they enhance rather than compete. That's the logic.
         </p>
         <p>
-          The 16-season system expands the classic four (Spring, Summer, Autumn, Winter) into four sub-seasons each, organized by three dimensions: <strong>hue</strong> (warm or cool), <strong>value</strong> (light or dark), and <strong>chroma</strong> (bright or muted). Every sub-season has a distinct set of colors that work with its wearer's natural coloring rather than against it.
-        </p>
-        <p>
-          The single most universally flattering move across all 16 seasons: <strong>hold a matched-temperature DK and silk-mohair lace together.</strong> The mohair halo mirrors the way your own skin, hair, and eyes interact with light — giving every knit a bespoke softness that a single yarn never quite achieves. That's what this series is about.
+          You can ignore it completely. Wear what you love.
         </p>
         <p class="ss-concept__note">
-          Yarn picks below focus on superwash merino, baby alpaca blends, and soft silk-mohairs — chosen for sensitive skin first, flattering color second. Hex codes are visual approximations; always confirm against physical skeins in natural daylight.
+          Yarn picks focus on superwash merino and baby alpaca blends — soft enough for anything worn near the face. Hex codes are approximate; always check physical skeins in natural daylight.
         </p>
       </div>
-      <div class="ss-concept__matrix" aria-hidden="true">
-        <p class="pp-eyebrow ss-matrix__label">Quick reference</p>
-        <div class="ss-matrix">
-          {seasons.map(s => (
-            <a href={`#${s.id}`} class="ss-matrix__season" style={`--s-accent: ${s.accent};`}>
-              <span class="ss-matrix__dot"></span>
-              <span class="ss-matrix__name">{s.name}</span>
-              <span class="ss-matrix__tag">{s.tagline}</span>
-            </a>
-          ))}
-        </div>
-        <div class="ss-matrix__subslist">
-          {seasons.map(s =>
-            s.subseasons.map(ss => (
-              <span class="ss-matrix__sub" style={`--s-accent: ${s.accent};`}>{ss.name}</span>
-            ))
-          )}
-        </div>
-      </div>
+      <nav class="ss-season-index" aria-label="Jump to season">
+        <p class="pp-eyebrow">Jump to</p>
+        {seasons.map(s => (
+          <a href={`#${s.id}`} class="ss-season-index__link" style={`--s-accent: ${s.accent};`}>
+            <span class="ss-season-index__dot"></span>
+            <span>
+              <span class="ss-season-index__name">{s.name}</span>
+              <span class="ss-season-index__tag">{s.tagline}</span>
+            </span>
+          </a>
+        ))}
+      </nav>
     </div>
   </section>
 
@@ -310,65 +572,95 @@ const seasons = [
   </nav>
 
   <!-- ── Season sections ───────────────────────────────────── -->
-  {seasons.map((season, si) => (
+  {seasons.map(season => (
     <section id={season.id} class="ss-season">
 
       <!-- Season band -->
       <div class="ss-season__band" style={`--band-accent: ${season.accent}; --band-light: ${season.accentLight};`}>
-        <div class="pp-container ss-season__band-inner">
-          <div class="ss-season__cover-wrap">
-            <img
-              src={season.coverImage}
-              alt={`Are you a ${season.name}?`}
-              class="ss-season__cover"
-              loading={si === 0 ? 'eager' : 'lazy'}
-            />
-          </div>
-          <div class="ss-season__band-text">
-            <p class="pp-eyebrow ss-season__eyebrow">The {season.name}s</p>
-            <h2 class="ss-season__title pp-display">
-              <em>{season.name}.</em>
-            </h2>
-            <p class="ss-season__tagline">{season.tagline}</p>
-            <p class="ss-season__intro">{season.intro}</p>
-          </div>
+        <div class="pp-container">
+          <p class="pp-eyebrow ss-season__eyebrow">The {season.name}s</p>
+          <h2 class="ss-season__title pp-display"><em>{season.name}.</em></h2>
+          <p class="ss-season__tagline">{season.tagline}</p>
+          <p class="ss-season__intro">{season.intro}</p>
         </div>
       </div>
 
-      <!-- Sub-season grid -->
-      <div class="pp-container ss-subgrid">
+      <!-- Sub-seasons -->
+      <div class="pp-container ss-subseasons">
         {season.subseasons.map((sub, i) => (
-          <article class="ss-card" style={`--card-accent: ${season.accent}; --card-light: ${season.accentLight};`}>
-            <div class="ss-card__img-wrap">
-              <img
-                src={sub.image}
-                alt={sub.name}
-                class="ss-card__img"
-                loading="lazy"
-              />
+          <div class="ss-sub">
+            <div class="ss-sub__label">
+              <h3 class="ss-sub__name">{sub.name}</h3>
             </div>
-            <div class="ss-card__body">
-              <h3 class="ss-card__name">{sub.name}</h3>
-              <p class="ss-card__overview">{sub.overview}</p>
+            <div class="ss-sub__content">
+              <p class="ss-sub__overview">{sub.overview}</p>
 
-              <div class="ss-card__yarns-wrap">
-                <p class="ss-card__yarns-label">yarn picks</p>
-                <ul class="ss-card__yarns">
-                  {sub.yarns.map(y => (
-                    <li class="ss-card__yarn">{y}</li>
+              <!-- Palette chips -->
+              <div class="ss-palette">
+                {sub.palette.map(color => (
+                  <span class="ss-chip" title={color.name}>
+                    <span class="ss-chip__swatch" style={`background: ${color.hex};`}></span>
+                    <span class="ss-chip__hex">{color.hex}</span>
+                  </span>
+                ))}
+              </div>
+
+              <!-- DK picks -->
+              <div class="ss-yarns">
+                <p class="ss-yarns__label">DK picks</p>
+                <ul class="ss-yarn-list">
+                  {sub.dk.map(y => (
+                    <li class="ss-yarn">
+                      <span class="ss-yarn__swatch" style={`background: ${y.hex};`} title={y.colorway}></span>
+                      <a
+                        href={`https://www.google.com/search?q=${encodeURIComponent(y.brand + ' ' + y.colorway)}&tbm=shop`}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="ss-yarn__link"
+                      >
+                        <span class="ss-yarn__brand">{y.brand}</span>
+                        <span class="ss-yarn__colorway">— {y.colorway}</span>
+                      </a>
+                      <span class="ss-yarn__hex">{y.hex}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
 
-              <blockquote class="ss-card__pair">
-                <span class="ss-card__pair-label">held together</span>
-                <span class="ss-card__pair-text">{sub.heldTogether}</span>
-              </blockquote>
+              <!-- Lace picks -->
+              <div class="ss-yarns">
+                <p class="ss-yarns__label">Lace picks</p>
+                <ul class="ss-yarn-list">
+                  {sub.lace.map(y => (
+                    <li class="ss-yarn">
+                      <span class="ss-yarn__swatch" style={`background: ${y.hex};`} title={y.colorway}></span>
+                      <a
+                        href={`https://www.google.com/search?q=${encodeURIComponent(y.brand + ' ' + y.colorway)}&tbm=shop`}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="ss-yarn__link"
+                      >
+                        <span class="ss-yarn__brand">{y.brand}</span>
+                        <span class="ss-yarn__colorway">— {y.colorway}</span>
+                      </a>
+                      <span class="ss-yarn__hex">{y.hex}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <a
+                href="https://www.instagram.com/purlpressure/"
+                target="_blank"
+                rel="noreferrer"
+                class="ss-instagram"
+              >
+                See this on Instagram →
+              </a>
             </div>
-          </article>
+          </div>
         ))}
       </div>
-
     </section>
   ))}
 
@@ -381,9 +673,9 @@ const seasons = [
     <div class="pp-container ss-cta__inner">
       <h2 class="pp-display ss-cta__title"><em>Find your season.</em></h2>
       <p class="ss-cta__body">
-        The full Seasonal Skeins series lives on Instagram — each post is an interactive carousel with color swatches, yarn photos, and a little quiz energy. Follow along at <strong>@purlpressure</strong> for new seasons and held-together pairings as they drop.
+        The full Seasonal Skeins series lives on Instagram — each post is a carousel with color swatches, yarn photos, and the sub-season breakdown. Follow along at <strong>@purlpressure</strong>.
       </p>
-      <a href="https://instagram.com/purlpressure" target="_blank" rel="noreferrer" class="pp-btn ss-cta__btn">
+      <a href="https://instagram.com/purlpressure" target="_blank" rel="noreferrer" class="ss-cta__btn">
         Follow on Instagram →
       </a>
     </div>
@@ -401,22 +693,14 @@ const seasons = [
     border-bottom: 1px solid var(--pp-border-soft);
   }
 
-  .ss-hero__inner { position: relative; }
-
-  .ss-hero__sticker {
-    display: inline-block;
-    margin-bottom: var(--pp-6);
-  }
+  .ss-hero__sticker { display: inline-block; margin-bottom: var(--pp-6); }
 
   .ss-hero__title {
     margin: 0 0 var(--pp-6);
     line-height: 0.95;
   }
 
-  .ss-hero__title em {
-    color: var(--pp-terracotta);
-    font-style: italic;
-  }
+  .ss-hero__title em { color: var(--pp-terracotta); font-style: italic; }
 
   .ss-hero__sub {
     font-size: clamp(18px, 1.6vw, 24px);
@@ -425,18 +709,18 @@ const seasons = [
     max-width: 44ch;
   }
 
-  /* ── Concept section ─────────────────────────────────────── */
+  /* ── Concept ─────────────────────────────────────────────── */
   .ss-concept__inner {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--pp-12);
+    align-items: start;
   }
 
   @media (min-width: 900px) {
     .ss-concept__inner {
-      grid-template-columns: 1fr 320px;
+      grid-template-columns: 1fr 280px;
       gap: var(--pp-16);
-      align-items: start;
     }
   }
 
@@ -450,21 +734,14 @@ const seasons = [
     color: var(--pp-text);
   }
 
-  .ss-concept__h2 em {
-    color: var(--pp-clary-sage);
-    font-style: italic;
-  }
+  .ss-concept__h2 em { color: var(--pp-clary-sage); font-style: italic; }
 
   .ss-concept__text p {
     font-size: clamp(17px, 1.4vw, 18px);
     color: var(--pp-text-soft);
     margin: 0 0 var(--pp-5);
-    max-width: 62ch;
-  }
-
-  .ss-concept__text strong {
-    color: var(--pp-text);
-    font-weight: 600;
+    max-width: 60ch;
+    line-height: 1.65;
   }
 
   .ss-concept__note {
@@ -475,47 +752,37 @@ const seasons = [
     padding: var(--pp-4) var(--pp-5);
     border-left: 2px solid var(--pp-border-strong);
     margin-top: var(--pp-6) !important;
+    line-height: 1.6 !important;
   }
 
-  /* Matrix sidebar */
-  .ss-matrix__label {
-    margin-bottom: var(--pp-4);
-  }
+  /* Season index sidebar */
+  .ss-season-index { display: flex; flex-direction: column; gap: var(--pp-3); }
 
-  .ss-matrix {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--pp-3);
-    margin-bottom: var(--pp-6);
-  }
-
-  .ss-matrix__season {
+  .ss-season-index__link {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    gap: var(--pp-4);
     padding: var(--pp-4) var(--pp-5);
     background: var(--pp-bg-elevated);
     border: 1px solid var(--pp-border-soft);
-    border-radius: var(--pp-radius-md);
     border-left: 3px solid var(--s-accent);
-    transition: border-color 160ms var(--pp-ease), background 160ms var(--pp-ease);
+    border-radius: var(--pp-radius-md);
     text-decoration: none;
+    transition: background 160ms var(--pp-ease);
   }
 
-  .ss-matrix__season:hover {
-    background: var(--pp-bg-sunken);
-    border-color: var(--s-accent);
-  }
+  .ss-season-index__link:hover { background: var(--pp-bg-sunken); }
 
-  .ss-matrix__dot {
+  .ss-season-index__dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: var(--s-accent);
-    margin-bottom: 2px;
+    flex-shrink: 0;
   }
 
-  .ss-matrix__name {
+  .ss-season-index__name {
+    display: block;
     font-family: var(--pp-font-display);
     font-style: italic;
     font-weight: 700;
@@ -523,29 +790,13 @@ const seasons = [
     color: var(--pp-text);
   }
 
-  .ss-matrix__tag {
+  .ss-season-index__tag {
+    display: block;
     font-family: var(--pp-font-mono);
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--pp-text-muted);
-  }
-
-  .ss-matrix__subslist {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--pp-2);
-  }
-
-  .ss-matrix__sub {
-    font-family: var(--pp-font-mono);
-    font-size: 10px;
-    letter-spacing: 0.10em;
-    color: var(--pp-text-ghost);
-    padding: 2px 8px;
-    border: 1px solid var(--pp-border-soft);
-    border-radius: 999px;
-    white-space: nowrap;
   }
 
   /* ── Season nav ───────────────────────────────────────────── */
@@ -561,7 +812,6 @@ const seasons = [
 
   .ss-season-nav__inner {
     display: flex;
-    gap: 0;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -587,11 +837,8 @@ const seasons = [
   }
 
   /* ── Season sections ──────────────────────────────────────── */
-  .ss-season {
-    padding-bottom: var(--pp-16);
-  }
+  .ss-season { padding-bottom: var(--pp-16); }
 
-  /* Band header */
   .ss-season__band {
     padding: var(--pp-12) 0;
     background:
@@ -601,49 +848,7 @@ const seasons = [
     margin-bottom: var(--pp-12);
   }
 
-  .ss-season__band-inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--pp-8);
-    align-items: center;
-  }
-
-  @media (min-width: 680px) {
-    .ss-season__band-inner {
-      grid-template-columns: 220px 1fr;
-      gap: var(--pp-12);
-    }
-  }
-
-  @media (min-width: 1000px) {
-    .ss-season__band-inner {
-      grid-template-columns: 260px 1fr;
-    }
-  }
-
-  .ss-season__cover-wrap {
-    border-radius: var(--pp-radius-md);
-    overflow: hidden;
-    box-shadow: 4px 4px 0 var(--band-accent);
-    transform: rotate(-1.5deg);
-    transition: transform 300ms var(--pp-ease);
-    flex-shrink: 0;
-  }
-
-  .ss-season__band:hover .ss-season__cover-wrap {
-    transform: rotate(0);
-  }
-
-  .ss-season__cover {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .ss-season__eyebrow {
-    color: color-mix(in srgb, var(--band-light) 80%, var(--pp-text-muted));
-    margin-bottom: var(--pp-3);
-  }
+  .ss-season__eyebrow { margin-bottom: var(--pp-3); color: color-mix(in srgb, var(--band-light) 80%, var(--pp-text-muted)); }
 
   .ss-season__title {
     margin: 0 0 var(--pp-3);
@@ -651,10 +856,7 @@ const seasons = [
     line-height: 0.9;
   }
 
-  .ss-season__title em {
-    color: var(--band-light);
-    font-style: italic;
-  }
+  .ss-season__title em { color: var(--band-light); font-style: italic; }
 
   .ss-season__tagline {
     font-family: var(--pp-font-mono);
@@ -673,104 +875,100 @@ const seasons = [
     line-height: 1.65;
   }
 
-  /* Sub-season grid */
-  .ss-subgrid {
+  /* ── Sub-season rows ──────────────────────────────────────── */
+  .ss-subseasons { display: flex; flex-direction: column; }
+
+  .ss-sub {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--pp-8);
+    padding: var(--pp-10) 0;
+    border-bottom: 1px solid var(--pp-border-soft);
   }
 
-  @media (min-width: 640px) {
-    .ss-subgrid {
-      grid-template-columns: 1fr 1fr;
+  .ss-sub:last-child { border-bottom: none; }
+
+  @media (min-width: 720px) {
+    .ss-sub {
+      grid-template-columns: 200px 1fr;
+      gap: var(--pp-12);
     }
   }
 
   @media (min-width: 1100px) {
-    .ss-subgrid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--pp-6);
+    .ss-sub {
+      grid-template-columns: 240px 1fr;
     }
   }
 
-  /* Sub-season card */
-  .ss-card {
-    background: var(--pp-bg-elevated);
-    border: 1px solid var(--pp-border-soft);
-    border-radius: var(--pp-radius-md);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 220ms var(--pp-ease), transform 220ms var(--pp-ease), box-shadow 220ms var(--pp-ease);
-  }
-
-  .ss-card:hover {
-    border-color: var(--card-accent);
-    transform: translateY(-3px);
-    box-shadow: 4px 4px 0 var(--card-accent);
-  }
-
-  .ss-card__img-wrap {
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background: var(--pp-bg-sunken);
-    flex-shrink: 0;
-  }
-
-  .ss-card__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 400ms var(--pp-ease);
-  }
-
-  .ss-card:hover .ss-card__img {
-    transform: scale(1.03);
-  }
-
-  .ss-card__body {
-    padding: var(--pp-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--pp-4);
-    flex: 1;
-  }
-
-  .ss-card__name {
+  .ss-sub__name {
     font-family: var(--pp-font-display);
     font-style: italic;
     font-weight: 700;
-    font-size: clamp(20px, 2vw, 26px);
-    line-height: 1.05;
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.1;
     letter-spacing: -0.01em;
     margin: 0;
     color: var(--pp-text);
   }
 
-  .ss-card__overview {
-    font-size: 13px;
+  .ss-sub__overview {
+    font-size: clamp(15px, 1.2vw, 17px);
     color: var(--pp-text-soft);
-    margin: 0;
-    line-height: 1.55;
+    margin: 0 0 var(--pp-6);
+    line-height: 1.6;
+    max-width: 58ch;
   }
 
-  /* Yarn picks */
-  .ss-card__yarns-wrap {
-    border-top: 1px solid var(--pp-border-soft);
-    padding-top: var(--pp-4);
+  /* ── Palette chips ────────────────────────────────────────── */
+  .ss-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pp-3);
+    margin-bottom: var(--pp-8);
   }
 
-  .ss-card__yarns-label {
+  .ss-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: default;
+  }
+
+  .ss-chip__swatch {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--pp-radius-sm);
+    display: block;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12), 2px 2px 0 var(--pp-bg-sunken);
+    transition: transform 160ms var(--pp-ease);
+  }
+
+  .ss-chip:hover .ss-chip__swatch { transform: translateY(-2px); }
+
+  .ss-chip__hex {
+    font-family: var(--pp-font-mono);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    color: var(--pp-text-ghost);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  /* ── Yarn lists ───────────────────────────────────────────── */
+  .ss-yarns { margin-bottom: var(--pp-6); }
+
+  .ss-yarns__label {
     font-family: var(--pp-font-mono);
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--pp-text-ghost);
     margin: 0 0 var(--pp-3);
   }
 
-  .ss-card__yarns {
+  .ss-yarn-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -779,56 +977,74 @@ const seasons = [
     gap: var(--pp-2);
   }
 
-  .ss-card__yarn {
+  .ss-yarn {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-3);
+    padding: var(--pp-2) 0;
+  }
+
+  .ss-yarn__swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15);
+  }
+
+  .ss-yarn__link {
+    font-size: 13px;
+    color: var(--pp-text-soft);
+    text-decoration: none;
+    transition: color 160ms var(--pp-ease);
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .ss-yarn__link:hover { color: var(--pp-terracotta); }
+
+  .ss-yarn__brand {
+    font-weight: 600;
+    color: var(--pp-text);
+  }
+
+  .ss-yarn__link:hover .ss-yarn__brand { color: var(--pp-terracotta); }
+
+  .ss-yarn__colorway { color: var(--pp-text-muted); }
+
+  .ss-yarn__hex {
+    font-family: var(--pp-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--pp-text-ghost);
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* ── Instagram link ───────────────────────────────────────── */
+  .ss-instagram {
+    display: inline-block;
+    margin-top: var(--pp-4);
     font-family: var(--pp-font-mono);
     font-size: 11px;
-    letter-spacing: 0.03em;
-    color: var(--pp-text-muted);
-    padding-left: var(--pp-4);
-    position: relative;
-  }
-
-  .ss-card__yarn::before {
-    content: '✦';
-    position: absolute;
-    left: 0;
-    color: var(--card-accent);
-    font-size: 8px;
-    top: 2px;
-  }
-
-  /* Held together callout */
-  .ss-card__pair {
-    margin: 0;
-    padding: var(--pp-4);
-    background: color-mix(in srgb, var(--card-accent) 8%, var(--pp-bg-sunken));
-    border-left: 3px solid var(--card-accent);
-    border-radius: 0 var(--pp-radius-sm) var(--pp-radius-sm) 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--pp-2);
-  }
-
-  .ss-card__pair-label {
-    font-family: var(--pp-font-mono);
-    font-size: 9px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--card-light);
+    color: var(--pp-periwinkle);
+    text-decoration: none;
+    border-bottom: 1px solid var(--pp-periwinkle);
+    transition: color 160ms var(--pp-ease), border-color 160ms var(--pp-ease);
+    padding-bottom: 1px;
   }
 
-  .ss-card__pair-text {
-    font-family: var(--pp-font-body);
-    font-style: italic;
-    font-size: 12px;
-    line-height: 1.55;
-    color: var(--pp-text-soft);
+  .ss-instagram:hover {
+    color: var(--pp-text);
+    border-color: var(--pp-text);
   }
 
-  /* Single squiggle break before CTA */
-  .ss-squiggle-break {
-    padding-top: var(--pp-12);
-  }
+  /* ── Single squiggle break ────────────────────────────────── */
+  .ss-squiggle-break { padding-top: var(--pp-12); }
 
   /* ── Footer CTA ───────────────────────────────────────────── */
   .ss-cta {
@@ -849,22 +1065,16 @@ const seasons = [
     margin: 0 0 var(--pp-6);
   }
 
-  .ss-cta__title em {
-    color: var(--pp-periwinkle);
-    font-style: italic;
-  }
+  .ss-cta__title em { color: var(--pp-periwinkle); font-style: italic; }
 
   .ss-cta__body {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--pp-text-soft);
     margin: 0 0 var(--pp-8);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
-  .ss-cta__body strong {
-    color: var(--pp-text);
-    font-weight: 600;
-  }
+  .ss-cta__body strong { color: var(--pp-text); font-weight: 600; }
 
   .ss-cta__btn {
     display: inline-flex;
@@ -874,12 +1084,12 @@ const seasons = [
     color: var(--pp-paper);
     font-family: var(--pp-font-mono);
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     border-radius: 999px;
     text-decoration: none;
-    transition: transform 160ms var(--pp-ease), box-shadow 160ms var(--pp-ease);
     box-shadow: 3px 3px 0 var(--pp-cordovan);
+    transition: transform 160ms var(--pp-ease), box-shadow 160ms var(--pp-ease);
   }
 
   .ss-cta__btn:hover {
@@ -888,9 +1098,7 @@ const seasons = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ss-card,
-    .ss-season__cover-wrap,
-    .ss-card__img,
+    .ss-chip__swatch,
     .ss-cta__btn {
       transform: none;
       transition: none;
