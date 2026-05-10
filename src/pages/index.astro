@@ -75,14 +75,37 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', ye
 <style>
   /* ── HERO ── */
   .hero {
+    position: relative;
+    overflow: hidden;
     padding: var(--pp-10) 0 var(--pp-12);
-    background:
-      linear-gradient(rgba(26,20,16,0.68), rgba(26,20,16,0.68)),
-      url('/IMG_5305.JPEG') center / cover no-repeat;
     border-bottom: 1px solid var(--pp-border-soft);
   }
 
+  /* Rotated photo background — portrait image turned landscape */
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 150vw;
+    height: 150vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    background: url('/IMG_5305.JPEG') center / cover no-repeat;
+    z-index: 0;
+  }
+
+  /* Dark overlay — lighter than before so tiles read through */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(26,20,16,0.50);
+    z-index: 1;
+  }
+
   .hero__inner {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
