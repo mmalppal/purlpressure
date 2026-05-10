@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import StickerLabel from '../components/StickerLabel.astro';
 import SquiggleDivider from '../components/SquiggleDivider.astro';
 ---
 <Base
@@ -10,14 +9,12 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
   <header class="hero">
     <div class="pp-container hero__inner">
       <div class="hero__copy">
-        <span class="hero__sticker">
-          <StickerLabel text="HI, I'M MALLORY" rotate={-4} bg="var(--pp-rose)" color="var(--pp-paper)" />
-        </span>
+        <p class="hero__byline">Curated by Mallory</p>
         <h1 class="pp-display pp-display--lg hero__title">
           I knit because I need to <em>feel something.</em>
         </h1>
         <p class="hero__lede">
-          I started Purl Pressure as a test knitting portfolio. I needed to prove I could actually do the thing. Then I started scrolling my feed and got bored. Same five patterns, same five neutrals, every week. So I started posting what I actually loved instead. Turns out a lot of people were bored too.
+          The knitting internet still has a beige problem — same five patterns, same five neutrals, every week. I got bored and started posting what I actually loved. Turns out a lot of people were bored too. Purl Pressure is where that goes now: Weekly Obsessions, color tools, and more in the works.
         </p>
       </div>
 
@@ -34,41 +31,33 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
   </header>
 
   <section class="pp-section story">
-    <div class="pp-container story__grid">
-      <div class="story__col">
-        <h2 class="story__h">It started as a portfolio. It became a lifeline.</h2>
-        <div class="pp-prose">
-          <p>
-            I wanted to test knit for designers and needed something to show I was real. Then my chronic illness got worse and I found myself home more than I&rsquo;d planned. Purl Pressure stopped being a side project and started being the thing that kept me sane. Community, creativity, a reason to keep going. I&rsquo;m neuro-spicy and I need to be doing something that makes me feel something or I will absolutely climb the walls.
-          </p>
-        </div>
+    <div class="pp-container">
+
+      <div class="story__block">
+        <h2 class="story__h">It started as a portfolio.<br/>It became a lifeline.</h2>
+        <p class="story__p">
+          I wanted to test knit for designers and needed something to show I was real. Then my chronic illness got worse and I found myself home more than I&rsquo;d planned. Purl Pressure stopped being a side project and started being the thing that kept me sane. Community, creativity, a reason to keep going. I&rsquo;m neuro-spicy and I need to be doing something that makes me feel something or I will absolutely climb the walls.
+        </p>
       </div>
 
-      <div class="story__col">
-        <h2 class="story__h">Everything is on purpose. Nothing is an accident.</h2>
-        <div class="pp-prose">
-          <p>
-            I live in the space where things make sense and look right at the same time. I love an elevated basic. The kind that doesn&rsquo;t announce itself. I love a statement piece that catches people off guard. Either way, if I&rsquo;m putting it in front of you, I&rsquo;ve already thought about it more than most people think about anything. If I&rsquo;m recommending a terracotta, I&rsquo;ve already figured out which rose goes next to it.
-          </p>
-        </div>
+      <div class="story__block">
+        <h2 class="story__h">Trendy, but make it<br/>last.</h2>
+        <p class="story__p">
+          My taste is all over the place and I&rsquo;m not sorry about it. Dynamic, eclectic, a little charismatic — I want things that feel current and things I know will still be right in five years. Sometimes that&rsquo;s the same thing. I pay attention to trends because I genuinely love watching them happen, and I&rsquo;m good at knowing which moments are worth more than a season. If I&rsquo;m putting it in front of you, it passed that test.
+        </p>
       </div>
+
+      <div class="story__block">
+        <h2 class="story__h">I build things when nothing else <em>fits.</em></h2>
+        <p class="story__p">
+          I&rsquo;m an engineer by trade and that brain doesn&rsquo;t quiet down just because I&rsquo;m holding yarn. There&rsquo;s a tool in the works. More soon.
+        </p>
+      </div>
+
     </div>
   </section>
 
   <SquiggleDivider />
-
-  <section class="pp-section tools">
-    <div class="pp-container">
-      <h2 class="pp-display pp-display--md tools__h">
-        I build things when nothing else <em>fits.</em>
-      </h2>
-      <div class="pp-prose tools__copy">
-        <p>
-          I&rsquo;m an engineer by trade and that brain doesn&rsquo;t quiet down just because I&rsquo;m holding yarn. There&rsquo;s a tool in the works. More soon.
-        </p>
-      </div>
-    </div>
-  </section>
 
   <section class="pp-section reach">
     <div class="pp-container reach__inner">
@@ -106,11 +95,18 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
     .hero__inner {
       grid-template-columns: 2fr 1fr;
       gap: var(--pp-16);
-      align-items: end;
+      align-items: center;
     }
   }
 
-  .hero__sticker { display: inline-block; margin-bottom: var(--pp-6); }
+  .hero__byline {
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pp-text-muted);
+    margin: 0 0 var(--pp-5);
+  }
   .hero__title { margin: 0 0 var(--pp-6); }
   .hero__title em { color: var(--pp-rose); font-style: italic; }
 
@@ -157,37 +153,61 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
   .hero__facts strong { color: var(--pp-text); font-weight: 600; text-align: right; }
 
   /* Story */
-  .story__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--pp-12);
+  .story__intro {
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.6;
+    color: var(--pp-text-soft);
+    max-width: 62ch;
+    margin: 0 0 var(--pp-12);
+    padding-bottom: var(--pp-12);
+    border-bottom: 1px solid var(--pp-border-soft);
   }
 
-  @media (min-width: 880px) {
-    .story__grid { grid-template-columns: 1fr 1fr; gap: var(--pp-16); }
+  .story__block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-5);
+    max-width: 720px;
+    padding-bottom: var(--pp-12);
+    margin-bottom: var(--pp-12);
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .story__block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  @media (min-width: 640px) {
+    .story__block {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--pp-10);
+      align-items: start;
+      max-width: 100%;
+    }
   }
 
   .story__h {
     font-family: var(--pp-font-display);
     font-style: italic;
     font-weight: 800;
-    font-size: clamp(28px, 3.4vw, 44px);
-    line-height: 1.05;
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 1.0;
     letter-spacing: -0.02em;
-    margin: 0 0 var(--pp-5);
+    margin: 0;
     color: var(--pp-text);
   }
 
-  /* Tools */
-  .tools__h { margin: var(--pp-3) 0 var(--pp-6); color: var(--pp-text); }
-  .tools__h em {
-    font-style: italic;
-    color: var(--pp-terracotta);
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 6px;
+  .story__p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--pp-text-soft);
+    margin: 0;
+    max-width: 54ch;
   }
-  .tools__copy { max-width: 64ch; }
+
+  .story__h em { color: var(--pp-terracotta); font-style: italic; }
 
   /* Reach */
   .reach__inner { text-align: center; }
