@@ -16,13 +16,13 @@ Not a SaaS. Not behind auth. Static marketing + blog.
 - **Astro 5** (static output) + MDX content collections
 - **Vercel** adapter — `output: 'static'`, `adapter: vercel()`
 - **No UI framework** — raw CSS with design tokens in `src/styles/global.css`
-- **Fonts**: Fraunces (display, italic, wonky), Space Grotesk (body), DM Mono (small labels) — loaded from Google Fonts in `Base.astro`
+- **Fonts**: Luckybones (display, self-hosted TTF), Stylish (body, Google Fonts), Now (labels/mono, self-hosted TTF) — see `public/fonts/` and `Base.astro`
 
 ## Aesthetic
 
 Warm textile-studio palette (terracotta, clary sage, periwinkle, walnut, oxblood-pink), pushed weirder:
 
-- Wonky oversized italic Fraunces (clamp up to ~220px)
+- Heavy bold italic Luckybones as display font (clamp up to ~220px) — self-hosted, very distinctive
 - Off-grid layout (rotated cards, overlapping color blocks, asymmetric grids)
 - Risograph noise overlay on body (SVG turbulence, mix-blend-mode: overlay)
 - Squiggle SVG dividers (looks like garter stitch)
@@ -65,8 +65,7 @@ src/
 2. Update frontmatter:
    - `title`, `date`, `excerpt` — required
    - `color`, `accent` — hex for the post's color band; pick from the design tokens
-   - `vibe` — short string ("Soft Winter", "True Summer") — appears as a sticker
-   - `patterns[]` — `{ name, designer, ravelry?, notes? }` — shown in the post sidebar
+   - `patterns[]` — `{ name, designer, ravelry?, image? }` — shown in the post as image+specs rows
    - `instagramPost` — optional URL to the carousel
 3. Write body in MDX. The `.pp-prose` styles render headings, blockquotes, links with terracotta highlight.
 4. Push to `main`. Vercel auto-deploys.
