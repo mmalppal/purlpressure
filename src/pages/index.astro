@@ -81,7 +81,8 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', ye
     border-bottom: 1px solid var(--pp-border-soft);
   }
 
-  /* Rotated photo background — portrait image turned landscape */
+  /* Rotated photo background — portrait image turned landscape.
+     translate3d forces GPU compositing which keeps the image sharp. */
   .hero::before {
     content: '';
     position: absolute;
@@ -89,7 +90,10 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', ye
     height: 150vw;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(90deg);
+    transform: translate3d(-50%, -50%, 0) rotate(90deg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
     background: url('/IMG_5305.JPEG') center / cover no-repeat;
     z-index: 0;
   }
