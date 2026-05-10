@@ -14,8 +14,10 @@ export interface RavelryPatternData {
 }
 
 export async function fetchPatternData(ravelryUrl: string): Promise<RavelryPatternData | null> {
-  const username = import.meta.env.RAVELRY_USERNAME;
-  const apiKey = import.meta.env.RAVELRY_API_KEY;
+  // process.env   → populated by Vercel (and by Vite's dotenv during `astro build`)
+  // import.meta.env → populated by Vite from .env files (local fallback)
+  const username = process.env.RAVELRY_USERNAME ?? import.meta.env.RAVELRY_USERNAME;
+  const apiKey = process.env.RAVELRY_API_KEY ?? import.meta.env.RAVELRY_API_KEY;
   if (!username || !apiKey) return null;
 
   const match = ravelryUrl.match(/\/patterns\/library\/([^/?#]+)/);
@@ -24,7 +26,7 @@ export async function fetchPatternData(ravelryUrl: string): Promise<RavelryPatte
 
   try {
     const res = await fetch(
-      `https://api.ravelry.com/patterns/show.json?permalink=${permalink}`,
+      `https://api.ravelry.com/patterns/${permalink}.json`,
       { headers: { Authorization: `Basic ${btoa(`${username}:${apiKey}`)}` } }
     );
     if (!res.ok) return null;
@@ -49,9 +51,9 @@ export async function fetchPatternData(ravelryUrl: string): Promise<RavelryPatte
       needleSizes,
       yardage: p.yardage_description ?? null,
       languages,
-      rating: p.rating_count > 0 ? p.rating_average : null,
-      ratingCount: p.rating_count > 0 ? p.rating_count : null,
-      difficulty: p.difficulty_count > 0 ? p.difficulty_average : null,
+      rating: (p.rating_average != null && p.rating_average > 0) ? p.rating_average : null,
+      ratingCount: p.rating_count != null ? p.rating_count : null,
+      difficulty: (p.difficulty_average != null && p.difficulty_average > 0) ? p.difficulty_average : null,
       notes,
       permalink,
     };
