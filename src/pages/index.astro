@@ -81,20 +81,13 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', ye
     border-bottom: 1px solid var(--pp-border-soft);
   }
 
-  /* Rotated photo background — portrait image turned landscape.
-     translate3d forces GPU compositing which keeps the image sharp. */
+  /* Tiled painting — Dividing Cells by Liam Hennessy (735×1032px).
+     Tiling at 380px keeps each tile at/below source resolution → sharp at all sizes. */
   .hero::before {
     content: '';
     position: absolute;
-    width: 150vw;
-    height: 150vw;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0) rotate(90deg);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    will-change: transform;
-    background: url('/IMG_5305.JPEG') center / cover no-repeat;
+    inset: 0;
+    background: url('/Dividing%20Cells%20by%20Liam%20Hennessy.jpg') top left / 380px auto repeat;
     z-index: 0;
   }
 
@@ -236,7 +229,8 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', ye
   .recent__foot { display: flex; }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__title-l1, .hero__title-l2 { transform: none; }
+    .hero__title-l1,
+    .hero__title-l2 { transform: none; }
     .featured__img img { transition: none; }
   }
 </style>
