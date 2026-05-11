@@ -6,7 +6,7 @@ const links = [
 ];
 const path = Astro.url.pathname;
 ---
-<header class="nav">
+<header class="nav" id="site-nav">
   <div class="pp-container nav__inner">
     <a href="/" class="nav__brand" aria-label="Purl Pressure home">
       <span class="nav__mark">✶</span>
@@ -23,10 +23,69 @@ const path = Astro.url.pathname;
         </a>
       ))}
     </nav>
+
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="nav__burger-bar"></span>
+      <span class="nav__burger-bar"></span>
+      <span class="nav__burger-bar"></span>
+    </button>
   </div>
 </header>
 
+<!-- Mobile drawer — sits below the sticky nav -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav class="mobile-menu__nav" aria-label="Mobile primary">
+    {links.map(l => (
+      <a
+        href={l.href}
+        class:list={['mobile-menu__link', { 'mobile-menu__link--active': path.startsWith(l.href) }]}
+      >
+        {l.label}
+      </a>
+    ))}
+  </nav>
+  <span class="mobile-menu__deco" aria-hidden="true">✶</span>
+</div>
+
+<script>
+  const burger = document.querySelector('.nav__burger') as HTMLButtonElement;
+  const menu   = document.getElementById('mobile-menu') as HTMLElement;
+
+  function openMenu() {
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden', 'false');
+    burger.classList.add('is-open');
+    burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Close menu');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', () =>
+    menu.classList.contains('is-open') ? closeMenu() : openMenu()
+  );
+
+  // Close on link tap
+  menu.querySelectorAll('.mobile-menu__link').forEach(link =>
+    link.addEventListener('click', closeMenu)
+  );
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+  });
+</script>
+
 <style>
+  /* ── NAV SHELL ── */
   .nav {
     position: sticky;
     top: 0;
@@ -45,6 +104,7 @@ const path = Astro.url.pathname;
     gap: var(--pp-6);
   }
 
+  /* ── BRAND ── */
   .nav__brand {
     display: inline-flex;
     align-items: center;
@@ -68,6 +128,7 @@ const path = Astro.url.pathname;
   .nav__name { transition: transform 200ms var(--pp-ease); }
   .nav__brand:hover .nav__name { transform: skewX(-6deg); }
 
+  /* ── DESKTOP LINKS ── */
   .nav__links {
     display: none;
     gap: var(--pp-6);
@@ -88,13 +149,131 @@ const path = Astro.url.pathname;
     transition: color 160ms var(--pp-ease), border-color 160ms var(--pp-ease);
   }
 
-  .nav__link:hover {
-    color: var(--pp-text);
-    border-color: var(--pp-terracotta);
+  .nav__link:hover        { color: var(--pp-text); border-color: var(--pp-terracotta); }
+  .nav__link--active      { color: var(--pp-text); border-color: var(--pp-terracotta); }
+
+  /* ── HAMBURGER BUTTON ── */
+  .nav__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--pp-radius-sm);
+    transition: background 160ms var(--pp-ease);
+    /* only visible on mobile */
+    flex-shrink: 0;
   }
 
-  .nav__link--active {
+  .nav__burger:hover { background: var(--pp-bg-elevated); }
+
+  @media (min-width: 720px) {
+    .nav__burger { display: none; }
+  }
+
+  .nav__burger-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--pp-text);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 260ms var(--pp-ease), opacity 160ms var(--pp-ease), background 160ms var(--pp-ease);
+  }
+
+  /* Animate bars → X when open */
+  .nav__burger.is-open .nav__burger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav__burger.is-open .nav__burger-bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .nav__burger.is-open .nav__burger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── MOBILE DRAWER ── */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    /* pushed below the sticky nav via padding — nav is ~50px */
+    padding-top: 57px;
+    background: var(--pp-bg);
+    z-index: 49;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-inline: var(--pp-6);
+
+    /* hidden by default */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 240ms var(--pp-ease), transform 240ms var(--pp-ease);
+  }
+
+  .mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  /* Only render the drawer on mobile */
+  @media (min-width: 720px) {
+    .mobile-menu { display: none !important; }
+  }
+
+  .mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-6);
+    width: 100%;
+  }
+
+  .mobile-menu__link {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 800;
+    font-size: clamp(36px, 10vw, 56px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--pp-text-soft);
+    transition: color 160ms var(--pp-ease), transform 160ms var(--pp-ease);
+    display: block;
+  }
+
+  .mobile-menu__link:hover,
+  .mobile-menu__link--active {
     color: var(--pp-text);
-    border-color: var(--pp-terracotta);
+    transform: translateX(6px);
+  }
+
+  .mobile-menu__link--active {
+    color: var(--pp-terracotta);
+  }
+
+  .mobile-menu__deco {
+    position: absolute;
+    bottom: var(--pp-10);
+    right: var(--pp-8);
+    font-size: 80px;
+    color: var(--pp-terracotta);
+    opacity: 0.15;
+    line-height: 1;
+    pointer-events: none;
+    transform: rotate(-12deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav__burger-bar    { transition: none; }
+    .mobile-menu        { transition: none; }
+    .mobile-menu__link  { transition: none; }
   }
 </style>
