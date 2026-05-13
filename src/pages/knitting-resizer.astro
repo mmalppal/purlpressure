@@ -1,0 +1,832 @@
+---
+import Base from '../layouts/Base.astro';
+import StickerLabel from '../components/StickerLabel.astro';
+import SquiggleDivider from '../components/SquiggleDivider.astro';
+---
+
+<Base
+  title="Knitting Resizer — Purl Pressure"
+  description="Free tool that sizes knitting patterns to your body from your gauge and measurements. Plus-size-aware math. Starting with top-down raglans."
+>
+  <!-- ── Hero ─────────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="pp-container hero__inner">
+      <div class="hero__badge">
+        <StickerLabel text="FREE TOOL" rotate={-3} bg="var(--pp-clary-sage)" color="var(--pp-ink)" />
+      </div>
+      <h1 class="pp-display pp-display--lg hero__title">
+        Knitting <em>Resizer.</em>
+      </h1>
+      <p class="hero__lead">
+        Enter your gauge and measurements. Get a complete, knittable pattern sized for your body —
+        not scaled from a size 10. Plus-size math built in.
+        Starting with top-down raglans; more constructions on the way.
+      </p>
+    </div>
+  </header>
+
+  <SquiggleDivider />
+
+  <!-- ── Construction picker ──────────────────────────────────────── -->
+  <section class="picker-section">
+    <div class="pp-container">
+      <p class="pp-eyebrow picker-label">Choose a construction</p>
+      <div class="picker-tabs" role="tablist">
+        <button class="picker-tab picker-tab--active" role="tab" aria-selected="true" data-tab="raglan">
+          Top-down Raglan
+        </button>
+        <button class="picker-tab picker-tab--soon" role="tab" aria-selected="false" disabled>
+          Set-in Sleeve
+          <span class="picker-soon">soon</span>
+        </button>
+        <button class="picker-tab picker-tab--soon" role="tab" aria-selected="false" disabled>
+          Drop Shoulder
+          <span class="picker-soon">soon</span>
+        </button>
+        <button class="picker-tab picker-tab--soon" role="tab" aria-selected="false" disabled>
+          Yoke Cardigan
+          <span class="picker-soon">soon</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Form + Tips ──────────────────────────────────────────────── -->
+  <section class="pp-section form-section">
+    <div class="pp-container form-layout">
+
+      <form id="grader-form" novalidate>
+
+        <!-- 01 — Gauge -->
+        <fieldset class="form-card">
+          <legend class="form-card__legend">
+            <span class="pp-eyebrow">01 — Gauge</span>
+            <p class="form-card__sub">Measure over 4 inches / 10 cm in stockinette, blocked and washed.</p>
+          </legend>
+          <div class="field-pair">
+            <div class="field">
+              <label class="field__label" for="sts_per_4in">Stitches / 4 in</label>
+              <input class="field__input" type="number" id="sts_per_4in"
+                step="0.5" min="4" max="48" required placeholder="e.g. 18">
+            </div>
+            <div class="field">
+              <label class="field__label" for="rows_per_4in">Rows / 4 in</label>
+              <input class="field__input" type="number" id="rows_per_4in"
+                step="0.5" min="4" max="80" required placeholder="e.g. 24">
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 02 — Measurements -->
+        <fieldset class="form-card">
+          <legend class="form-card__legend">
+            <span class="pp-eyebrow">02 — Measurements</span>
+            <p class="form-card__sub">All in inches. Measure your body, not a garment you own.</p>
+          </legend>
+          <div class="field-grid">
+            <div class="field">
+              <label class="field__label" for="bust">Bust circumference *</label>
+              <input class="field__input" type="number" id="bust"
+                step="0.25" min="20" max="80" required placeholder="e.g. 42">
+            </div>
+            <div class="field">
+              <label class="field__label" for="yoke_depth">Yoke depth *</label>
+              <input class="field__input" type="number" id="yoke_depth"
+                step="0.25" min="5" max="20" required placeholder="neck to underarm">
+              <span class="field__hint">Typical: 9–13" depending on bust size</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="body_length">Body length *</label>
+              <input class="field__input" type="number" id="body_length"
+                step="0.25" min="8" max="36" required placeholder="underarm to hem">
+            </div>
+            <div class="field">
+              <label class="field__label" for="sleeve_length">Sleeve length *</label>
+              <input class="field__input" type="number" id="sleeve_length"
+                step="0.25" min="10" max="36" required placeholder="underarm to cuff">
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Optional measurements -->
+        <details class="form-card form-card--details">
+          <summary class="form-card__summary">
+            <span class="pp-eyebrow">Optional — Extra measurements</span>
+            <span class="form-card__summary-hint">Estimated from bust if skipped. Measuring improves fit.</span>
+            <span class="summary-chevron" aria-hidden="true">›</span>
+          </summary>
+          <div class="field-grid field-grid--sm">
+            <div class="field">
+              <label class="field__label" for="upper_arm">Upper arm</label>
+              <input class="field__input" type="number" id="upper_arm"
+                step="0.25" min="6" max="40" placeholder="e.g. 15">
+              <span class="field__hint">Flexed, at widest point</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="neck_circumference">Neck circumference</label>
+              <input class="field__input" type="number" id="neck_circumference"
+                step="0.25" min="10" max="24" placeholder="e.g. 14">
+            </div>
+            <div class="field">
+              <label class="field__label" for="wrist">Wrist circumference</label>
+              <input class="field__input" type="number" id="wrist"
+                step="0.25" min="4" max="14" placeholder="e.g. 6.5">
+            </div>
+          </div>
+        </details>
+
+        <!-- 03 — Fit -->
+        <fieldset class="form-card">
+          <legend class="form-card__legend">
+            <span class="pp-eyebrow">03 — Fit</span>
+          </legend>
+          <div class="field-grid">
+            <div class="field field--full">
+              <label class="field__label" for="ease">Ease preset</label>
+              <select class="field__input field__select" id="ease">
+                <option value="close_fitting">Close fitting (+1" bust, snug)</option>
+                <option value="classic" selected>Classic (+3" bust, relaxed comfort)</option>
+                <option value="plus_friendly_classic">Plus-friendly classic (+3.5" + front bias)</option>
+                <option value="relaxed">Relaxed (+5" bust, cozy)</option>
+                <option value="oversized">Oversized (+8" bust, slouchy)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="bust_short_rows">Bust short rows</label>
+              <select class="field__input field__select" id="bust_short_rows">
+                <option value="auto" selected>Auto (based on bust size + ease)</option>
+                <option value="yes">Always on</option>
+                <option value="no">Off</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="body_only_inc_max_inches">Below-join shaping budget (in)</label>
+              <input class="field__input" type="number" id="body_only_inc_max_inches"
+                step="0.5" min="0" max="10" value="2">
+              <span class="field__hint">Set to 4+ for bust ≥ 46"</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 04 — Pattern details -->
+        <fieldset class="form-card">
+          <legend class="form-card__legend">
+            <span class="pp-eyebrow">04 — Pattern details</span>
+          </legend>
+          <div class="field-grid">
+            <div class="field">
+              <label class="field__label" for="pattern_name">Pattern name</label>
+              <input class="field__input" type="text" id="pattern_name"
+                value="My Raglan" placeholder="My Raglan">
+            </div>
+            <div class="field">
+              <label class="field__label" for="designer">Designer / your name</label>
+              <input class="field__input" type="text" id="designer" placeholder="(you!)">
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Error display -->
+        <div id="form-error" class="form-error" hidden aria-live="polite">
+          <p id="form-error-msg"></p>
+        </div>
+
+        <!-- Actions -->
+        <div class="form-actions">
+          <button type="submit" id="submit-btn" class="pp-btn pp-btn--accent">
+            <span id="btn-label">Generate pattern →</span>
+            <span id="btn-spinner" class="btn-spinner" hidden aria-hidden="true"></span>
+          </button>
+          <p class="form-actions__note">Runs on our server. Nothing is saved or stored.</p>
+        </div>
+
+      </form>
+
+      <!-- Tips sidebar -->
+      <aside class="tips-panel">
+        <p class="pp-eyebrow">Measuring guide</p>
+        <ul class="tips-list">
+          <li>
+            <strong>Bust:</strong> fullest point, tape parallel to the floor. Don't pull tight.
+          </li>
+          <li>
+            <strong>Yoke depth:</strong> back of neck to underarm, where a seam would sit.
+            For bust ≥ 46" expect 11–13"; shallower yokes won't fit all the increases.
+          </li>
+          <li>
+            <strong>Body length:</strong> underarm to hem. How long do you want the sweater?
+          </li>
+          <li>
+            <strong>Sleeve length:</strong> underarm to wrist bone (or wherever you want the cuff).
+          </li>
+          <li>
+            <strong>Upper arm:</strong> flexed, at the widest point of the bicep.
+          </li>
+        </ul>
+        <div class="tip-callout">
+          <p class="pp-eyebrow tip-callout__head">For plus sizes</p>
+          <p>
+            Select <strong>Plus-friendly classic</strong> ease and set the below-join
+            shaping budget to <strong>4"</strong> if your bust is 46" or larger.
+            This gives the algorithm room to place body-only increases below the underarm
+            without cramming everything into a shallow yoke.
+          </p>
+        </div>
+        <div class="tip-callout tip-callout--info">
+          <p class="pp-eyebrow tip-callout__head">How this is different</p>
+          <p>
+            Standard grading scales a size 10 up. This computes your pattern from scratch
+            using plus-size-calibrated math — asymmetric yoke increases, piecewise body
+            estimators, and optional bust short rows to level the front hem.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ── Results ──────────────────────────────────────────────────── -->
+  <section id="results-section" class="results-section" hidden>
+    <div class="pp-container">
+      <div class="results-header">
+        <div class="results-header__left">
+          <p class="pp-eyebrow">Your pattern</p>
+        </div>
+        <div class="results-header__actions">
+          <button id="copy-btn" class="pp-btn pp-btn--ghost" type="button">Copy Markdown</button>
+          <button id="new-pattern-btn" class="pp-btn pp-btn--ghost" type="button">← New pattern</button>
+        </div>
+      </div>
+      <div id="pattern-output" class="pattern-output pp-prose"></div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* ── Hero ──────────────────────────────────────────────────────── */
+  .hero {
+    padding: var(--pp-16) 0 var(--pp-12);
+    background:
+      radial-gradient(ellipse at 15% 40%, color-mix(in srgb, var(--pp-clary-sage) 12%, transparent), transparent 60%),
+      radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--pp-periwinkle) 8%, transparent), transparent 55%),
+      var(--pp-bg);
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .hero__inner { display: flex; flex-direction: column; gap: var(--pp-5); }
+  .hero__badge { margin-bottom: var(--pp-2); }
+
+  .hero__title { margin: 0 0 var(--pp-5); color: var(--pp-text); }
+  .hero__title em { color: var(--pp-clary-sage); font-style: italic; }
+
+  .hero__lead {
+    font-size: clamp(17px, 1.5vw, 21px);
+    line-height: 1.55;
+    color: var(--pp-text-soft);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  /* ── Construction picker ───────────────────────────────────────── */
+  .picker-section {
+    padding: var(--pp-6) 0;
+    border-bottom: 1px solid var(--pp-border-soft);
+    background: var(--pp-bg-elevated);
+  }
+
+  .picker-label { margin-bottom: var(--pp-3); }
+
+  .picker-tabs {
+    display: flex;
+    gap: var(--pp-2);
+    flex-wrap: wrap;
+  }
+
+  .picker-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pp-2);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: var(--pp-font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: all 160ms var(--pp-ease);
+    border: 1px solid var(--pp-border);
+    background: transparent;
+    color: var(--pp-text-muted);
+  }
+
+  .picker-tab--active {
+    background: var(--pp-terracotta);
+    border-color: var(--pp-terracotta);
+    color: var(--pp-paper);
+    box-shadow: 0 2px 0 var(--pp-cordovan);
+  }
+
+  .picker-tab--active:hover {
+    transform: translate(-1px, -2px);
+    box-shadow: 0 4px 0 var(--pp-cordovan);
+  }
+
+  .picker-tab--soon {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .picker-soon {
+    font-family: var(--pp-font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: var(--pp-border-strong);
+    color: var(--pp-text-ghost);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .picker-tab--active:hover { transform: none; box-shadow: 0 2px 0 var(--pp-cordovan); }
+  }
+
+  /* ── Form layout ───────────────────────────────────────────────── */
+  .form-section { padding-top: var(--pp-12); }
+
+  .form-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-8);
+  }
+
+  @media (min-width: 1024px) {
+    .form-layout {
+      grid-template-columns: 1fr 320px;
+      gap: var(--pp-12);
+      align-items: start;
+    }
+  }
+
+  /* ── Form cards ─────────────────────────────────────────────────── */
+  fieldset, .form-card {
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    background: var(--pp-bg-elevated);
+    padding: var(--pp-6);
+    margin: 0 0 var(--pp-4);
+  }
+
+  .form-card--details { padding: 0; overflow: hidden; }
+
+  .form-card__legend {
+    display: block;
+    padding: 0 0 var(--pp-4);
+    width: 100%;
+  }
+
+  .form-card__sub {
+    font-size: 13px;
+    color: var(--pp-text-muted);
+    margin: 4px 0 0;
+    font-family: var(--pp-font-body);
+  }
+
+  .form-card__summary {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-3);
+    padding: var(--pp-5) var(--pp-6);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .form-card__summary::-webkit-details-marker { display: none; }
+
+  .form-card__summary-hint {
+    flex: 1;
+    font-size: 13px;
+    color: var(--pp-text-muted);
+  }
+
+  .summary-chevron {
+    color: var(--pp-text-muted);
+    font-size: 18px;
+    transition: transform 220ms var(--pp-ease);
+    flex-shrink: 0;
+  }
+
+  details[open] .summary-chevron { transform: rotate(90deg); }
+  details[open] .field-grid { padding: 0 var(--pp-6) var(--pp-6); }
+
+  /* ── Field grids ───────────────────────────────────────────────── */
+  .field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--pp-4); }
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--pp-4); }
+
+  .field-grid--sm {
+    grid-template-columns: 1fr;
+    padding: 0 var(--pp-6) var(--pp-6);
+  }
+
+  @media (min-width: 600px) {
+    .field-grid--sm { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .field--full { grid-column: 1 / -1; }
+
+  /* ── Fields ─────────────────────────────────────────────────────── */
+  .field { display: flex; flex-direction: column; gap: 5px; }
+
+  .field__label {
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--pp-text-muted);
+  }
+
+  .field__input {
+    background: var(--pp-bg-sunken);
+    border: 1px solid var(--pp-border);
+    border-radius: var(--pp-radius);
+    color: var(--pp-text);
+    font-family: var(--pp-font-body);
+    font-size: 15px;
+    padding: 10px 12px;
+    width: 100%;
+    transition: border-color 160ms var(--pp-ease), box-shadow 160ms var(--pp-ease);
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .field__input:focus {
+    outline: none;
+    border-color: var(--pp-terracotta);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--pp-terracotta) 20%, transparent);
+  }
+
+  .field__input::placeholder { color: var(--pp-text-ghost); }
+  .field__input:invalid:not(:placeholder-shown) { border-color: var(--pp-crimson); }
+
+  .field__select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%239E8F7C' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+  }
+
+  .field__hint {
+    font-size: 12px;
+    color: var(--pp-text-ghost);
+    font-family: var(--pp-font-mono);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Error ──────────────────────────────────────────────────────── */
+  .form-error {
+    background: color-mix(in srgb, var(--pp-crimson) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--pp-crimson) 40%, transparent);
+    border-radius: var(--pp-radius);
+    padding: var(--pp-4) var(--pp-5);
+    margin-bottom: var(--pp-4);
+  }
+
+  .form-error p {
+    margin: 0;
+    color: color-mix(in srgb, var(--pp-crimson) 90%, var(--pp-text));
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── Actions ────────────────────────────────────────────────────── */
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-5);
+    flex-wrap: wrap;
+    margin-top: var(--pp-2);
+  }
+
+  .form-actions__note {
+    font-size: 13px;
+    color: var(--pp-text-ghost);
+    margin: 0;
+    font-family: var(--pp-font-mono);
+    letter-spacing: 0.04em;
+  }
+
+  #submit-btn { display: inline-flex; align-items: center; gap: var(--pp-3); }
+
+  .btn-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid color-mix(in srgb, var(--pp-paper) 40%, transparent);
+    border-top-color: var(--pp-paper);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-spinner { animation: none; opacity: 0.6; }
+  }
+
+  /* ── Tips panel ─────────────────────────────────────────────────── */
+  .tips-panel {
+    position: sticky;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-5);
+  }
+
+  .tips-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--pp-3) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-3);
+  }
+
+  .tips-list li {
+    font-size: 14px;
+    color: var(--pp-text-soft);
+    line-height: 1.5;
+    padding-left: var(--pp-4);
+    border-left: 2px solid var(--pp-clary-sage);
+  }
+
+  .tips-list li strong { color: var(--pp-text); }
+
+  .tip-callout {
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    padding: var(--pp-5);
+  }
+
+  .tip-callout--info {
+    border-color: color-mix(in srgb, var(--pp-periwinkle) 30%, var(--pp-border-soft));
+    background: color-mix(in srgb, var(--pp-periwinkle) 6%, var(--pp-bg-elevated));
+  }
+
+  .tip-callout__head { margin-bottom: var(--pp-2); }
+
+  .tip-callout p:last-child {
+    font-size: 14px;
+    color: var(--pp-text-soft);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .tip-callout p strong { color: var(--pp-text); }
+
+  /* ── Results ────────────────────────────────────────────────────── */
+  .results-section {
+    padding: var(--pp-16) 0;
+    border-top: 1px solid var(--pp-border-soft);
+    background: var(--pp-bg-sunken);
+  }
+
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--pp-4);
+    margin-bottom: var(--pp-8);
+    flex-wrap: wrap;
+  }
+
+  .results-header__actions { display: flex; gap: var(--pp-3); }
+
+  .pattern-output {
+    max-width: none;
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    padding: var(--pp-8);
+  }
+
+  .pattern-output table {
+    width: auto;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: var(--pp-4) 0;
+  }
+
+  .pattern-output th, .pattern-output td {
+    padding: 6px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .pattern-output th {
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pp-text-muted);
+    border-bottom-color: var(--pp-border-strong);
+  }
+
+  .pattern-output pre {
+    background: var(--pp-bg-sunken);
+    border-radius: var(--pp-radius);
+    padding: var(--pp-5);
+    overflow-x: auto;
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .pattern-output code {
+    font-family: var(--pp-font-mono);
+    font-size: 0.9em;
+    background: var(--pp-bg-sunken);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  .pattern-output pre code { background: none; padding: 0; font-size: inherit; }
+
+  .pattern-output h2 {
+    margin-top: var(--pp-10);
+    border-bottom: 1px solid var(--pp-border-soft);
+    padding-bottom: var(--pp-2);
+  }
+
+  .pattern-output h3 { margin-top: var(--pp-6); color: var(--pp-terracotta); }
+
+  @media (max-width: 1023px) { .tips-panel { position: static; } }
+
+  @media (max-width: 599px) {
+    .field-pair, .field-grid { grid-template-columns: 1fr; }
+    .pattern-output { padding: var(--pp-5); }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('grader-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnLabel = document.getElementById('btn-label') as HTMLElement;
+  const btnSpinner = document.getElementById('btn-spinner') as HTMLElement;
+  const formError = document.getElementById('form-error') as HTMLElement;
+  const formErrorMsg = document.getElementById('form-error-msg') as HTMLElement;
+  const resultsSection = document.getElementById('results-section') as HTMLElement;
+  const patternOutput = document.getElementById('pattern-output') as HTMLElement;
+  const copyBtn = document.getElementById('copy-btn') as HTMLButtonElement;
+  const newPatternBtn = document.getElementById('new-pattern-btn') as HTMLButtonElement;
+
+  let rawMarkdown = '';
+
+  function val(id: string): string {
+    return (document.getElementById(id) as HTMLInputElement).value.trim();
+  }
+
+  function numVal(id: string): number | null {
+    const v = val(id);
+    if (!v) return null;
+    const n = parseFloat(v);
+    return isNaN(n) ? null : n;
+  }
+
+  function setLoading(on: boolean) {
+    submitBtn.disabled = on;
+    btnLabel.textContent = on ? 'Generating…' : 'Generate pattern →';
+    btnSpinner.hidden = !on;
+  }
+
+  function showError(msg: string) {
+    formErrorMsg.textContent = msg;
+    formError.hidden = false;
+    formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function clearError() {
+    formError.hidden = true;
+    formErrorMsg.textContent = '';
+  }
+
+  function loadMarked(): Promise<void> {
+    if ((window as any).marked) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/marked@14/marked.min.js';
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('Failed to load markdown renderer'));
+      document.head.appendChild(s);
+    });
+  }
+
+  function buildPayload() {
+    const bust = numVal('bust');
+    const yoke_depth = numVal('yoke_depth');
+    const body_length = numVal('body_length');
+    const sleeve_length = numVal('sleeve_length');
+    const sts = numVal('sts_per_4in');
+    const rows = numVal('rows_per_4in');
+
+    if (!sts || !rows) throw new Error('Gauge is required — enter stitches and rows over 4 inches.');
+    if (!bust) throw new Error('Bust circumference is required.');
+    if (!yoke_depth) throw new Error('Yoke depth is required.');
+    if (!body_length) throw new Error('Body length is required.');
+    if (!sleeve_length) throw new Error('Sleeve length is required.');
+
+    return {
+      gauge: { sts_per_4in: sts, rows_per_4in: rows },
+      measurements: {
+        bust,
+        yoke_depth,
+        body_length,
+        sleeve_length,
+        upper_arm: numVal('upper_arm'),
+        neck_circumference: numVal('neck_circumference'),
+        wrist: numVal('wrist'),
+      },
+      ease: val('ease') || 'classic',
+      options: {
+        bust_short_rows: val('bust_short_rows') || 'auto',
+        body_only_inc_max_inches: numVal('body_only_inc_max_inches') ?? 2.0,
+        pattern_name: val('pattern_name') || 'My Raglan',
+        designer: val('designer'),
+        skill_level: 'Intermediate',
+      },
+    };
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearError();
+
+    let payload: ReturnType<typeof buildPayload>;
+    try {
+      payload = buildPayload();
+    } catch (err: any) {
+      showError(err.message);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await loadMarked();
+
+      const res = await fetch('/api/grade', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!data.ok) {
+        showError(data.error || 'An error occurred. Please check your inputs.');
+        return;
+      }
+
+      rawMarkdown = data.pattern;
+      const html = (window as any).marked.parse(rawMarkdown);
+      patternOutput.innerHTML = html;
+      resultsSection.hidden = false;
+      resultsSection.scrollIntoView({ behavior: 'smooth' });
+    } catch (err: any) {
+      showError(err.message || 'Network error — check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    if (!rawMarkdown) return;
+    try {
+      await navigator.clipboard.writeText(rawMarkdown);
+      const orig = copyBtn.textContent;
+      copyBtn.textContent = 'Copied ✓';
+      setTimeout(() => { copyBtn.textContent = orig; }, 2000);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = rawMarkdown;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      copyBtn.textContent = 'Copied ✓';
+      setTimeout(() => { copyBtn.textContent = 'Copy Markdown'; }, 2000);
+    }
+  });
+
+  newPatternBtn.addEventListener('click', () => {
+    resultsSection.hidden = true;
+    patternOutput.innerHTML = '';
+    rawMarkdown = '';
+    form.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
