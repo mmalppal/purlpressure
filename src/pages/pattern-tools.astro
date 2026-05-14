@@ -137,42 +137,30 @@ const futurePlans = [
     <div class="pp-container">
 
       <div class="philosophy__header">
-        <p class="pp-eyebrow">Why no AI</p>
+        <p class="pp-eyebrow">No AI Needed</p>
         <h2 class="pp-display pp-display--md philosophy__title">
-          The math doesn't<br/><em>need it.</em>
+          Just <em>math.</em>
         </h2>
       </div>
 
       <div class="philosophy__blocks">
 
         <div class="philosophy__block">
-          <h3 class="philosophy__h">You can check every number.</h3>
-          <p class="philosophy__p">
-            If the tool says 248 body stitches, you can verify it yourself:
-            finished bust × stitches per inch, rounded to a multiple of four.
-            There's no black box. Nothing it's vaguely remembering from training data.
-            Just arithmetic you can follow.
-          </p>
-        </div>
-
-        <div class="philosophy__block">
           <h3 class="philosophy__h">Plus-size grading is actually different math.</h3>
           <p class="philosophy__p">
-            Linearly scaling a size medium to a 2X doesn't work. Yoke depth
-            grows faster than bust. Upper arm grows faster than overall size.
-            Cross-back stops scaling past 50". These tools handle all of that
-            from scratch — not from data that mostly describes smaller bodies
-            and has to extrapolate the rest.
+            Scaling a size medium up to a 2X doesn't work — the proportions change.
+            Yoke depth grows faster than bust. Upper arm grows faster than everything else.
+            Cross-back stops growing past 50". I built these tools to handle that correctly,
+            for any size, from scratch.
           </p>
         </div>
 
         <div class="philosophy__block">
           <h3 class="philosophy__h">A formula is better at algebra than a language model.</h3>
           <p class="philosophy__p">
-            Gauge × stitches per inch = inches. That's solvable. I don't
-            need a model guessing at stitch math when I can just write the
-            formula. And when the numbers don't add up, these tools will
-            tell you — which is more than a chatbot asking "does this look right?" can do.
+            Gauge × stitches per inch = inches. I can just write that and solve it.
+            If your numbers don't add up, the tool tells you.
+            It won't ask if this "looks right" and hope for the best.
           </p>
         </div>
 
@@ -182,13 +170,12 @@ const futurePlans = [
       <aside class="transparency" role="note">
         <p class="transparency__mark" aria-hidden="true">✶</p>
         <div class="transparency__copy">
-          <p class="transparency__headline">One thing I want to be upfront about</p>
+          <p class="transparency__headline">One thing to be upfront about</p>
           <p class="transparency__body">
-            I wrote the code for these tools with AI help — Claude, specifically.
-            The formulas, the plus-size math, the validation logic, and the test suite
-            are all mine. I designed them, tested them against real patterns, and verified
-            the results. Claude wrote a lot of the Python and TypeScript. It had nothing
-            to do with the sizing decisions. I think that distinction matters, so I'm saying it.
+            I used Claude to write most of the Python and TypeScript — I'm not precious about that part.
+            The sizing math, the plus-size formulas, the validation rules, the tests — those are all mine.
+            I worked them out and checked them against real patterns.
+            Claude had nothing to do with the sizing decisions. Felt like that was worth saying.
           </p>
         </div>
       </aside>
