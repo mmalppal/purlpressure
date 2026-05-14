@@ -8,6 +8,13 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
   title="Knitting Resizer — Purl Pressure"
   description="Free tool that sizes knitting patterns to your body from your gauge and measurements. Plus-size-aware math. Starting with top-down raglans."
 >
+  <!-- ── Breadcrumb ───────────────────────────────────────────────── -->
+  <div class="breadcrumb-bar">
+    <div class="pp-container">
+      <a href="/pattern-tools" class="breadcrumb-link">← Pattern Tools</a>
+    </div>
+  </div>
+
   <!-- ── Hero ─────────────────────────────────────────────────────── -->
   <header class="hero">
     <div class="pp-container hero__inner">
@@ -264,6 +271,23 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
 </Base>
 
 <style>
+  /* ── Breadcrumb ──────────────────────────────────────────────── */
+  .breadcrumb-bar {
+    padding: var(--pp-3) 0;
+    border-bottom: 1px solid var(--pp-border-soft);
+    background: var(--pp-bg-sunken);
+  }
+  .breadcrumb-link {
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--pp-text-muted);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 160ms var(--pp-ease);
+  }
+  .breadcrumb-link:hover { color: var(--pp-text-soft); }
+
   /* ── Hero ──────────────────────────────────────────────────────── */
   .hero {
     padding: var(--pp-16) 0 var(--pp-12);

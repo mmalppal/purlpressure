@@ -1,0 +1,694 @@
+---
+import Base from '../layouts/Base.astro';
+import SquiggleDivider from '../components/SquiggleDivider.astro';
+
+const tools = [
+  {
+    slug: 'raglan-generator',
+    name: 'Raglan Generator',
+    tagline: 'A complete top-down raglan pattern sized to your body — from gauge and measurements alone.',
+    href: '/knitting-resizer',
+    color: 'var(--pp-terracotta)',
+    status: 'Live',
+    construction: 'Top-down raglan',
+    plusSize: true,
+    facts: [
+      { label: 'Constructions', value: 'Top-down raglan' },
+      { label: 'Plus-size aware', value: 'Yes — asymmetric yoke math' },
+      { label: 'What you bring', value: 'Gauge swatch + measurements' },
+      { label: 'What you get', value: 'Full written pattern, Markdown' },
+    ],
+    description:
+      'You know your gauge. You know your measurements. This tool does the rest — stitch counts, yoke depth, raglan increase schedule, sleeve taper, waist shaping. No pattern to buy. No sizing up and hoping. A pattern written for your body.',
+    comingSoon: false,
+  },
+  {
+    slug: 'pattern-grader',
+    name: 'Pattern Grader',
+    tagline: 'Own a pattern you love but it doesn\'t fit? Enter its stitch counts and we\'ll regrade it to your size.',
+    href: '/resize-my-pattern',
+    color: 'var(--pp-clary-sage)',
+    status: 'In development',
+    construction: 'Top-down raglan, Bottom-up seamed',
+    plusSize: true,
+    facts: [
+      { label: 'Constructions', value: 'Raglan, bottom-up seamed' },
+      { label: 'Plus-size aware', value: 'Yes' },
+      { label: 'What you bring', value: 'Your pattern + your measurements' },
+      { label: 'What you get', value: 'A regraded version of that pattern' },
+    ],
+    description:
+      'You open your purchased pattern. The tool walks you through transferring key stitch counts — cast-on, yoke end, chest, waist, hem — into a form. It validates everything for consistency, then regrades those exact proportions to fit your body. The designer\'s math, scaled to you.',
+    comingSoon: true,
+  },
+];
+
+const futurePlans = [
+  'Drop shoulder generator',
+  'Set-in sleeve grader',
+  'Circular yoke calculator',
+  'Gauge converter (yards → meters and back)',
+];
+---
+
+<Base
+  title="Pattern Tools — Purl Pressure"
+  description="Free knitting tools built on deterministic math — not AI guesses. Size patterns to your body using gauge, stitch counts, and real measurements."
+>
+
+  <!-- ── Hero ──────────────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="pp-container hero__inner">
+      <div class="hero__copy">
+        <p class="pp-eyebrow hero__eyebrow">Pattern Tools</p>
+        <h1 class="pp-display pp-display--lg hero__title">
+          Math that <em>fits.</em><br/>Not guesses.
+        </h1>
+        <p class="hero__lede">
+          Every tool on this page runs on deterministic algorithms — formulas
+          that trace every stitch count back to your gauge and your body.
+          No language models. No "probably about right."
+          If the math says 248 stitches, it's 248.
+        </p>
+      </div>
+
+      <aside class="hero__manifesto" aria-label="How it works">
+        <p class="hero__manifesto-label">How it works</p>
+        <ol class="hero__steps">
+          <li><span class="hero__step-num">01</span>You enter numbers from your pattern or gauge swatch</li>
+          <li><span class="hero__step-num">02</span>The tool validates them for internal consistency</li>
+          <li><span class="hero__step-num">03</span>Formulas run. Stitch counts come out.</li>
+          <li><span class="hero__step-num">04</span>You get a written pattern sized to your body</li>
+        </ol>
+        <p class="hero__manifesto-note">
+          No AI in the math.<br/>
+          <span class="hero__manifesto-sub">More on that below ↓</span>
+        </p>
+      </aside>
+    </div>
+  </header>
+
+  <!-- ── Tool cards ─────────────────────────────────────────────────────── -->
+  <section class="pp-section tools-section">
+    <div class="pp-container">
+      <div class="tools-grid">
+        {tools.map(tool => (
+          <article class="tool-card" style={`--tool-color: ${tool.color};`}>
+            <!-- Status pill -->
+            <div class="tool-card__pill">
+              <span class="tool-card__dot"></span>
+              <span class="tool-card__status">{tool.status}</span>
+            </div>
+
+            <!-- Name + tagline -->
+            <div class="tool-card__body">
+              <h2 class="tool-card__name">{tool.name}</h2>
+              <p class="tool-card__tagline">{tool.tagline}</p>
+              <p class="tool-card__desc">{tool.description}</p>
+            </div>
+
+            <!-- Facts list -->
+            <ul class="tool-card__facts" aria-label="Tool details">
+              {tool.facts.map(f => (
+                <li class="tool-card__fact">
+                  <span class="tool-card__fact-label">{f.label}</span>
+                  <span class="tool-card__fact-value">{f.value}</span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- CTAs -->
+            <div class="tool-card__footer">
+              {tool.comingSoon ? (
+                <span class="tool-card__soon">Coming soon</span>
+              ) : (
+                <div class="tool-card__ctas">
+                  <a href={tool.href} class="pp-btn pp-btn--accent tool-card__btn">
+                    Open {tool.name} →
+                  </a>
+                  <a href={tool.href} target="_blank" rel="noreferrer" class="tool-card__newtab" aria-label={`Open ${tool.name} in new tab`}>
+                    Open in new tab ↗
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <div class="tool-card__shape" aria-hidden="true"></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SquiggleDivider />
+
+  <!-- ── Philosophy ────────────────────────────────────────────────────── -->
+  <section class="pp-section philosophy">
+    <div class="pp-container">
+
+      <div class="philosophy__header">
+        <p class="pp-eyebrow">Why it matters</p>
+        <h2 class="pp-display pp-display--md philosophy__title">
+          No AI in the math.<br/><em>Here's why.</em>
+        </h2>
+      </div>
+
+      <div class="philosophy__blocks">
+
+        <div class="philosophy__block">
+          <h3 class="philosophy__h">Deterministic means auditable.</h3>
+          <p class="philosophy__p">
+            Every stitch count the tools produce can be traced back through the
+            formula. If you get 248 body stitches, you can verify it:
+            finished bust × stitches per inch, rounded to a multiple of four.
+            There's no black box, no training data, no pattern it saw once and
+            is vaguely remembering. Just arithmetic.
+          </p>
+        </div>
+
+        <div class="philosophy__block">
+          <h3 class="philosophy__h">Plus-size knitters deserve correct math.</h3>
+          <p class="philosophy__p">
+            Standard grading tools often linearly scale patterns — which is
+            exactly wrong for bodies above a 44" bust. Yoke depth needs to
+            grow faster than the bust. Upper arm grows faster than overall
+            size. Cross-back plateaus. These tools handle all of that from
+            first principles, not from averaged-out training data that
+            underrepresents plus bodies in the first place.
+          </p>
+        </div>
+
+        <div class="philosophy__block">
+          <h3 class="philosophy__h">Knitting math is actually solvable.</h3>
+          <p class="philosophy__p">
+            This isn't a domain where you need a language model. The formulas
+            exist. They're algebra. Stitches per inch times inches equals
+            stitches. An LLM guessing at gauge math isn't more powerful — it's
+            less reliable. The tools here do the thing that's actually harder:
+            they implement the math correctly, handle edge cases, and tell you
+            when something doesn't add up.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Transparency callout -->
+      <aside class="transparency" role="note">
+        <p class="transparency__mark" aria-hidden="true">✶</p>
+        <div class="transparency__copy">
+          <p class="transparency__headline">Full transparency on how these were built</p>
+          <p class="transparency__body">
+            The code powering these tools was written with AI assistance —
+            specifically Claude. The algorithms, the plus-size math, the
+            validation rules, and the test suite were all designed intentionally
+            and verified against real patterns. AI helped write the Python and
+            TypeScript. It did not design the formulas or make any sizing
+            decisions. That distinction matters, and it's worth saying plainly.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <SquiggleDivider />
+
+  <!-- ── Coming up ─────────────────────────────────────────────────────── -->
+  <section class="pp-section upcoming">
+    <div class="pp-container upcoming__inner">
+      <div class="upcoming__copy">
+        <p class="pp-eyebrow">On the roadmap</p>
+        <h2 class="pp-display pp-display--md upcoming__title">
+          More tools<br/><em>in the works.</em>
+        </h2>
+        <p class="upcoming__sub">
+          Same approach: real math, no guessing, plus-size aware from day one.
+        </p>
+      </div>
+      <ul class="upcoming__list" aria-label="Upcoming tools">
+        {futurePlans.map(item => (
+          <li class="upcoming__item">
+            <span class="upcoming__dot" aria-hidden="true">◦</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  .hero {
+    padding: var(--pp-16) 0 var(--pp-14);
+    background:
+      radial-gradient(ellipse at 80% 0%, color-mix(in srgb, var(--pp-clary-sage) 10%, transparent), transparent 55%),
+      radial-gradient(ellipse at 10% 80%, color-mix(in srgb, var(--pp-terracotta) 10%, transparent), transparent 50%),
+      var(--pp-bg);
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-10);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 3fr 2fr;
+      gap: var(--pp-16);
+      align-items: center;
+    }
+  }
+
+  .hero__eyebrow { margin-bottom: var(--pp-4); }
+
+  .hero__title {
+    margin: 0 0 var(--pp-6);
+    max-width: 14ch;
+  }
+  .hero__title em { color: var(--pp-clary-sage); }
+
+  .hero__lede {
+    font-size: clamp(17px, 1.5vw, 21px);
+    line-height: 1.55;
+    color: var(--pp-text-soft);
+    max-width: 52ch;
+    margin: 0;
+  }
+
+  /* Manifesto card */
+  .hero__manifesto {
+    padding: var(--pp-6) var(--pp-7);
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    transform: rotate(1deg);
+    transition: transform 220ms var(--pp-ease);
+  }
+  .hero__manifesto:hover { transform: rotate(0); }
+
+  .hero__manifesto-label {
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pp-text-muted);
+    margin: 0 0 var(--pp-4);
+  }
+
+  .hero__steps {
+    list-style: none;
+    margin: 0 0 var(--pp-5);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-3);
+  }
+
+  .hero__steps li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--pp-3);
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--pp-text-soft);
+    padding-bottom: var(--pp-3);
+    border-bottom: 1px dashed var(--pp-border-soft);
+  }
+  .hero__steps li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .hero__step-num {
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    color: var(--pp-terracotta);
+    flex-shrink: 0;
+    letter-spacing: 0.06em;
+  }
+
+  .hero__manifesto-note {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--pp-text);
+    margin: 0;
+  }
+  .hero__manifesto-sub {
+    font-family: var(--pp-font-body);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--pp-text-muted);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-top: var(--pp-1);
+  }
+
+  /* ── Tools grid ─────────────────────────────────────────────────────── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-6);
+  }
+
+  @media (min-width: 820px) {
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .tool-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-6);
+    padding: var(--pp-8);
+    background: var(--pp-bg-elevated);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: var(--pp-radius-md);
+    overflow: hidden;
+    transition: border-color 220ms var(--pp-ease), transform 220ms var(--pp-ease);
+  }
+
+  .tool-card:hover {
+    border-color: var(--tool-color);
+    transform: translateY(-3px);
+  }
+
+  /* Status pill */
+  .tool-card__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(245, 240, 232, 0.05);
+    border: 1px solid var(--pp-border-soft);
+    border-radius: 999px;
+    align-self: flex-start;
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pp-text-muted);
+    position: relative;
+    z-index: 2;
+  }
+
+  .tool-card__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--tool-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--tool-color) 25%, transparent);
+    flex-shrink: 0;
+  }
+
+  /* Body */
+  .tool-card__body { position: relative; z-index: 2; }
+
+  .tool-card__name {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--pp-text);
+    margin: 0 0 var(--pp-3);
+  }
+
+  .tool-card__tagline {
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--tool-color);
+    font-weight: 500;
+    margin: 0 0 var(--pp-4);
+  }
+
+  .tool-card__desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--pp-text-muted);
+    margin: 0;
+    max-width: 48ch;
+  }
+
+  /* Facts */
+  .tool-card__facts {
+    list-style: none;
+    margin: 0;
+    padding: var(--pp-5) 0 0;
+    border-top: 1px solid var(--pp-border-soft);
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-2);
+    position: relative;
+    z-index: 2;
+  }
+
+  .tool-card__fact {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--pp-4);
+    font-size: 13px;
+    padding-bottom: var(--pp-2);
+    border-bottom: 1px dashed var(--pp-border-soft);
+  }
+  .tool-card__fact:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .tool-card__fact-label {
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--pp-text-muted);
+    flex-shrink: 0;
+  }
+
+  .tool-card__fact-value {
+    color: var(--pp-text-soft);
+    text-align: right;
+  }
+
+  /* Footer */
+  .tool-card__footer {
+    position: relative;
+    z-index: 2;
+    padding-top: var(--pp-2);
+  }
+
+  .tool-card__ctas {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-5);
+    flex-wrap: wrap;
+  }
+
+  .tool-card__btn { align-self: flex-start; }
+
+  .tool-card__newtab {
+    font-size: 13px;
+    color: var(--pp-text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--pp-border-soft);
+    transition: color 160ms var(--pp-ease), border-color 160ms var(--pp-ease);
+    white-space: nowrap;
+  }
+  .tool-card__newtab:hover {
+    color: var(--pp-text-soft);
+    border-color: var(--pp-text-muted);
+  }
+
+  .tool-card__soon {
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pp-text-muted);
+    padding: 6px 14px;
+    border: 1px dashed var(--pp-border-soft);
+    border-radius: 999px;
+    display: inline-block;
+  }
+
+  /* Decorative blob */
+  .tool-card__shape {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    bottom: -120px;
+    right: -100px;
+    background: var(--tool-color);
+    opacity: 0.12;
+    border-radius: 50%;
+    transition: transform 320ms var(--pp-ease), opacity 320ms var(--pp-ease);
+    z-index: 1;
+  }
+  .tool-card:hover .tool-card__shape {
+    transform: scale(1.12) translate(-8px, -8px);
+    opacity: 0.2;
+  }
+
+  /* ── Philosophy ──────────────────────────────────────────────────────── */
+  .philosophy__header {
+    margin-bottom: var(--pp-12);
+  }
+
+  .philosophy__title {
+    margin: var(--pp-3) 0 0;
+  }
+  .philosophy__title em { color: var(--pp-terracotta); }
+
+  .philosophy__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: var(--pp-14);
+  }
+
+  .philosophy__block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-5);
+    padding: var(--pp-10) 0;
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+  .philosophy__block:first-child { padding-top: 0; }
+  .philosophy__block:last-child { border-bottom: none; }
+
+  @media (min-width: 700px) {
+    .philosophy__block {
+      grid-template-columns: 1fr 1.4fr;
+      gap: var(--pp-14);
+      align-items: start;
+    }
+  }
+
+  .philosophy__h {
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--pp-text);
+    margin: 0;
+  }
+
+  .philosophy__p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--pp-text-soft);
+    margin: 0;
+  }
+
+  /* Transparency callout */
+  .transparency {
+    display: flex;
+    gap: var(--pp-6);
+    align-items: flex-start;
+    padding: var(--pp-7) var(--pp-8);
+    background: color-mix(in srgb, var(--pp-periwinkle) 8%, var(--pp-bg-elevated));
+    border: 1px solid color-mix(in srgb, var(--pp-periwinkle) 30%, transparent);
+    border-radius: var(--pp-radius-md);
+    transform: rotate(-0.5deg);
+    transition: transform 220ms var(--pp-ease);
+  }
+  .transparency:hover { transform: rotate(0); }
+
+  .transparency__mark {
+    font-size: 28px;
+    color: var(--pp-periwinkle);
+    flex-shrink: 0;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .transparency__headline {
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pp-periwinkle);
+    margin: 0 0 var(--pp-3);
+  }
+
+  .transparency__body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--pp-text-soft);
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  /* ── Upcoming ────────────────────────────────────────────────────────── */
+  .upcoming__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-10);
+    align-items: start;
+  }
+
+  @media (min-width: 700px) {
+    .upcoming__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--pp-14);
+    }
+  }
+
+  .upcoming__title {
+    margin: var(--pp-3) 0 var(--pp-4);
+  }
+  .upcoming__title em { color: var(--pp-clary-sage); }
+
+  .upcoming__sub {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--pp-text-muted);
+    margin: 0;
+    max-width: 38ch;
+  }
+
+  .upcoming__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .upcoming__item {
+    display: flex;
+    align-items: center;
+    gap: var(--pp-4);
+    font-size: 16px;
+    color: var(--pp-text-soft);
+    padding: var(--pp-4) 0;
+    border-bottom: 1px solid var(--pp-border-soft);
+    transition: color 160ms var(--pp-ease), padding-left 160ms var(--pp-ease);
+  }
+  .upcoming__item:last-child { border-bottom: none; }
+  .upcoming__item:hover {
+    color: var(--pp-text);
+    padding-left: var(--pp-2);
+  }
+
+  .upcoming__dot {
+    color: var(--pp-clary-sage);
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__manifesto,
+    .tool-card,
+    .tool-card__shape,
+    .transparency { transform: none !important; transition: none !important; }
+  }
+</style>
