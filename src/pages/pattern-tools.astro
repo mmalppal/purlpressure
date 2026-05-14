@@ -4,41 +4,35 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
 
 const tools = [
   {
-    slug: 'raglan-generator',
     name: 'Raglan Generator',
-    tagline: 'A complete top-down raglan pattern sized to your body — from gauge and measurements alone.',
+    tagline: 'Put in your gauge and measurements. Get back a complete top-down raglan pattern.',
     href: '/knitting-resizer',
     color: 'var(--pp-terracotta)',
     status: 'Live',
-    construction: 'Top-down raglan',
-    plusSize: true,
     facts: [
-      { label: 'Constructions', value: 'Top-down raglan' },
-      { label: 'Plus-size aware', value: 'Yes — asymmetric yoke math' },
-      { label: 'What you bring', value: 'Gauge swatch + measurements' },
-      { label: 'What you get', value: 'Full written pattern, Markdown' },
+      { label: 'Construction',   value: 'Top-down raglan' },
+      { label: 'Plus-size aware', value: 'Yes — built in from day one' },
+      { label: 'You bring',      value: 'Gauge swatch + measurements' },
+      { label: 'You get',        value: 'A full written pattern' },
     ],
     description:
-      'You know your gauge. You know your measurements. This tool does the rest — stitch counts, yoke depth, raglan increase schedule, sleeve taper, waist shaping. No pattern to buy. No sizing up and hoping. A pattern written for your body.',
+      'Stitch counts, yoke depth, increase schedule, sleeve taper, waist shaping — all of it. No pattern to buy. No scaling up a size medium and hoping for the best.',
     comingSoon: false,
   },
   {
-    slug: 'pattern-grader',
     name: 'Pattern Grader',
-    tagline: 'Own a pattern you love but it doesn\'t fit? Enter its stitch counts and we\'ll regrade it to your size.',
+    tagline: 'You love the pattern. It just doesn\'t fit. Enter its stitch counts and we\'ll regrade it to your size.',
     href: '/resize-my-pattern',
     color: 'var(--pp-clary-sage)',
     status: 'In development',
-    construction: 'Top-down raglan, Bottom-up seamed',
-    plusSize: true,
     facts: [
-      { label: 'Constructions', value: 'Raglan, bottom-up seamed' },
+      { label: 'Constructions',  value: 'Raglan, bottom-up seamed' },
       { label: 'Plus-size aware', value: 'Yes' },
-      { label: 'What you bring', value: 'Your pattern + your measurements' },
-      { label: 'What you get', value: 'A regraded version of that pattern' },
+      { label: 'You bring',      value: 'Your pattern + your measurements' },
+      { label: 'You get',        value: 'A regraded version of that pattern' },
     ],
     description:
-      'You open your purchased pattern. The tool walks you through transferring key stitch counts — cast-on, yoke end, chest, waist, hem — into a form. It validates everything for consistency, then regrades those exact proportions to fit your body. The designer\'s math, scaled to you.',
+      'You open your pattern. The tool walks you through the key numbers — cast-on, yoke end, chest, waist, hem. It checks that they add up, then regrades those proportions to your body. The designer\'s math, for your size.',
     comingSoon: true,
   },
 ];
@@ -53,7 +47,7 @@ const futurePlans = [
 
 <Base
   title="Pattern Tools — Purl Pressure"
-  description="Free knitting tools built on deterministic math — not AI guesses. Size patterns to your body using gauge, stitch counts, and real measurements."
+  description="Free knitting tools that do the sizing math correctly — including the parts standard grading gets wrong for plus sizes. No AI guessing at your measurements."
 >
 
   <!-- ── Hero ──────────────────────────────────────────────────────────── -->
@@ -62,27 +56,27 @@ const futurePlans = [
       <div class="hero__copy">
         <p class="pp-eyebrow hero__eyebrow">Pattern Tools</p>
         <h1 class="pp-display pp-display--lg hero__title">
-          Math that <em>fits.</em><br/>Not guesses.
+          The math<br/>just <em>works.</em>
         </h1>
         <p class="hero__lede">
-          Every tool on this page runs on deterministic algorithms — formulas
-          that trace every stitch count back to your gauge and your body.
-          No language models. No "probably about right."
-          If the math says 248 stitches, it's 248.
+          Gauge times stitches per inch equals inches. That's it.
+          These tools do that math correctly — including the parts
+          standard sizing usually gets wrong for plus sizes.
+          No AI is guessing at your measurements.
         </p>
       </div>
 
       <aside class="hero__manifesto" aria-label="How it works">
         <p class="hero__manifesto-label">How it works</p>
         <ol class="hero__steps">
-          <li><span class="hero__step-num">01</span>You enter numbers from your pattern or gauge swatch</li>
-          <li><span class="hero__step-num">02</span>The tool validates them for internal consistency</li>
-          <li><span class="hero__step-num">03</span>Formulas run. Stitch counts come out.</li>
-          <li><span class="hero__step-num">04</span>You get a written pattern sized to your body</li>
+          <li><span class="hero__step-num">01</span>You put in numbers from your pattern or your swatch</li>
+          <li><span class="hero__step-num">02</span>The tool checks they add up</li>
+          <li><span class="hero__step-num">03</span>The math runs</li>
+          <li><span class="hero__step-num">04</span>You get a written pattern that fits</li>
         </ol>
         <p class="hero__manifesto-note">
-          No AI in the math.<br/>
-          <span class="hero__manifesto-sub">More on that below ↓</span>
+          No AI in the math.
+          <span class="hero__manifesto-sub">more on that below ↓</span>
         </p>
       </aside>
     </div>
@@ -94,20 +88,17 @@ const futurePlans = [
       <div class="tools-grid">
         {tools.map(tool => (
           <article class="tool-card" style={`--tool-color: ${tool.color};`}>
-            <!-- Status pill -->
             <div class="tool-card__pill">
               <span class="tool-card__dot"></span>
               <span class="tool-card__status">{tool.status}</span>
             </div>
 
-            <!-- Name + tagline -->
             <div class="tool-card__body">
               <h2 class="tool-card__name">{tool.name}</h2>
               <p class="tool-card__tagline">{tool.tagline}</p>
               <p class="tool-card__desc">{tool.description}</p>
             </div>
 
-            <!-- Facts list -->
             <ul class="tool-card__facts" aria-label="Tool details">
               {tool.facts.map(f => (
                 <li class="tool-card__fact">
@@ -117,16 +108,15 @@ const futurePlans = [
               ))}
             </ul>
 
-            <!-- CTAs -->
             <div class="tool-card__footer">
               {tool.comingSoon ? (
                 <span class="tool-card__soon">Coming soon</span>
               ) : (
                 <div class="tool-card__ctas">
-                  <a href={tool.href} class="pp-btn pp-btn--accent tool-card__btn">
+                  <a href={tool.href} class="pp-btn pp-btn--accent">
                     Open {tool.name} →
                   </a>
-                  <a href={tool.href} target="_blank" rel="noreferrer" class="tool-card__newtab" aria-label={`Open ${tool.name} in new tab`}>
+                  <a href={tool.href} target="_blank" rel="noreferrer" class="tool-card__newtab">
                     Open in new tab ↗
                   </a>
                 </div>
@@ -142,51 +132,47 @@ const futurePlans = [
 
   <SquiggleDivider />
 
-  <!-- ── Philosophy ────────────────────────────────────────────────────── -->
+  <!-- ── Why no AI ─────────────────────────────────────────────────────── -->
   <section class="pp-section philosophy">
     <div class="pp-container">
 
       <div class="philosophy__header">
-        <p class="pp-eyebrow">Why it matters</p>
+        <p class="pp-eyebrow">Why no AI</p>
         <h2 class="pp-display pp-display--md philosophy__title">
-          No AI in the math.<br/><em>Here's why.</em>
+          The math doesn't<br/><em>need it.</em>
         </h2>
       </div>
 
       <div class="philosophy__blocks">
 
         <div class="philosophy__block">
-          <h3 class="philosophy__h">Deterministic means auditable.</h3>
+          <h3 class="philosophy__h">You can check every number.</h3>
           <p class="philosophy__p">
-            Every stitch count the tools produce can be traced back through the
-            formula. If you get 248 body stitches, you can verify it:
+            If the tool says 248 body stitches, you can verify it yourself:
             finished bust × stitches per inch, rounded to a multiple of four.
-            There's no black box, no training data, no pattern it saw once and
-            is vaguely remembering. Just arithmetic.
+            There's no black box. Nothing it's vaguely remembering from training data.
+            Just arithmetic you can follow.
           </p>
         </div>
 
         <div class="philosophy__block">
-          <h3 class="philosophy__h">Plus-size knitters deserve correct math.</h3>
+          <h3 class="philosophy__h">Plus-size grading is actually different math.</h3>
           <p class="philosophy__p">
-            Standard grading tools often linearly scale patterns — which is
-            exactly wrong for bodies above a 44" bust. Yoke depth needs to
-            grow faster than the bust. Upper arm grows faster than overall
-            size. Cross-back plateaus. These tools handle all of that from
-            first principles, not from averaged-out training data that
-            underrepresents plus bodies in the first place.
+            Linearly scaling a size medium to a 2X doesn't work. Yoke depth
+            grows faster than bust. Upper arm grows faster than overall size.
+            Cross-back stops scaling past 50". These tools handle all of that
+            from scratch — not from data that mostly describes smaller bodies
+            and has to extrapolate the rest.
           </p>
         </div>
 
         <div class="philosophy__block">
-          <h3 class="philosophy__h">Knitting math is actually solvable.</h3>
+          <h3 class="philosophy__h">A formula is better at algebra than a language model.</h3>
           <p class="philosophy__p">
-            This isn't a domain where you need a language model. The formulas
-            exist. They're algebra. Stitches per inch times inches equals
-            stitches. An LLM guessing at gauge math isn't more powerful — it's
-            less reliable. The tools here do the thing that's actually harder:
-            they implement the math correctly, handle edge cases, and tell you
-            when something doesn't add up.
+            Gauge × stitches per inch = inches. That's solvable. I don't
+            need a model guessing at stitch math when I can just write the
+            formula. And when the numbers don't add up, these tools will
+            tell you — which is more than a chatbot asking "does this look right?" can do.
           </p>
         </div>
 
@@ -196,14 +182,13 @@ const futurePlans = [
       <aside class="transparency" role="note">
         <p class="transparency__mark" aria-hidden="true">✶</p>
         <div class="transparency__copy">
-          <p class="transparency__headline">Full transparency on how these were built</p>
+          <p class="transparency__headline">One thing I want to be upfront about</p>
           <p class="transparency__body">
-            The code powering these tools was written with AI assistance —
-            specifically Claude. The algorithms, the plus-size math, the
-            validation rules, and the test suite were all designed intentionally
-            and verified against real patterns. AI helped write the Python and
-            TypeScript. It did not design the formulas or make any sizing
-            decisions. That distinction matters, and it's worth saying plainly.
+            I wrote the code for these tools with AI help — Claude, specifically.
+            The formulas, the plus-size math, the validation logic, and the test suite
+            are all mine. I designed them, tested them against real patterns, and verified
+            the results. Claude wrote a lot of the Python and TypeScript. It had nothing
+            to do with the sizing decisions. I think that distinction matters, so I'm saying it.
           </p>
         </div>
       </aside>
@@ -219,10 +204,10 @@ const futurePlans = [
       <div class="upcoming__copy">
         <p class="pp-eyebrow">On the roadmap</p>
         <h2 class="pp-display pp-display--md upcoming__title">
-          More tools<br/><em>in the works.</em>
+          More coming.<br/><em>Same deal.</em>
         </h2>
         <p class="upcoming__sub">
-          Same approach: real math, no guessing, plus-size aware from day one.
+          More constructions, same approach — real math, plus-size aware from the start.
         </p>
       </div>
       <ul class="upcoming__list" aria-label="Upcoming tools">
@@ -268,15 +253,14 @@ const futurePlans = [
 
   .hero__title {
     margin: 0 0 var(--pp-6);
-    max-width: 14ch;
   }
   .hero__title em { color: var(--pp-clary-sage); }
 
   .hero__lede {
-    font-size: clamp(17px, 1.5vw, 21px);
-    line-height: 1.55;
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.6;
     color: var(--pp-text-soft);
-    max-width: 52ch;
+    max-width: 50ch;
     margin: 0;
   }
 
@@ -302,11 +286,10 @@ const futurePlans = [
 
   .hero__steps {
     list-style: none;
-    margin: 0 0 var(--pp-5);
+    margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--pp-3);
   }
 
   .hero__steps li {
@@ -314,12 +297,12 @@ const futurePlans = [
     align-items: baseline;
     gap: var(--pp-3);
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.45;
     color: var(--pp-text-soft);
-    padding-bottom: var(--pp-3);
+    padding: var(--pp-3) 0;
     border-bottom: 1px dashed var(--pp-border-soft);
   }
-  .hero__steps li:last-child { border-bottom: none; padding-bottom: 0; }
+  .hero__steps li:first-child { padding-top: 0; }
 
   .hero__step-num {
     font-family: var(--pp-font-mono);
@@ -333,10 +316,12 @@ const futurePlans = [
     font-family: var(--pp-font-display);
     font-style: italic;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.2;
     color: var(--pp-text);
-    margin: 0;
+    margin: var(--pp-5) 0 0;
+    padding-top: var(--pp-5);
+    border-top: 1px solid var(--pp-border-soft);
   }
   .hero__manifesto-sub {
     font-family: var(--pp-font-body);
@@ -353,7 +338,7 @@ const futurePlans = [
   .tools-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--pp-6);
+    gap: var(--pp-8);
   }
 
   @media (min-width: 820px) {
@@ -364,7 +349,7 @@ const futurePlans = [
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: var(--pp-6);
+    gap: var(--pp-5);
     padding: var(--pp-8);
     background: var(--pp-bg-elevated);
     border: 1px solid var(--pp-border-soft);
@@ -378,7 +363,6 @@ const futurePlans = [
     transform: translateY(-3px);
   }
 
-  /* Status pill */
   .tool-card__pill {
     display: inline-flex;
     align-items: center;
@@ -406,45 +390,47 @@ const futurePlans = [
     flex-shrink: 0;
   }
 
-  /* Body */
-  .tool-card__body { position: relative; z-index: 2; }
+  .tool-card__body {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-3);
+  }
 
   .tool-card__name {
     font-family: var(--pp-font-display);
     font-style: italic;
     font-weight: 900;
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 0.95;
+    font-size: clamp(30px, 3.5vw, 48px);
+    line-height: 1.0;
     letter-spacing: -0.02em;
     color: var(--pp-text);
-    margin: 0 0 var(--pp-3);
+    margin: 0;
   }
 
   .tool-card__tagline {
-    font-size: 17px;
-    line-height: 1.4;
+    font-size: 16px;
+    line-height: 1.45;
     color: var(--tool-color);
     font-weight: 500;
-    margin: 0 0 var(--pp-4);
+    margin: 0;
   }
 
   .tool-card__desc {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.65;
     color: var(--pp-text-muted);
     margin: 0;
-    max-width: 48ch;
   }
 
-  /* Facts */
   .tool-card__facts {
     list-style: none;
     margin: 0;
-    padding: var(--pp-5) 0 0;
+    padding: var(--pp-4) 0 0;
     border-top: 1px solid var(--pp-border-soft);
     display: flex;
     flex-direction: column;
-    gap: var(--pp-2);
     position: relative;
     z-index: 2;
   }
@@ -455,9 +441,10 @@ const futurePlans = [
     align-items: baseline;
     gap: var(--pp-4);
     font-size: 13px;
-    padding-bottom: var(--pp-2);
+    padding: var(--pp-2) 0;
     border-bottom: 1px dashed var(--pp-border-soft);
   }
+  .tool-card__fact:first-child { padding-top: 0; }
   .tool-card__fact:last-child { border-bottom: none; padding-bottom: 0; }
 
   .tool-card__fact-label {
@@ -474,11 +461,11 @@ const futurePlans = [
     text-align: right;
   }
 
-  /* Footer */
   .tool-card__footer {
     position: relative;
     z-index: 2;
-    padding-top: var(--pp-2);
+    margin-top: auto;
+    padding-top: var(--pp-3);
   }
 
   .tool-card__ctas {
@@ -487,8 +474,6 @@ const futurePlans = [
     gap: var(--pp-5);
     flex-wrap: wrap;
   }
-
-  .tool-card__btn { align-self: flex-start; }
 
   .tool-card__newtab {
     font-size: 13px;
@@ -515,7 +500,6 @@ const futurePlans = [
     display: inline-block;
   }
 
-  /* Decorative blob */
   .tool-card__shape {
     position: absolute;
     width: 260px;
@@ -523,19 +507,19 @@ const futurePlans = [
     bottom: -120px;
     right: -100px;
     background: var(--tool-color);
-    opacity: 0.12;
+    opacity: 0.10;
     border-radius: 50%;
     transition: transform 320ms var(--pp-ease), opacity 320ms var(--pp-ease);
     z-index: 1;
   }
   .tool-card:hover .tool-card__shape {
     transform: scale(1.12) translate(-8px, -8px);
-    opacity: 0.2;
+    opacity: 0.18;
   }
 
   /* ── Philosophy ──────────────────────────────────────────────────────── */
   .philosophy__header {
-    margin-bottom: var(--pp-12);
+    margin-bottom: var(--pp-10);
   }
 
   .philosophy__title {
@@ -546,24 +530,25 @@ const futurePlans = [
   .philosophy__blocks {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    margin-bottom: var(--pp-14);
+    margin-bottom: var(--pp-10);
   }
 
   .philosophy__block {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--pp-5);
-    padding: var(--pp-10) 0;
+    gap: var(--pp-4);
+    padding: var(--pp-8) 0;
     border-bottom: 1px solid var(--pp-border-soft);
   }
-  .philosophy__block:first-child { padding-top: 0; }
-  .philosophy__block:last-child { border-bottom: none; }
+  .philosophy__block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
 
   @media (min-width: 700px) {
     .philosophy__block {
-      grid-template-columns: 1fr 1.4fr;
-      gap: var(--pp-14);
+      grid-template-columns: 1fr 1.6fr;
+      gap: var(--pp-12);
       align-items: start;
     }
   }
@@ -572,8 +557,8 @@ const futurePlans = [
     font-family: var(--pp-font-display);
     font-style: italic;
     font-weight: 800;
-    font-size: clamp(22px, 2.4vw, 32px);
-    line-height: 1.1;
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.15;
     letter-spacing: -0.02em;
     color: var(--pp-text);
     margin: 0;
@@ -589,23 +574,23 @@ const futurePlans = [
   /* Transparency callout */
   .transparency {
     display: flex;
-    gap: var(--pp-6);
+    gap: var(--pp-5);
     align-items: flex-start;
-    padding: var(--pp-7) var(--pp-8);
-    background: color-mix(in srgb, var(--pp-periwinkle) 8%, var(--pp-bg-elevated));
-    border: 1px solid color-mix(in srgb, var(--pp-periwinkle) 30%, transparent);
+    padding: var(--pp-6) var(--pp-7);
+    background: color-mix(in srgb, var(--pp-periwinkle) 7%, var(--pp-bg-elevated));
+    border: 1px solid color-mix(in srgb, var(--pp-periwinkle) 28%, transparent);
     border-radius: var(--pp-radius-md);
-    transform: rotate(-0.5deg);
+    transform: rotate(-0.4deg);
     transition: transform 220ms var(--pp-ease);
   }
   .transparency:hover { transform: rotate(0); }
 
   .transparency__mark {
-    font-size: 28px;
+    font-size: 24px;
     color: var(--pp-periwinkle);
     flex-shrink: 0;
     margin: 0;
-    line-height: 1;
+    line-height: 1.2;
   }
 
   .transparency__headline {
@@ -622,7 +607,6 @@ const futurePlans = [
     line-height: 1.65;
     color: var(--pp-text-soft);
     margin: 0;
-    max-width: 62ch;
   }
 
   /* ── Upcoming ────────────────────────────────────────────────────────── */
@@ -637,6 +621,7 @@ const futurePlans = [
     .upcoming__inner {
       grid-template-columns: 1fr 1fr;
       gap: var(--pp-14);
+      align-items: center;
     }
   }
 
@@ -650,16 +635,12 @@ const futurePlans = [
     line-height: 1.6;
     color: var(--pp-text-muted);
     margin: 0;
-    max-width: 38ch;
   }
 
   .upcoming__list {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
   }
 
   .upcoming__item {
@@ -672,15 +653,13 @@ const futurePlans = [
     border-bottom: 1px solid var(--pp-border-soft);
     transition: color 160ms var(--pp-ease), padding-left 160ms var(--pp-ease);
   }
+  .upcoming__item:first-child { padding-top: 0; }
   .upcoming__item:last-child { border-bottom: none; }
-  .upcoming__item:hover {
-    color: var(--pp-text);
-    padding-left: var(--pp-2);
-  }
+  .upcoming__item:hover { color: var(--pp-text); padding-left: var(--pp-2); }
 
   .upcoming__dot {
     color: var(--pp-clary-sage);
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1;
     flex-shrink: 0;
   }
