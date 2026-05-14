@@ -1,0 +1,103 @@
+.guideNote {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--terracotta);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.875rem;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+.guideNote strong {
+  color: var(--text);
+}
+
+.sectionLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.yoke {
+  position: relative;
+}
+
+.estimateToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  margin-top: -0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.estimateToggle:hover {
+  color: var(--text-soft);
+}
+
+.checkbox {
+  accent-color: var(--terracotta);
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.optionalDetails {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.optionalSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  background: var(--bg-card);
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  font-weight: 500;
+  list-style: none;
+  user-select: none;
+}
+
+.optionalSummary::-webkit-details-marker {
+  display: none;
+}
+
+.optionalSummary::before {
+  content: '▶';
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+details[open] .optionalSummary::before {
+  transform: rotate(90deg);
+}
+
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sage);
+  background: rgba(122, 158, 126, 0.12);
+  border: 1px solid rgba(122, 158, 126, 0.25);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.optionalFields {
+  padding: 1.25rem 1rem 0.5rem;
+}

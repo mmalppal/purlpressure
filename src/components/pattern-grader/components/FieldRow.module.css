@@ -1,0 +1,121 @@
+.row {
+  margin-bottom: 1.5rem;
+}
+
+.row.isUnknown {
+  opacity: 0.65;
+}
+
+.label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}
+
+.required {
+  color: var(--terracotta);
+  font-size: 0.85rem;
+}
+
+.unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: lowercase;
+}
+
+.inputWrap {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.input {
+  flex: 1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.6rem 0.85rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 0;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 2px rgba(192, 96, 64, 0.2);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  background: var(--bg-card);
+  color: var(--text-muted);
+}
+
+.input_error {
+  border-color: rgba(200, 60, 60, 0.6) !important;
+}
+
+.input_warning {
+  border-color: rgba(200, 160, 40, 0.5) !important;
+}
+
+.unknownBtn {
+  flex-shrink: 0;
+  width: 2.2rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.unknownBtn:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+.unknownBtnActive {
+  background: rgba(122, 158, 126, 0.15);
+  border-color: var(--sage) !important;
+  color: var(--sage) !important;
+}
+
+.helper {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.3rem 0 0;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.issueMsg {
+  font-size: 0.82rem;
+  margin: 0.3rem 0 0;
+  line-height: 1.4;
+}
+
+.issue_error {
+  color: #e07070;
+}
+
+.issue_warning {
+  color: #d4aa50;
+}
+
+.issue_info {
+  color: #8090c0;
+}

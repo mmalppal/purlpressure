@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import PatternGrader from '../components/pattern-grader/PatternGrader';
+---
+
+<Base
+  title="Pattern Grader — Purl Pressure"
+  description="You love the pattern. It just doesn't fit. Enter its stitch counts and we'll regrade it to your size. Plus-size-aware math, no AI."
+>
+
+  <!-- ── Breadcrumb ───────────────────────────────────────────────── -->
+  <div class="breadcrumb-bar">
+    <div class="pp-container">
+      <a href="/pattern-tools" class="breadcrumb-link">← Pattern Tools</a>
+    </div>
+  </div>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="pp-container hero__inner">
+      <p class="pp-eyebrow hero__eyebrow">Pattern Grader</p>
+      <h1 class="pp-display pp-display--lg hero__title">
+        The pattern you love,<br/><em>in your size.</em>
+      </h1>
+      <p class="hero__lead">
+        Enter your pattern's stitch counts and your measurements.
+        The tool checks the numbers add up, then regrades the proportions
+        to your body. The designer's math — for your size.
+        No AI. No scaling from a size medium.
+      </p>
+    </div>
+  </header>
+
+  <!-- ── Pattern Grader React island ──────────────────────────────── -->
+  <section class="grader-section">
+    <PatternGrader client:only="react" />
+  </section>
+
+</Base>
+
+<style>
+  /* ── Breadcrumb ──────────────────────────────────────────────────── */
+  .breadcrumb-bar {
+    padding: var(--pp-3) 0;
+    border-bottom: 1px solid var(--pp-border-soft);
+    background: var(--pp-bg-sunken);
+  }
+  .breadcrumb-link {
+    font-family: var(--pp-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--pp-text-muted);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 160ms var(--pp-ease);
+  }
+  .breadcrumb-link:hover { color: var(--pp-text-soft); }
+
+  /* ── Hero ────────────────────────────────────────────────────────── */
+  .hero {
+    padding: var(--pp-16) 0 var(--pp-12);
+    background:
+      radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--pp-clary-sage) 10%, transparent), transparent 55%),
+      radial-gradient(ellipse at 15% 70%, color-mix(in srgb, var(--pp-periwinkle) 8%, transparent), transparent 50%),
+      var(--pp-bg);
+    border-bottom: 1px solid var(--pp-border-soft);
+  }
+
+  .hero__inner { display: flex; flex-direction: column; gap: var(--pp-5); }
+  .hero__eyebrow { margin-bottom: 0; }
+
+  .hero__title { margin: 0; color: var(--pp-text); }
+  .hero__title em { color: var(--pp-clary-sage); font-style: italic; }
+
+  .hero__lead {
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.6;
+    color: var(--pp-text-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  /* ── Grader section ──────────────────────────────────────────────── */
+  .grader-section {
+    min-height: 60vh;
+  }
+</style>

@@ -1,0 +1,114 @@
+.plusNote {
+  background: rgba(192, 96, 64, 0.08);
+  border: 1px solid rgba(192, 96, 64, 0.25);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+.plusNote strong {
+  color: var(--terracotta);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.card:hover:not(.cardActive) {
+  border-color: rgba(192, 96, 64, 0.35);
+  background: rgba(192, 96, 64, 0.05);
+}
+
+.cardActive {
+  border-color: var(--terracotta) !important;
+  background: rgba(192, 96, 64, 0.1) !important;
+}
+
+.cardRecommended {
+  border-color: rgba(122, 158, 126, 0.5) !important;
+}
+
+.cardRecommended.cardActive {
+  border-color: var(--terracotta) !important;
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.cardLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: flex-end;
+}
+
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sage);
+  background: rgba(122, 158, 126, 0.15);
+  border: 1px solid rgba(122, 158, 126, 0.3);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badgeDefault {
+  composes: badge;
+  color: var(--periwinkle);
+  background: rgba(128, 144, 192, 0.12);
+  border-color: rgba(128, 144, 192, 0.25);
+}
+
+.easeRange {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--terracotta);
+}
+
+.cardDesc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.2rem 0 0;
+  line-height: 1.4;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--terracotta);
+  font-weight: 700;
+}

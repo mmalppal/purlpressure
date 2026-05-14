@@ -1,0 +1,103 @@
+.callout {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--terracotta);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.callout p {
+  margin: 0 0 0.5rem;
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.example {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--text);
+  border: none;
+}
+
+.computed {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.65rem 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-soft);
+}
+
+.computed strong {
+  color: var(--text);
+}
+
+.field {
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  margin-bottom: 0.35rem;
+}
+
+.input {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.6rem 0.85rem;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 2px rgba(192, 96, 64, 0.2);
+}
+
+.radioGroup {
+  margin-bottom: 1.5rem;
+}
+
+.radios {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.radio {
+  accent-color: var(--terracotta);
+  width: 1rem;
+  height: 1rem;
+}

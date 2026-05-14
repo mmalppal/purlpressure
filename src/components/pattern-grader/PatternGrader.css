@@ -1,0 +1,78 @@
+/* ─── Pattern Grader island styles ─────────────────────────────────────────
+   All rules scoped to .pg-root so nothing leaks into purlpressure globals.
+   CSS custom properties cascade to all children from the wrapper.
+────────────────────────────────────────────────────────────────────────── */
+
+.pg-root {
+  /* Design tokens (mirror purlpressure palette) */
+  --bg:          #1a1410;
+  --bg-elevated: #221c17;
+  --bg-card:     #2a221c;
+  --text:        #f5edd8;
+  --text-soft:   #c8b89a;
+  --text-muted:  #8a7a6a;
+  --terracotta:  #c06040;
+  --sage:        #7a9e7e;
+  --periwinkle:  #8090c0;
+  --border:      rgba(200, 180, 150, 0.12);
+  --border-soft: rgba(200, 180, 150, 0.08);
+  --radius:      8px;
+  --radius-lg:   14px;
+  --ease:        cubic-bezier(0.25, 0, 0.1, 1);
+
+  /* Base */
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Stylish', system-ui, sans-serif;
+  line-height: 1.6;
+  min-height: 60vh;
+}
+
+/* Reset within island */
+.pg-root *,
+.pg-root *::before,
+.pg-root *::after {
+  box-sizing: border-box;
+}
+
+.pg-root h1,
+.pg-root h2,
+.pg-root h3,
+.pg-root h4 {
+  font-family: 'Luckybones', serif;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.pg-root p {
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.pg-root a {
+  color: var(--terracotta);
+  text-decoration: none;
+}
+
+.pg-root a:hover {
+  text-decoration: underline;
+}
+
+.pg-root strong {
+  font-weight: 600;
+}
+
+/* Inputs within island */
+.pg-root input[type='text'],
+.pg-root input[type='number'],
+.pg-root input[type='url'],
+.pg-root textarea,
+.pg-root select {
+  font-family: 'Stylish', system-ui, sans-serif;
+}
+
+.pg-root input[type='number']::-webkit-inner-spin-button,
+.pg-root input[type='number']::-webkit-outer-spin-button {
+  opacity: 0.4;
+}

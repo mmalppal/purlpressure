@@ -1,0 +1,323 @@
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.summaryTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.th {
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.summaryTable tr:not(:last-child) td {
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.summaryLabel {
+  padding: 0.5rem 0.75rem;
+  color: var(--text-muted);
+  width: 40%;
+}
+
+.summaryValue {
+  padding: 0.5rem 0.75rem;
+  color: var(--text);
+  text-transform: capitalize;
+}
+
+.diffChip {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+}
+
+.diffSmall {
+  background: rgba(122, 158, 126, 0.12);
+  color: var(--sage);
+  border: 1px solid rgba(122, 158, 126, 0.25);
+}
+
+.diffLarge {
+  background: rgba(200, 160, 40, 0.12);
+  color: #d4aa50;
+  border: 1px solid rgba(200, 160, 40, 0.25);
+}
+
+.easeNote {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0.5rem 0.75rem 0;
+}
+
+.easeNote strong {
+  color: var(--text-soft);
+  text-transform: capitalize;
+}
+
+.issueList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.issueItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.issue_error {
+  background: rgba(200, 60, 60, 0.08);
+  border: 1px solid rgba(200, 60, 60, 0.2);
+  color: #e07070;
+}
+
+.issue_warning {
+  background: rgba(200, 160, 40, 0.08);
+  border: 1px solid rgba(200, 160, 40, 0.2);
+  color: #d4aa50;
+}
+
+.issue_info {
+  background: rgba(128, 144, 192, 0.08);
+  border: 1px solid rgba(128, 144, 192, 0.2);
+  color: var(--periwinkle);
+}
+
+.issueField {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+.errorWarning {
+  margin: 0.75rem 0 0;
+  font-size: 0.82rem;
+  color: #e07070;
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.exportBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.exportBtn:hover {
+  border-color: var(--terracotta);
+  color: var(--text);
+}
+
+.generateBtn {
+  flex: 1;
+  background: var(--terracotta);
+  border: none;
+  color: #fff;
+  padding: 0.65rem 2rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.generateBtn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.generateBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.apiError {
+  background: rgba(200, 60, 60, 0.1);
+  border: 1px solid rgba(200, 60, 60, 0.3);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  color: #e07070;
+  margin-bottom: 1.5rem;
+}
+
+.resultSection {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.resultHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.resultHeader .sectionLabel {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.copyBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.copyBtn:hover {
+  border-color: var(--terracotta);
+  color: var(--text);
+}
+
+.renderedMarkdown {
+  padding: 1.5rem;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.renderedMarkdown h1,
+.renderedMarkdown h2,
+.renderedMarkdown h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  color: var(--text);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.renderedMarkdown h1 { font-size: 1.4rem; }
+.renderedMarkdown h2 { font-size: 1.15rem; }
+.renderedMarkdown h3 { font-size: 1rem; }
+
+.renderedMarkdown p { margin: 0.5rem 0; }
+
+.renderedMarkdown code {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85em;
+  background: var(--bg-card);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  color: var(--terracotta);
+}
+
+.renderedMarkdown pre {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.renderedMarkdown pre code {
+  background: none;
+  padding: 0;
+  color: var(--text);
+}
+
+.renderedMarkdown ul,
+.renderedMarkdown ol {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.renderedMarkdown li {
+  margin: 0.2rem 0;
+}
+
+.renderedMarkdown strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.renderedMarkdown table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.875rem;
+  margin: 0.75rem 0;
+}
+
+.renderedMarkdown th,
+.renderedMarkdown td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+}
+
+.renderedMarkdown th {
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}

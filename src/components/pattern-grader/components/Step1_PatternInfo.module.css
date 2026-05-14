@@ -1,0 +1,126 @@
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.toolBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.toolBtn:hover {
+  border-color: var(--terracotta);
+  color: var(--text);
+}
+
+.toolBtnDestructive {
+  composes: toolBtn;
+}
+
+.toolBtnDestructive:hover {
+  border-color: rgba(200, 60, 60, 0.6);
+  color: #e07070;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-soft);
+}
+
+.req {
+  color: var(--terracotta);
+}
+
+.input {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.6rem 0.85rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 2px rgba(192, 96, 64, 0.2);
+}
+
+.sectionLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.constructionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.constructionCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.constructionCard:hover:not(:disabled) {
+  border-color: rgba(192, 96, 64, 0.4);
+  background: rgba(192, 96, 64, 0.06);
+}
+
+.constructionCardActive {
+  border-color: var(--terracotta) !important;
+  background: rgba(192, 96, 64, 0.1) !important;
+}
+
+.constructionCardDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.constructionLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.constructionDesc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
