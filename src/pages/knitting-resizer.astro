@@ -65,11 +65,11 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
       <form id="grader-form" novalidate>
 
         <!-- 01 — Gauge -->
-        <fieldset class="form-card">
-          <legend class="form-card__legend">
-            <span class="pp-eyebrow">01 — Gauge</span>
+        <div class="form-card" role="group" aria-labelledby="legend-gauge">
+          <div class="form-card__legend">
+            <span id="legend-gauge" class="pp-eyebrow">01 — Gauge</span>
             <p class="form-card__sub">Measure over 4 inches / 10 cm in stockinette, blocked and washed.</p>
-          </legend>
+          </div>
           <div class="field-pair">
             <div class="field">
               <label class="field__label" for="sts_per_4in">Stitches / 4 in</label>
@@ -82,14 +82,14 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
                 step="0.5" min="4" max="80" required placeholder="e.g. 24">
             </div>
           </div>
-        </fieldset>
+        </div>
 
         <!-- 02 — Measurements -->
-        <fieldset class="form-card">
-          <legend class="form-card__legend">
-            <span class="pp-eyebrow">02 — Measurements</span>
+        <div class="form-card" role="group" aria-labelledby="legend-measurements">
+          <div class="form-card__legend">
+            <span id="legend-measurements" class="pp-eyebrow">02 — Measurements</span>
             <p class="form-card__sub">All in inches. Measure your body, not a garment you own.</p>
-          </legend>
+          </div>
           <div class="field-grid">
             <div class="field">
               <label class="field__label" for="bust">Bust circumference *</label>
@@ -113,7 +113,7 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
                 step="0.25" min="10" max="36" required placeholder="underarm to cuff">
             </div>
           </div>
-        </fieldset>
+        </div>
 
         <!-- Optional measurements -->
         <details class="form-card form-card--details">
@@ -143,10 +143,10 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
         </details>
 
         <!-- 03 — Fit -->
-        <fieldset class="form-card">
-          <legend class="form-card__legend">
-            <span class="pp-eyebrow">03 — Fit</span>
-          </legend>
+        <div class="form-card" role="group" aria-labelledby="legend-fit">
+          <div class="form-card__legend">
+            <span id="legend-fit" class="pp-eyebrow">03 — Fit</span>
+          </div>
           <div class="field-grid">
             <div class="field field--full">
               <label class="field__label" for="ease">Ease preset</label>
@@ -173,13 +173,13 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
               <span class="field__hint">Set to 4+ for bust ≥ 46"</span>
             </div>
           </div>
-        </fieldset>
+        </div>
 
         <!-- 04 — Pattern details -->
-        <fieldset class="form-card">
-          <legend class="form-card__legend">
-            <span class="pp-eyebrow">04 — Pattern details</span>
-          </legend>
+        <div class="form-card" role="group" aria-labelledby="legend-pattern">
+          <div class="form-card__legend">
+            <span id="legend-pattern" class="pp-eyebrow">04 — Pattern details</span>
+          </div>
           <div class="field-grid">
             <div class="field">
               <label class="field__label" for="pattern_name">Pattern name</label>
@@ -191,7 +191,7 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
               <input class="field__input" type="text" id="designer" placeholder="(you!)">
             </div>
           </div>
-        </fieldset>
+        </div>
 
         <!-- Error display -->
         <div id="form-error" class="form-error" hidden aria-live="polite">
@@ -394,13 +394,12 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
   }
 
   /* ── Form cards ─────────────────────────────────────────────────── */
-  fieldset, .form-card {
+  .form-card {
     border: 1px solid var(--pp-border-soft);
     border-radius: var(--pp-radius-md);
     background: var(--pp-bg-elevated);
     padding: var(--pp-5);
     margin: 0 0 var(--pp-3);
-    min-width: 0;
   }
 
   .form-card--details { padding: 0; overflow: hidden; }
@@ -447,7 +446,7 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
   details[open] .field-grid { padding: 0 var(--pp-5) var(--pp-5); }
 
   /* ── Field grids ───────────────────────────────────────────────── */
-  .field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--pp-3); }
+  .field-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 200px)); gap: var(--pp-3); }
   .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--pp-3); }
 
   .field-grid--sm {
