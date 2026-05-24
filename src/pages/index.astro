@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
 
@@ -10,6 +12,12 @@ const posts = allPosts
 
 const featured = posts[0];
 const rest = posts.slice(1);
+
+function coverImage(slug: string): string | undefined {
+  if (existsSync(join(process.cwd(), `public/obsessions/${slug}/1.jpg`))) return `/obsessions/${slug}/1.jpg`;
+  if (existsSync(join(process.cwd(), `public/obsessions/${slug}/1.png`))) return `/obsessions/${slug}/1.png`;
+  return undefined;
+}
 
 const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 ---
@@ -33,7 +41,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', ye
         <p class="pp-eyebrow featured__label">Latest obsession</p>
         <a href={`/weekly-obsessions/${featured.slug}`} class="featured__card">
           <div class="featured__img" style={`--feat-color: ${featured.data.color}`}>
-            <img src={`/obsessions/${featured.slug}/1.png`} alt={featured.data.title} loading="eager" />
+            <img src={coverImage(featured.slug)} alt={featured.data.title} loading="eager" />
           </div>
           <div class="featured__info">
             <p class="featured__date">{fmt.format(featured.data.date)}</p>
@@ -57,7 +65,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', ye
               date={post.data.date}
               color={post.data.color}
               accent={post.data.accent}
-              coverImage={`/obsessions/${post.slug}/1.png`}
+              coverImage={coverImage(post.slug)}
               patternCount={post.data.patterns.length}
               index={i}
             />
