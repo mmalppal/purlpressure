@@ -21,8 +21,10 @@ const ravelryData: (RavelryPatternData | null)[] = await Promise.all(
 
 const patternImages = data.patterns.map((p, i) => {
   const num = p.image ?? (i + 2);
-  const rel = `public/obsessions/${post.slug}/${num}.png`;
-  return existsSync(join(process.cwd(), rel)) ? `/obsessions/${post.slug}/${num}.png` : null;
+  const base = `public/obsessions/${post.slug}/${num}`;
+  if (existsSync(join(process.cwd(), `${base}.jpg`))) return `/obsessions/${post.slug}/${num}.jpg`;
+  if (existsSync(join(process.cwd(), `${base}.png`))) return `/obsessions/${post.slug}/${num}.png`;
+  return null;
 });
 
 const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
