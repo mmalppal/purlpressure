@@ -97,12 +97,12 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
               <div class="pattern-row__actions">
                 {p.ravelry && (
                   <a href={p.ravelry} target="_blank" rel="noreferrer" class="pattern-row__link">
-                    View on Ravelry →
+                    {p.ravelryLabel ?? 'View on Ravelry'} →
                   </a>
                 )}
                 {p.external && (
                   <a href={p.external} target="_blank" rel="noreferrer" class="pattern-row__link">
-                    View pattern →
+                    {p.externalLabel ?? 'View pattern'} →
                   </a>
                 )}
                 {rv?.permalink && (
