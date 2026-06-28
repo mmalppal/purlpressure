@@ -15,6 +15,18 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
     </div>
   </div>
 
+  <!-- ── Maintenance notice ───────────────────────────────────────── -->
+  <div class="maint-banner" role="status">
+    <div class="pp-container maint-banner__inner">
+      <span class="maint-banner__tag">Under construction</span>
+      <p class="maint-banner__msg">
+        This tool is temporarily offline while we move it to a new server.
+        You can still explore the form, but generating a pattern won't work
+        just yet. It'll be back shortly — thanks for your patience.
+      </p>
+    </div>
+  </div>
+
   <!-- ── Hero ─────────────────────────────────────────────────────── -->
   <header class="hero">
     <div class="pp-container hero__inner">
@@ -200,11 +212,11 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
 
         <!-- Actions -->
         <div class="form-actions">
-          <button type="submit" id="submit-btn" class="pp-btn pp-btn--accent">
-            <span id="btn-label">Generate pattern →</span>
+          <button type="submit" id="submit-btn" class="pp-btn pp-btn--accent" disabled>
+            <span id="btn-label">Temporarily offline</span>
             <span id="btn-spinner" class="btn-spinner" hidden aria-hidden="true"></span>
           </button>
-          <p class="form-actions__note">Runs on our server. Nothing is saved or stored.</p>
+          <p class="form-actions__note">Under construction — the generator is offline while we move servers.</p>
         </div>
 
       </form>
@@ -287,6 +299,38 @@ import SquiggleDivider from '../components/SquiggleDivider.astro';
     transition: color 160ms var(--pp-ease);
   }
   .breadcrumb-link:hover { color: var(--pp-text-soft); }
+
+  /* ── Maintenance banner ──────────────────────────────────────────── */
+  .maint-banner {
+    background: color-mix(in srgb, var(--pp-honey) 16%, var(--pp-bg-elevated));
+    border-bottom: 1px solid color-mix(in srgb, var(--pp-honey) 40%, var(--pp-border-soft));
+  }
+  .maint-banner__inner {
+    display: flex;
+    align-items: baseline;
+    gap: var(--pp-4);
+    padding: var(--pp-4) 0;
+    flex-wrap: wrap;
+  }
+  .maint-banner__tag {
+    font-family: var(--pp-font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--pp-cordovan);
+    background: color-mix(in srgb, var(--pp-honey) 45%, transparent);
+    padding: 4px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .maint-banner__msg {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--pp-text-soft);
+    max-width: 70ch;
+  }
 
   /* ── Hero ──────────────────────────────────────────────────────── */
   .hero {
