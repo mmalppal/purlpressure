@@ -6,7 +6,11 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://purlpressure.com',
   output: 'static',
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   integrations: [mdx(), react()],
   markdown: {
     shikiConfig: { theme: 'css-variables' },
