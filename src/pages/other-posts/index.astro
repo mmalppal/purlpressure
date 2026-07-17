@@ -1,0 +1,113 @@
+---
+import { getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import StickerLabel from '../../components/StickerLabel.astro';
+
+const posts = (await getCollection('other-posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function coverImage(slug: string): string | undefined {
+  if (existsSync(join(process.cwd(), `public/other-posts/${slug}/1.jpg`))) return `/other-posts/${slug}/1.jpg`;
+  if (existsSync(join(process.cwd(), `public/other-posts/${slug}/1.png`))) return `/other-posts/${slug}/1.png`;
+  return undefined;
+}
+---
+<Base
+  title="Other Posts — Purl Pressure"
+  description="Random posts whenever I feel like it. Runner-ups, deep dives, and everything that doesn't fit the weekly format."
+>
+  <header class="archive-hero">
+    <div class="pp-container">
+      <span class="archive-hero__sticker">
+        <StickerLabel text="NO SCHEDULE" rotate={-5} bg="var(--pp-periwinkle)" color="var(--pp-paper)" />
+      </span>
+      <h1 class="pp-display pp-display--lg archive-hero__title">
+        Other<br/><em>posts.</em>
+      </h1>
+      <p class="archive-hero__sub">
+        Random posts whenever I feel like it. Runner-ups, deep dives, and everything that doesn't fit the weekly format.
+      </p>
+    </div>
+  </header>
+
+  <section class="pp-section archive">
+    <div class="pp-container">
+      {posts.length > 0 ? (
+        <div class="archive__grid">
+          {posts.map((post, i) => (
+            <PostCard
+              href={`/other-posts/${post.slug}`}
+              title={post.data.title}
+              date={post.data.date}
+              color={post.data.color}
+              accent={post.data.accent}
+              coverImage={coverImage(post.slug)}
+              patternCount={post.data.patterns.length}
+              index={i}
+              cta="See the post →"
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="archive__empty">First post drops soon.</p>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .archive-hero {
+    padding: var(--pp-16) 0 var(--pp-12);
+    border-bottom: 1px solid var(--pp-border-soft);
+    background:
+      radial-gradient(ellipse at 70% 20%, color-mix(in srgb, var(--pp-periwinkle) 15%, transparent), transparent 60%),
+      var(--pp-bg);
+  }
+
+  .archive-hero__sticker {
+    display: inline-block;
+    margin-bottom: var(--pp-6);
+  }
+
+  .archive-hero__title {
+    margin: 0 0 var(--pp-6);
+  }
+
+  .archive-hero__title em {
+    color: var(--pp-periwinkle);
+    font-style: italic;
+  }
+
+  .archive-hero__sub {
+    font-size: clamp(17px, 1.4vw, 20px);
+    color: var(--pp-text-soft);
+    max-width: 50ch;
+    margin: 0;
+  }
+
+  .archive__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--pp-8);
+  }
+
+  @media (min-width: 640px) {
+    .archive__grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (min-width: 980px) {
+    .archive__grid { grid-template-columns: repeat(3, 1fr); gap: var(--pp-10); }
+  }
+
+  .archive__empty {
+    padding: var(--pp-12);
+    text-align: center;
+    font-family: var(--pp-font-display);
+    font-style: italic;
+    font-size: 24px;
+    color: var(--pp-text-muted);
+  }
+</style>

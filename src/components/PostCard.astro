@@ -9,8 +9,9 @@ interface Props {
   coverImage?: string;
   patternCount?: number;
   index?: number;
+  cta?: string;
 }
-const { href, title, date, color, accent, vibe, coverImage, patternCount, index = 0 } = Astro.props;
+const { href, title, date, color, accent, vibe, coverImage, patternCount, index = 0, cta = 'See the obsessions →' } = Astro.props;
 
 const tilt = index % 2 === 0 ? -1 : 1;
 const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
@@ -32,7 +33,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', ye
   <div class="card__body">
     <p class="pp-eyebrow card__date">{fmt.format(date)}</p>
     <h3 class="card__title">{title}</h3>
-    <span class="card__more">See the obsessions →</span>
+    <span class="card__more">{cta}</span>
   </div>
 </a>
 
