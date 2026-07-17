@@ -5,6 +5,7 @@
 The marketing + content home for **Purl Pressure** — Mallory Iversen's knitting brand. Hub for:
 
 - **Weekly Obsessions** blog (MDX)
+- **Other Posts** blog (MDX) — same format as Weekly Obsessions, for posts that don't fit the weekly cadence
 - **Palette Pairings** series (placeholder for now)
 - **Plied** placeholder (future product)
 - **About** page
@@ -39,8 +40,9 @@ Warm textile-studio palette (terracotta, clary sage, periwinkle, walnut, oxblood
 astro.config.mjs           — Astro + MDX + Vercel adapter
 src/
   content/
-    config.ts              — Zod schema for `obsessions` collection
-    obsessions/*.mdx       — Weekly Obsessions posts (3 sample posts to replace)
+    config.ts              — Zod schema shared by `obsessions` + `other-posts` collections
+    obsessions/*.mdx       — Weekly Obsessions posts
+    other-posts/*.mdx      — Other Posts (same frontmatter shape as obsessions)
   styles/global.css        — All tokens + global styles + prose + utilities
   layouts/Base.astro       — HTML shell, nav, footer, fonts, meta/OG
   components/
@@ -56,6 +58,8 @@ src/
     about.astro                          — About Mallory
     weekly-obsessions/index.astro        — Archive grid
     weekly-obsessions/[slug].astro       — Individual post (color band header + sidebar)
+    other-posts/index.astro              — Other Posts archive grid (periwinkle-accented)
+    other-posts/[slug].astro             — Individual Other Post (mirrors weekly-obsessions)
     palette-pairings/index.astro         — Placeholder + season swatch preview
 ```
 
@@ -69,6 +73,10 @@ src/
    - `instagramPost` — optional URL to the carousel
 3. Write body in MDX. The `.pp-prose` styles render headings, blockquotes, links with terracotta highlight.
 4. Push to `main`. Vercel auto-deploys.
+
+Adding an **Other Posts** post works the same way: `.mdx` in `src/content/other-posts/`,
+images in `public/other-posts/<slug>/` (`1.jpg` = cover, `2.jpg`+ = pattern slides, ~85%-quality
+JPEGs around 250–350KB each).
 
 ## Sample posts to replace
 
