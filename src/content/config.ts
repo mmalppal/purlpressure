@@ -17,6 +17,7 @@ const postSchema = z.object({
         external: z.string().url().optional(),
         externalLabel: z.string().optional(),
         notes: z.string().optional(),
+        bust: z.string().optional(),
         image: z.number().int().optional(),
       })
     )

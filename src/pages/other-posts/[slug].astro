@@ -62,14 +62,16 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
               <h2 class="pattern-row__name">{p.name}</h2>
               <p class="pattern-row__designer">by {p.designer}</p>
 
-              {rv && (rv.yarnWeight || rv.needleSizes?.length || rv.yardage || rv.gauge || rv.sizes || rv.languages?.length) && (
+              {(p.bust || (rv && (rv.yarnWeight || rv.needleSizes?.length || rv.yardage || rv.gauge || rv.sizes || rv.languages?.length))) && (
                 <dl class="pattern-row__specs">
-                  {rv.yarnWeight && <><dt>Yarn Weight</dt><dd>{rv.yarnWeight}{rv.wpi ? ` · ${rv.wpi} wpi` : ''}</dd></>}
-                  {rv.needleSizes?.length > 0 && <><dt>Needles</dt><dd>{rv.needleSizes.join(' · ')}</dd></>}
-                  {rv.yardage && <><dt>Yardage</dt><dd>{rv.yardage}</dd></>}
-                  {rv.gauge && <><dt>Gauge</dt><dd>{rv.gauge}</dd></>}
-                  {rv.sizes && <><dt>Sizes</dt><dd>{rv.sizes}</dd></>}
-                  {rv.languages?.length > 0 && <><dt>Languages</dt><dd>{rv.languages.join(' · ')}</dd></>}
+                  {rv?.yarnWeight && <><dt>Yarn Weight</dt><dd>{rv.yarnWeight}{rv.wpi ? ` · ${rv.wpi} wpi` : ''}</dd></>}
+                  {rv?.needleSizes?.length > 0 && <><dt>Needles</dt><dd>{rv.needleSizes.join(' · ')}</dd></>}
+                  {rv?.yardage && <><dt>Yardage</dt><dd>{rv.yardage}</dd></>}
+                  {rv?.gauge && <><dt>Gauge</dt><dd>{rv.gauge}</dd></>}
+                  {p.bust
+                    ? <><dt>Bust</dt><dd>{p.bust}</dd></>
+                    : rv?.sizes && <><dt>Sizes</dt><dd>{rv.sizes}</dd></>}
+                  {rv?.languages?.length > 0 && <><dt>Languages</dt><dd>{rv.languages.join(' · ')}</dd></>}
                 </dl>
               )}
 
