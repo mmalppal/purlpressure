@@ -27,6 +27,14 @@ const patternImages = data.patterns.map((p, i) => {
   return null;
 });
 
+// Patterns that share an image (e.g. two patterns on one carousel slide) render as one row.
+const groups: number[][] = [];
+data.patterns.forEach((p, i) => {
+  const prev = groups[groups.length - 1];
+  if (prev && p.image !== undefined && data.patterns[prev[0]].image === p.image) prev.push(i);
+  else groups.push([i]);
+});
+
 const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 <Base title={`${data.title} — Other Posts`} description={data.excerpt}>
@@ -47,18 +55,22 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
     </header>
 
     <div class="pp-container post__patterns">
-      {data.patterns.map((p, i) => {
-        const rv = ravelryData[i];
-        const imgSrc = patternImages[i];
-        const flip = i % 2 === 1;
+      {groups.map((group, gi) => {
+        const imgSrc = patternImages[group[0]];
+        const flip = gi % 2 === 1;
         return (
-          <div class={`pattern-row${flip ? ' pattern-row--flip' : ''}${!imgSrc ? ' pattern-row--no-img' : ''}`}>
+          <div class={`pattern-row${flip ? ' pattern-row--flip' : ''}${!imgSrc ? ' pattern-row--no-img' : ''}${group.length > 1 ? ' pattern-row--slide' : ''}`}>
             {imgSrc && (
               <div class="pattern-row__img">
-                <img src={imgSrc} alt={p.name} loading={i === 0 ? 'eager' : 'lazy'} />
+                <img src={imgSrc} alt={group.map(n => data.patterns[n].name).join(' & ')} loading={gi === 0 ? 'eager' : 'lazy'} />
               </div>
             )}
             <div class="pattern-row__info">
+              {group.map((i) => {
+                const p = data.patterns[i];
+                const rv = ravelryData[i];
+                return (
+              <div class="pattern-row__block">
               <h2 class="pattern-row__name">{p.name}</h2>
               <p class="pattern-row__designer">by {p.designer}</p>
 
@@ -118,6 +130,9 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
                   </a>
                 )}
               </div>
+              </div>
+                );
+              })}
             </div>
           </div>
         );
@@ -249,6 +264,21 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
     gap: var(--pp-4);
     padding-top: var(--pp-5);
   }
+
+  .pattern-row__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pp-4);
+  }
+
+  .pattern-row__block + .pattern-row__block {
+    margin-top: var(--pp-6);
+    padding-top: var(--pp-8);
+    border-top: 1px solid var(--pp-border-soft);
+  }
+
+  /* Two patterns on one full-height carousel slide */
+  .pattern-row--slide .pattern-row__img { aspect-ratio: 9/16; }
 
   @media (min-width: 720px) {
     .pattern-row__info { padding-top: 0; }
